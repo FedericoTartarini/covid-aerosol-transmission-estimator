@@ -1,11 +1,12 @@
 import React, { Suspense } from "react";
-import StadiumView from "./Components/StadiumView";
+import Indoor from "./Components/Indoor";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loader from "./Components/Loader";
 import NavigationBar from "./Components/NavigationBar";
 import Footer from "./Components/Footer";
 import AboutView from "./Components/AboutView";
 import HomeView from "./Components/HomeView";
+import LearnMoreView from "./Components/LearnMoreView";
 
 function App() {
   return (
@@ -20,14 +21,17 @@ function App() {
             <Route path="/about">
               <AboutView />
             </Route>
-            <Route path="/stadium">
-              <StadiumView />
+            <Route path="/learnMore">
+              <LearnMoreView />
+            </Route>
+            <Route path="/indoor">
+              <Indoor />
             </Route>
           </Switch>
         </Suspense>
-        {/*<div>*/}
-        {/*  <Footer />*/}
-        {/*</div>*/}
+        <div>
+          <Footer />
+        </div>
       </div>
     </Router>
   );

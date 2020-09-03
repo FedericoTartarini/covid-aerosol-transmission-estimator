@@ -17,24 +17,7 @@ function AboutView() {
             COVID-19 aerosol transmission estimator
           </h1>
           <p className="mb-8 leading-relaxed">
-            The propagation of COVID-19 by aerosol transmission ONLY
-          </p>
-          <p className="mb-8 leading-relaxed">
-            The model is based on a standard model of aerosol disease
-            transmission, the Wells-Riley model. It is calibrated to COVID-19
-            per recent literature on quanta emission rate
-          </p>
-          <p className="mb-8 leading-relaxed">
-            This is NOT an epidemiological model, rather can take input from
-            such models for the average rate of infection for a given location
-            and time period. Or it could possibly be used as a sub-component of
-            an epi-model, to estimate aerosol transmission as a function of
-            various parameters
-          </p>
-          <p className="mb-8 leading-relaxed">
-            This model does NOT include droplet or contact / fomite
-            transmission, and assumes that 6 ft / 2 m social distancing is
-            respected. Otherwise higher transmission will result
+            This is the about page of the tool.
           </p>
         </div>
       </div>

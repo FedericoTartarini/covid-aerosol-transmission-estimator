@@ -1,11 +1,14 @@
 module.exports = {
   purge: [],
   theme: {
-    screens: {
-      sm: "400px",
-      md: "480px",
-      lg: "560px",
-      xl: "640px",
+    container: {
+      center: true,
+      padding: {
+        default: "1rem",
+        sm: "2rem",
+        lg: "4rem",
+        xl: "5rem",
+      },
     },
     extend: {},
   },
