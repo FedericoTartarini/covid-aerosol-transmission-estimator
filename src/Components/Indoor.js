@@ -1,9 +1,30 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import InputField from "./InputField";
+import DropDown from "./DropDown";
 
 function Indoor() {
-  const [state, setState] = React.useState({
+  const listActivities = [
+    "Quite working, Seated",
+    "Speaking, Seated",
+    "Speaking loudly, Seated",
+    "Quite working, Standing",
+    "Speaking, Standing",
+    "Speaking loudly, Standing",
+    "Quite, moderate activity",
+    "Speaking, moderate activity",
+    "Speaking loudly, moderate activity",
+    "Quite, heavy activity",
+    "Speaking, heavy activity",
+    "Speaking loudly, heavy activity",
+    "Teaching, speaking",
+    "Teaching, speaking loudly",
+    "Student, speaking",
+    "Student, speaking loudly",
+  ];
+
+  const [inputData, setInputData] = React.useState({
+    activity: "Quite working, Seated",
     length: 600 * 0.305,
     width: 300 * 0.305,
     height: 50 * 0.305,
@@ -33,26 +54,35 @@ function Indoor() {
 
   function handleChange(evt) {
     const value = evt.target.value;
-    setState({
-      ...state,
+    setInputData({
+      ...inputData,
       [evt.target.name]: value,
 
-      volume: (state.width * state.length * state.height).toFixed(1),
-      area: (state.width * state.length).toFixed(1),
-      areaPerPerson: (state.area / state.people).toFixed(1),
-      peoplePerArea: (state.people / state.area).toFixed(1),
-      volumePerPerson: (state.volume / state.people).toFixed(1),
+      volume: (inputData.width * inputData.length * inputData.height).toFixed(
+        1
+      ),
+      area: (inputData.width * inputData.length).toFixed(1),
+      areaPerPerson: (inputData.area / inputData.people).toFixed(1),
+      peoplePerArea: (inputData.people / inputData.area).toFixed(1),
+      volumePerPerson: (inputData.volume / inputData.people).toFixed(1),
       firstOrderLoss:
-        state.ventilationOutAir +
-        state.decayRateVirus +
-        state.controlMeasure +
-        state.depositionSurface,
+        inputData.ventilationOutAir +
+        inputData.decayRateVirus +
+        inputData.controlMeasure +
+        inputData.depositionSurface,
       ventilationRate:
-        (state.volume *
-          (state.ventilationOutAir + state.controlMeasure) *
+        (inputData.volume *
+          (inputData.ventilationOutAir + inputData.controlMeasure) *
           1000) /
         3600 /
-        state.people,
+        inputData.people,
+    });
+  }
+
+  function handleDropDown(value) {
+    setInputData({
+      ...inputData,
+      activity: value,
     });
   }
 
@@ -62,8 +92,8 @@ function Indoor() {
         <title>Indoor space</title>
         <meta name="description" content="content" />
       </Helmet>
-      <section className="flex lg:container lg:mx-auto mx-auto text-gray-700 body-font">
-        <div className="flex-auto m-6">
+      <section className="lg:container lg:mx-auto mx-auto text-gray-700 body-font">
+        <div className="m-6">
           <form className="w-full">
             <h1 className="title-font mb-4 font-bold text-gray-900">
               Information about the environment
@@ -71,106 +101,98 @@ function Indoor() {
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
-                value={state.length}
+                value={inputData.length}
                 label={"Length (m)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.width}
+                value={inputData.width}
                 label={"Width (m)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.height}
+                value={inputData.height}
                 label={"Height (m)"}
               />
             </div>
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
-                value={state.pressure}
+                value={inputData.pressure}
                 label={"Pressure (atm)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.temperature}
+                value={inputData.temperature}
                 label={"Temperature (°C)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.relativeHumidity}
+                value={inputData.relativeHumidity}
                 label={"Relative humidity (%)"}
               />
             </div>
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
-                value={state.repetitionEvent}
+                value={inputData.repetitionEvent}
                 label={"Repetition event (times)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.ventilationOutAir}
+                value={inputData.ventilationOutAir}
                 label={"Ventilation outside air (h-1)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.controlMeasure}
+                value={inputData.controlMeasure}
                 label={"Additional measures (h-1)"}
               />
             </div>
             <h1 className="title-font mb-4 mt-12 font-bold text-gray-900">
               Information about peoples' activity in the room
             </h1>
+          </form>
+          <div className="flex content-center my-4">
+            <p className="py-2 mr-2">Select an activity: </p>
+            <DropDown
+              selected={inputData.activity}
+              listItems={listActivities}
+              setValue={handleDropDown}
+            />
+          </div>
+          <form className="w-full">
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
-                value={state.people}
+                value={inputData.people}
                 label={"Number of people"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.numberInfected}
+                value={inputData.numberInfected}
                 label={"People infected"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.fractionImmune}
+                value={inputData.fractionImmune}
                 label={"Fraction Immune"}
               />
             </div>
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
-                value={state.breathingRate}
-                label={"Breathing rate"}
-              />
-              <InputField
-                handleChange={handleChange}
-                value={state.co2EmissionRate}
-                label={"CO2 emission rate"}
-              />
-              {/*  todo add lines 49 */}
-              <InputField
-                handleChange={handleChange}
-                value={state.quanta}
-                label={"Quanta exhalation rate"}
-              />
-            </div>
-            <div className="flex items-end flex-wrap -mx-3 mb-2">
-              <InputField
-                handleChange={handleChange}
-                value={state.exhalationMaskEff}
+                value={inputData.exhalationMaskEff}
                 label={"Exhalation mask efficiency"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.perPeopleMask}
+                value={inputData.perPeopleMask}
                 label={"Percentage people with mask"}
               />
               <InputField
                 handleChange={handleChange}
-                value={state.inhalationMaskEff}
+                value={inputData.inhalationMaskEff}
                 label={"Inhalation mask efficiency"}
               />
             </div>
@@ -181,7 +203,7 @@ function Indoor() {
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
-                value={state.pBeingInfected}
+                value={inputData.pBeingInfected}
                 label={"Probability being infected (%)"}
               />
             </div>

@@ -12,8 +12,8 @@ function InputField({ handleChange, value, label }) {
       </label>
       <input
         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        id="grid-length"
-        type={label.split(" ")[0]}
+        id={label.split(" ")[0]}
+        type="number"
         name={label.split(" ")[0]}
         placeholder={value}
         onChange={handleChange}
