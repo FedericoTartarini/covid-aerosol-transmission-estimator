@@ -1,9 +1,8 @@
 import React from "react";
 
 function InputField({ handleChange, value, label }) {
-  let width = "w-1/3";
   return (
-    <div className={width + " px-3"}>
+    <div className="w-1/3 px-3 my-1">
       <label
         className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
         htmlFor={label.split(" ")[0]}

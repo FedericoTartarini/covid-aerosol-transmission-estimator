@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import InputField from "./InputField";
 import DropDown from "./DropDown";
+import OutputField from "./OutputField";
 
 function Indoor() {
   const listActivities = [
@@ -23,8 +24,20 @@ function Indoor() {
     "Student, speaking loudly",
   ];
 
+  const ageGroups = [
+    "16 - 20",
+    "21 - 30",
+    "31 - 40",
+    "41 - 50",
+    "51 - 60",
+    "61 - 70",
+    "71 - 80",
+    "80 and above",
+  ];
+
   const [inputData, setInputData] = React.useState({
     activity: "Quite working, Seated",
+    ageGroup: "41 - 50",
     length: 600 * 0.305,
     width: 300 * 0.305,
     height: 50 * 0.305,
@@ -50,6 +63,15 @@ function Indoor() {
     exhalationMaskEff: 0,
     perPeopleMask: 0,
     inhalationMaskEff: 0,
+    // below are all the calculated inputs
+    pOneEventInfection: 0.02, // todo calculate this value
+    pOneEventHospitalization: 0.02, // todo calculate this value
+    pOneEventDeath: 0.02, // todo calculate this value
+    pOneEventCarTravel: 3, // todo calculate this value
+    pMultipleEventInfection: 0.02, // todo calculate this value
+    pMultipleEventHospitalization: 0.02, // todo calculate this value
+    pMultipleEventDeath: 0.02, // todo calculate this value
+    pMultipleEventCarTravel: 3, // todo calculate this value
   });
 
   function handleChange(evt) {
@@ -76,13 +98,21 @@ function Indoor() {
           1000) /
         3600 /
         inputData.people,
+      pOneEventInfection: 0.02, // todo calculate this value
     });
   }
 
-  function handleDropDown(value) {
+  function handleDroDowAct(value) {
     setInputData({
       ...inputData,
       activity: value,
+    });
+  }
+
+  function handleDroDowAge(value) {
+    setInputData({
+      ...inputData,
+      ageGroup: value,
     });
   }
 
@@ -94,6 +124,9 @@ function Indoor() {
       </Helmet>
       <section className="lg:container lg:mx-auto mx-auto text-gray-700 body-font">
         <div className="m-6">
+          <h1 className="title-font text-2xl mb-4 mt-12 font-bold text-gray-900">
+            Inputs
+          </h1>
           <form className="w-full">
             <h1 className="title-font mb-4 font-bold text-gray-900">
               Information about the environment
@@ -114,8 +147,6 @@ function Indoor() {
                 value={inputData.height}
                 label={"Height (m)"}
               />
-            </div>
-            <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
                 value={inputData.pressure}
@@ -131,8 +162,6 @@ function Indoor() {
                 value={inputData.relativeHumidity}
                 label={"Relative humidity (%)"}
               />
-            </div>
-            <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
                 value={inputData.repetitionEvent}
@@ -149,16 +178,24 @@ function Indoor() {
                 label={"Additional measures (h-1)"}
               />
             </div>
-            <h1 className="title-font mb-4 mt-12 font-bold text-gray-900">
-              Information about peoples' activity in the room
-            </h1>
           </form>
+          <h1 className="title-font mb-4 mt-12 font-bold text-gray-900">
+            Information about peoples' activity in the room
+          </h1>
           <div className="flex content-center my-4">
             <p className="py-2 mr-2">Select an activity: </p>
             <DropDown
               selected={inputData.activity}
               listItems={listActivities}
-              setValue={handleDropDown}
+              setValue={handleDroDowAct}
+            />
+          </div>
+          <div className="flex content-center my-4">
+            <p className="py-2 mr-2">Select age group: </p>
+            <DropDown
+              selected={inputData.ageGroup}
+              listItems={ageGroups}
+              setValue={handleDroDowAge}
             />
           </div>
           <form className="w-full">
@@ -178,8 +215,6 @@ function Indoor() {
                 value={inputData.fractionImmune}
                 label={"Fraction Immune"}
               />
-            </div>
-            <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
                 value={inputData.exhalationMaskEff}
@@ -196,7 +231,6 @@ function Indoor() {
                 label={"Inhalation mask efficiency"}
               />
             </div>
-
             <h1 className="title-font mb-4 mt-12 font-bold text-gray-900">
               Parameters related to COVID-19
             </h1>
@@ -208,6 +242,53 @@ function Indoor() {
               />
             </div>
           </form>
+          <div>
+            <h1 className="title-font text-2xl mb-4 mt-12 font-bold text-gray-900">
+              Outputs
+            </h1>
+            <h1 className="title-font mb-4 mt-4 font-bold text-gray-900">
+              Absolute results for a person attending one event
+            </h1>
+            <div className="flex items-end flex-wrap -mx-3 mb-2">
+              <OutputField
+                label={"Probability of infection (%)"}
+                value={inputData.pOneEventInfection}
+              />
+              <OutputField
+                label={"Probability of hospitalization (%)"}
+                value={inputData.pOneEventHospitalization}
+              />
+              <OutputField
+                label={"Probability of death (%)"}
+                value={inputData.pOneEventDeath}
+              />
+              <OutputField
+                label={"Ratio to risk of car travel death (times higher)"}
+                value={inputData.pOneEventCarTravel}
+              />
+            </div>
+            <h1 className="title-font mb-4 mt-4 font-bold text-gray-900">
+              Absolute results for a person attending multiple events
+            </h1>
+            <div className="flex items-end flex-wrap -mx-3 mb-2">
+              <OutputField
+                label={"Probability of infection (%)"}
+                value={inputData.pMultipleEventInfection}
+              />
+              <OutputField
+                label={"Probability of hospitalization (%)"}
+                value={inputData.pMultipleEventHospitalization}
+              />
+              <OutputField
+                label={"Probability of death (%)"}
+                value={inputData.pMultipleEventDeath}
+              />
+              <OutputField
+                label={"Ratio to risk of car travel death (times higher)"}
+                value={inputData.pMultipleEventCarTravel}
+              />
+            </div>
+          </div>
         </div>
       </section>
     </div>
