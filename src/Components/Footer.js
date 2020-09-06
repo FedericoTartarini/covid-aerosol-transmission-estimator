@@ -19,7 +19,7 @@ function Footer() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Author 1, Author 2, Author 3
+            Federico Tartarini, Asit Mishra, Jose L Jimenez
           </a>
         </p>
         <span className="inline-flex text-gray-700 sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
