@@ -23,10 +23,14 @@ function Footer() {
           </a>
         </p>
         <span className="inline-flex text-gray-700 sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-          <a className="mx-3" href="" aria-label="LinkedIn">
+          <a
+            className="mx-3"
+            href="https://www.linkedin.com"
+            aria-label="LinkedIn"
+          >
             <FontAwesomeIcon icon={faLinkedin} size={"2x"} />
           </a>
-          <a className="ml-3" href="" aria-label="GitHub">
+          <a className="ml-3" href="https://github.com" aria-label="GitHub">
             <FontAwesomeIcon icon={faGithub} size={"2x"} />
           </a>
         </span>
