@@ -5,13 +5,13 @@ function LearnMoreView() {
   return (
     <section className="text-gray-700 body-font">
       <Helmet>
-        <title>About Page</title>
+        <title>Learn More</title>
         <meta
           name="description"
           content="This page is about the author, Federico Tartarini."
         />
       </Helmet>
-      <div className="container mx-auto flex flex-col px-5 py-8 justify-center items-center">
+      <div className="container mx-auto max-w-2xl flex flex-col py-8 justify-center items-center">
         <div className="w-full flex flex-col mb-16 items-center text-center">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
             COVID-19 aerosol transmission estimator

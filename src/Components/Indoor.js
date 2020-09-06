@@ -13,13 +13,10 @@ class Indoor extends React.Component {
       length: 25 * 0.305,
       width: 20 * 0.305,
       height: 10 * 0.305,
-      temperature: 20,
-      relativeHumidity: 50,
       // info event
       durationEvent: 50,
       repetitionEvent: 180,
       ventilationOutAir: 3,
-      controlMeasure: 0,
       // info people
       activity: "Quite working, Seated",
       ageGroup: "16 - 20",
@@ -33,11 +30,14 @@ class Indoor extends React.Component {
       pBeingInfected: 0.2,
       // CALCULATED AND ESTIMATED inputs
       // info environment
+      temperature: 20,
+      relativeHumidity: 50,
       pressure: 0.95,
       co2Outdoors: 415,
       // info event
       decayRateVirus: 0.62,
       depositionSurface: 0.3,
+      controlMeasure: 0, // todo estimate this value from tables
       // info people
       susceptiblePeople: 9,
       co2EmissionRate: 0.005,
@@ -84,6 +84,7 @@ class Indoor extends React.Component {
       "Student, speaking",
       "Student, speaking loudly",
     ];
+
     this.ageGroups = [
       "16 - 20",
       "21 - 30",
@@ -209,7 +210,7 @@ class Indoor extends React.Component {
           <title>Indoor space</title>
           <meta name="description" content="content" />
         </Helmet>
-        <section className="lg:container lg:mx-auto mx-auto text-gray-700 body-font">
+        <section className="container mx-auto text-gray-700 body-font">
           <div className="m-6">
             <h1 className="title-font text-2xl mb-4 mt-12 font-bold text-gray-900">
               Inputs
@@ -237,18 +238,6 @@ class Indoor extends React.Component {
                   id={"height"}
                   label={"Height (m)"}
                 />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"temperature"}
-                  label={"Temperature (°C)"}
-                />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"relativeHumidity"}
-                  label={"Relative humidity (%)"}
-                />
               </div>
             </form>
             <form className="w-full">
@@ -273,12 +262,6 @@ class Indoor extends React.Component {
                   data={this.state}
                   id={"ventilationOutAir"}
                   label={"Ventilation outside air (h-1)"}
-                />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"controlMeasure"}
-                  label={"Additional measures (h-1)"}
                 />
               </div>
             </form>
@@ -349,6 +332,18 @@ class Indoor extends React.Component {
                   data={this.state}
                   id={"pBeingInfected"}
                   label={"Probability being infected (%)"}
+                />
+                <InputField
+                  handleChange={this.handleInputChange}
+                  data={this.state}
+                  id={"hospitalizationRate"}
+                  label={"Hospitalization rate (%)"}
+                />
+                <InputField
+                  handleChange={this.handleInputChange}
+                  data={this.state}
+                  id={"deathRate"}
+                  label={"Death rate (%)"}
                 />
               </div>
             </form>

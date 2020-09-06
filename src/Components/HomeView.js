@@ -21,7 +21,12 @@ function HomeView() {
           <div className="flex my-8 justify-center">
             <Link to="/indoor">
               <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                Calculate
+                Indoor Space
+              </button>
+            </Link>
+            <Link to="/outdoor">
+              <button className="ml-4 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                Outdoor Space
               </button>
             </Link>
             <Link to="/learnMore">

@@ -7,6 +7,7 @@ import Footer from "./Components/Footer";
 import AboutView from "./Components/AboutView";
 import HomeView from "./Components/HomeView";
 import LearnMoreView from "./Components/LearnMoreView";
+import HelpPage from "./Components/HelpPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/indoor">
               <Indoor />
             </Route>
+            <Route path="/help/:id" component={HelpPage} />
           </Switch>
         </Suspense>
         <div>
