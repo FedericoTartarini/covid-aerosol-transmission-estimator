@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import InputField from "./InputField";
 import DropDown from "./DropDown";
 import OutputField from "./OutputField";
+import OutputsIndoor from "./OutputsIndoor";
 
 function Indoor() {
   const listActivities = [
@@ -35,71 +36,131 @@ function Indoor() {
     "80 and above",
   ];
 
+  // let cases = require("../Data/lut_data.json");
+
   const [inputData, setInputData] = React.useState({
-    activity: "Quite working, Seated",
-    ageGroup: "41 - 50",
-    length: 600 * 0.305,
-    width: 300 * 0.305,
-    height: 50 * 0.305,
-    pressure: 0.95,
+    // INPUTS
+    // info environment
+    length: 25 * 0.305,
+    width: 20 * 0.305,
+    height: 10 * 0.305,
     temperature: 20,
     relativeHumidity: 50,
-    co2Outdoors: 415,
-    durationEvent: 90,
-    repetitionEvent: 1,
-    ventilationOutAir: 40,
-    decayRateVirus: 0.62,
-    depositionSurface: 0.3,
+    // info event
+    durationEvent: 50,
+    repetitionEvent: 180,
+    ventilationOutAir: 3,
     controlMeasure: 0,
-    people: 31000,
+    // info people
+    activity: "Quite working, Seated",
+    ageGroup: "16 - 20",
+    people: 10,
     numberInfected: 1,
     fractionImmune: 0,
-    pBeingInfected: 0.1,
-    hospitalizationRate: 20,
-    deathRate: 1,
-    breathingRate: 0.72,
-    co2EmissionRate: 0.0061,
-    quanta: 50,
-    exhalationMaskEff: 0,
-    perPeopleMask: 0,
-    inhalationMaskEff: 0,
-    // below are all the calculated inputs
-    pOneEventInfection: 0.02, // todo calculate this value
-    pOneEventHospitalization: 0.02, // todo calculate this value
-    pOneEventDeath: 0.02, // todo calculate this value
-    pOneEventCarTravel: 3, // todo calculate this value
-    pMultipleEventInfection: 0.02, // todo calculate this value
-    pMultipleEventHospitalization: 0.02, // todo calculate this value
-    pMultipleEventDeath: 0.02, // todo calculate this value
-    pMultipleEventCarTravel: 3, // todo calculate this value
+    exhalationMaskEff: 0.5,
+    perPeopleMask: 1,
+    inhalationMaskEff: 0.3,
+    // covid parameters
+    pBeingInfected: 0.2,
+    // CALCULATED AND ESTIMATED inputs
+    // info environment
+    pressure: 0.95,
+    co2Outdoors: 415,
+    // info event
+    decayRateVirus: 0.62, // todo estimate this value from tables
+    depositionSurface: 0.3, // todo estimate this value from tables
+    // info people
+    co2EmissionRate: 0.005, // todo estimate this value from tables
+    breathingRate: 0.0086 * 60, // todo estimate this value from tables
+    quanta: 25, // todo estimate this value from tables
+    // info covid
+    hospitalizationRate: 0.2, // todo estimate this value from tables
+    deathRate: 0.01, // todo estimate this value from tables
+    // OUTPUTS
+    area: 999,
+    volume: 999,
+    firstOrderLoss: 999,
+    netEmissionRate: 999,
+    avgQuantaConcentration: 999,
+    quantaInhaledPerson: 999,
+    pOneEventInfection: 999,
+    pOneEventHospitalization: 999,
+    pOneEventDeath: 999,
+    pOneEventCarTravel: 999,
+    pMultipleEventInfection: 999, // todo calculate this value
+    pMultipleEventHospitalization: 999, // todo calculate this value
+    pMultipleEventDeath: 999, // todo calculate this value
+    pMultipleEventCarTravel: 999, // todo calculate this value
   });
 
   function handleChange(evt) {
-    const value = evt.target.value;
-    setInputData({
-      ...inputData,
-      [evt.target.name]: value,
+    let tmpInputData = inputData;
+    tmpInputData[evt.target.name] = evt.target.value;
 
-      volume: (inputData.width * inputData.length * inputData.height).toFixed(
-        1
-      ),
-      area: (inputData.width * inputData.length).toFixed(1),
-      areaPerPerson: (inputData.area / inputData.people).toFixed(1),
-      peoplePerArea: (inputData.people / inputData.area).toFixed(1),
-      volumePerPerson: (inputData.volume / inputData.people).toFixed(1),
-      firstOrderLoss:
-        inputData.ventilationOutAir +
-        inputData.decayRateVirus +
-        inputData.controlMeasure +
-        inputData.depositionSurface,
-      ventilationRate:
-        (inputData.volume *
-          (inputData.ventilationOutAir + inputData.controlMeasure) *
-          1000) /
-        3600 /
-        inputData.people,
-      pOneEventInfection: 0.02, // todo calculate this value
-    });
+    tmpInputData.volume =
+      tmpInputData.width * tmpInputData.length * tmpInputData.height;
+    tmpInputData.area = tmpInputData.width * tmpInputData.length;
+    tmpInputData.areaPerPerson = tmpInputData.area / tmpInputData.people;
+    tmpInputData.peoplePerArea = tmpInputData.people / tmpInputData.area;
+    tmpInputData.volumePerPerson = tmpInputData.volume / tmpInputData.people;
+    tmpInputData.firstOrderLoss =
+      tmpInputData.ventilationOutAir +
+      tmpInputData.decayRateVirus +
+      tmpInputData.controlMeasure +
+      tmpInputData.depositionSurface;
+    tmpInputData.ventilationRate =
+      (tmpInputData.volume *
+        (tmpInputData.ventilationOutAir + tmpInputData.controlMeasure) *
+        1000) /
+      3600 /
+      tmpInputData.people;
+    tmpInputData.netEmissionRate =
+      tmpInputData.quanta *
+      (1 - tmpInputData.exhalationMaskEff * tmpInputData.perPeopleMask) *
+      tmpInputData.numberInfected;
+    tmpInputData.avgQuantaConcentration =
+      (tmpInputData.netEmissionRate /
+        tmpInputData.firstOrderLoss /
+        tmpInputData.volume) *
+      (1 -
+        (1 / tmpInputData.firstOrderLoss / (tmpInputData.durationEvent / 60)) *
+          (1 -
+            Math.exp(
+              -tmpInputData.firstOrderLoss * (tmpInputData.durationEvent / 60)
+            )));
+    tmpInputData.quantaInhaledPerson =
+      tmpInputData.avgQuantaConcentration *
+      tmpInputData.breathingRate *
+      (tmpInputData.durationEvent / 60) *
+      (1 - tmpInputData.inhalationMaskEff * tmpInputData.perPeopleMask);
+    tmpInputData.pOneEventInfection = (
+      (1 - Math.exp(-tmpInputData.quantaInhaledPerson)) *
+      100
+    ).toFixed(5);
+    tmpInputData.pOneEventHospitalization = (
+      tmpInputData.pOneEventInfection * tmpInputData.hospitalizationRate
+    ).toFixed(5);
+    tmpInputData.pOneEventDeath = (
+      tmpInputData.pOneEventInfection * tmpInputData.deathRate
+    ).toFixed(5);
+    tmpInputData.pOneEventCarTravel = (
+      tmpInputData.pOneEventDeath /
+      100 /
+      0.0000006
+    ).toFixed(1);
+
+    setInputData(tmpInputData);
+
+    console.log(inputData.area);
+    // console.log(inputData.volume.toFixed(1));
+    // console.log(inputData.firstOrderLoss.toFixed(1));
+    // console.log("emission rate", inputData.netEmissionRate);
+    // console.log("avg quanta con", inputData.avgQuantaConcentration);
+    // console.log("quanta inh", inputData.quantaInhaledPerson);
+    // console.log("p infection", inputData.pOneEventInfection);
+    // console.log("p hospitalization", inputData.pOneEventHospitalization);
+    // console.log("p death", inputData.pOneEventDeath);
+    // console.log("p car", inputData.pOneEventCarTravel);
   }
 
   function handleDroDowAct(value) {
@@ -130,51 +191,67 @@ function Indoor() {
           <form className="w-full">
             <h1 className="title-font mb-4 font-bold text-gray-900">
               Information about the environment
-            </h1>
+            </h1>{" "}
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
-                handleChange={handleChange}
-                value={inputData.length}
+                handleChange={handleChange.bind(this)}
+                data={inputData}
+                id={"length"}
                 label={"Length (m)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.width}
+                data={inputData}
+                id={"width"}
                 label={"Width (m)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.height}
+                data={inputData}
+                id={"height"}
                 label={"Height (m)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.pressure}
-                label={"Pressure (atm)"}
-              />
-              <InputField
-                handleChange={handleChange}
-                value={inputData.temperature}
+                data={inputData}
+                id={"temperature"}
                 label={"Temperature (°C)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.relativeHumidity}
+                data={inputData}
+                id={"relativeHumidity"}
                 label={"Relative humidity (%)"}
+              />
+            </div>
+          </form>
+          <form className="w-full">
+            <h1 className="title-font mb-4 mt-12 font-bold text-gray-900">
+              Information about the event
+            </h1>
+            <div className="flex items-end flex-wrap -mx-3 mb-2">
+              <InputField
+                handleChange={handleChange}
+                data={inputData}
+                id={"durationEvent"}
+                label={"Duration event (minutes)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.repetitionEvent}
+                data={inputData}
+                id={"repetitionEvent"}
                 label={"Repetition event (times)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.ventilationOutAir}
+                data={inputData}
+                id={"ventilationOutAir"}
                 label={"Ventilation outside air (h-1)"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.controlMeasure}
+                data={inputData}
+                id={"controlMeasure"}
                 label={"Additional measures (h-1)"}
               />
             </div>
@@ -185,7 +262,7 @@ function Indoor() {
           <div className="flex content-center my-4">
             <p className="py-2 mr-2">Select an activity: </p>
             <DropDown
-              selected={inputData.activity}
+              selected={inputData["activity"]}
               listItems={listActivities}
               setValue={handleDroDowAct}
             />
@@ -193,7 +270,7 @@ function Indoor() {
           <div className="flex content-center my-4">
             <p className="py-2 mr-2">Select age group: </p>
             <DropDown
-              selected={inputData.ageGroup}
+              selected={inputData["ageGroup"]}
               listItems={ageGroups}
               setValue={handleDroDowAge}
             />
@@ -202,32 +279,38 @@ function Indoor() {
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
-                value={inputData.people}
+                data={inputData}
+                id={"people"}
                 label={"Number of people"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.numberInfected}
+                data={inputData}
+                id={"numberInfected"}
                 label={"People infected"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.fractionImmune}
+                data={inputData}
+                id={"fractionImmune"}
                 label={"Fraction Immune"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.exhalationMaskEff}
+                data={inputData}
+                id={"exhalationMaskEff"}
                 label={"Exhalation mask efficiency"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.perPeopleMask}
+                data={inputData}
+                id={"perPeopleMask"}
                 label={"Percentage people with mask"}
               />
               <InputField
                 handleChange={handleChange}
-                value={inputData.inhalationMaskEff}
+                data={inputData}
+                id={"inhalationMaskEff"}
                 label={"Inhalation mask efficiency"}
               />
             </div>
@@ -237,58 +320,13 @@ function Indoor() {
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={handleChange}
-                value={inputData.pBeingInfected}
+                data={inputData}
+                id={"pBeingInfected"}
                 label={"Probability being infected (%)"}
               />
             </div>
           </form>
-          <div>
-            <h1 className="title-font text-2xl mb-4 mt-12 font-bold text-gray-900">
-              Outputs
-            </h1>
-            <h1 className="title-font mb-4 mt-4 font-bold text-gray-900">
-              Absolute results for a person attending one event
-            </h1>
-            <div className="flex items-end flex-wrap -mx-3 mb-2">
-              <OutputField
-                label={"Probability of infection (%)"}
-                value={inputData.pOneEventInfection}
-              />
-              <OutputField
-                label={"Probability of hospitalization (%)"}
-                value={inputData.pOneEventHospitalization}
-              />
-              <OutputField
-                label={"Probability of death (%)"}
-                value={inputData.pOneEventDeath}
-              />
-              <OutputField
-                label={"Ratio to risk of car travel death (times higher)"}
-                value={inputData.pOneEventCarTravel}
-              />
-            </div>
-            <h1 className="title-font mb-4 mt-4 font-bold text-gray-900">
-              Absolute results for a person attending multiple events
-            </h1>
-            <div className="flex items-end flex-wrap -mx-3 mb-2">
-              <OutputField
-                label={"Probability of infection (%)"}
-                value={inputData.pMultipleEventInfection}
-              />
-              <OutputField
-                label={"Probability of hospitalization (%)"}
-                value={inputData.pMultipleEventHospitalization}
-              />
-              <OutputField
-                label={"Probability of death (%)"}
-                value={inputData.pMultipleEventDeath}
-              />
-              <OutputField
-                label={"Ratio to risk of car travel death (times higher)"}
-                value={inputData.pMultipleEventCarTravel}
-              />
-            </div>
-          </div>
+          <OutputsIndoor data={inputData} />
         </div>
       </section>
     </div>
