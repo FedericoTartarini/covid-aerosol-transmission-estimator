@@ -1,0 +1,822 @@
+{
+  "6-10": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.0048,
+      "QuantaEmission": 0.9
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.0048,
+      "QuantaEmission": 4.0
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.0048,
+      "QuantaEmission": 25.7
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.011000000000000001,
+      "QuantaEmission": 1.0
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.011000000000000001,
+      "QuantaEmission": 4.9
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.011000000000000001,
+      "QuantaEmission": 27.7
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.022000000000000002,
+      "QuantaEmission": 2.4
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.022000000000000002,
+      "QuantaEmission": 11.2
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.022000000000000002,
+      "QuantaEmission": 72.4
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.042,
+      "QuantaEmission": 5.7
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.042,
+      "QuantaEmission": 26.9
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.042,
+      "QuantaEmission": 173.7
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.011000000000000001,
+      "QuantaEmission": 8.9
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.022000000000000002,
+      "QuantaEmission": 57.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.0048,
+      "QuantaEmission": 6.8
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.011000000000000001,
+      "QuantaEmission": 41.3
+    }
+  },
+  "11-15": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.0054,
+      "QuantaEmission": 1.5
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.0054,
+      "QuantaEmission": 7.0
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.0054,
+      "QuantaEmission": 45.3
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 1.7
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 8.5
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 48.7
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 4.2
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 19.7
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 127.2
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 10.1
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 47.2
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 305.2
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 15.7
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 100.2
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.0054,
+      "QuantaEmission": 12.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 72.6
+    }
+  },
+  "16-20": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.0053,
+      "QuantaEmission": 2.0
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.0053,
+      "QuantaEmission": 9.4
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.0053,
+      "QuantaEmission": 60.5
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 2.3
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 11.4
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 65.1
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 5.6
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 26.3
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 170.0
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 13.5
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 63.1
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 408.0
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 21.0
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 134.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.0053,
+      "QuantaEmission": 16.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 97.0
+    }
+  },
+  "21-30": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.0042,
+      "QuantaEmission": 2.0
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.0042,
+      "QuantaEmission": 9.4
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.0042,
+      "QuantaEmission": 60.5
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 2.3
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 11.4
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 65.1
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 5.6
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 26.3
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 170.0
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.05,
+      "QuantaEmission": 13.5
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.05,
+      "QuantaEmission": 63.1
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.05,
+      "QuantaEmission": 408.0
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 21.0
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 134.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.0042,
+      "QuantaEmission": 16.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 97.0
+    }
+  },
+  "31-40": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.0043,
+      "QuantaEmission": 2.0
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.0043,
+      "QuantaEmission": 9.4
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.0043,
+      "QuantaEmission": 60.5
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 2.3
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 11.4
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 65.1
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.027000000000000003,
+      "QuantaEmission": 5.6
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.027000000000000003,
+      "QuantaEmission": 26.3
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.027000000000000003,
+      "QuantaEmission": 170.0
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 13.5
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 63.1
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.049,
+      "QuantaEmission": 408.0
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 21.0
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.027000000000000003,
+      "QuantaEmission": 134.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.0043,
+      "QuantaEmission": 16.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 97.0
+    }
+  },
+  "41-50": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.0048,
+      "QuantaEmission": 2.0
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.0048,
+      "QuantaEmission": 9.4
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.0048,
+      "QuantaEmission": 60.5
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 2.3
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 11.4
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 65.1
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.027999999999999997,
+      "QuantaEmission": 5.6
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.027999999999999997,
+      "QuantaEmission": 26.3
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.027999999999999997,
+      "QuantaEmission": 170.0
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.052000000000000005,
+      "QuantaEmission": 13.5
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.052000000000000005,
+      "QuantaEmission": 63.1
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.052000000000000005,
+      "QuantaEmission": 408.0
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 21.0
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.027999999999999997,
+      "QuantaEmission": 134.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.0048,
+      "QuantaEmission": 16.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 97.0
+    }
+  },
+  "51-60": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.005,
+      "QuantaEmission": 2.0
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.005,
+      "QuantaEmission": 9.4
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.005,
+      "QuantaEmission": 60.5
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 2.3
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 11.4
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 65.1
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.028999999999999998,
+      "QuantaEmission": 5.6
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.028999999999999998,
+      "QuantaEmission": 26.3
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.028999999999999998,
+      "QuantaEmission": 170.0
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.053,
+      "QuantaEmission": 13.5
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.053,
+      "QuantaEmission": 63.1
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.053,
+      "QuantaEmission": 408.0
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 21.0
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.028999999999999998,
+      "QuantaEmission": 134.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.005,
+      "QuantaEmission": 16.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.013000000000000001,
+      "QuantaEmission": 97.0
+    }
+  },
+  "61-70": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.0049,
+      "QuantaEmission": 2.0
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.0049,
+      "QuantaEmission": 9.4
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.0049,
+      "QuantaEmission": 60.5
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 2.3
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 11.4
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 65.1
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 5.6
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 26.3
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 170.0
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.047,
+      "QuantaEmission": 13.5
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.047,
+      "QuantaEmission": 63.1
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.047,
+      "QuantaEmission": 408.0
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 21.0
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.026000000000000002,
+      "QuantaEmission": 134.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.0049,
+      "QuantaEmission": 16.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 97.0
+    }
+  },
+  "71-80": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.005,
+      "QuantaEmission": 2.0
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.005,
+      "QuantaEmission": 9.4
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.005,
+      "QuantaEmission": 60.5
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 2.3
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 11.4
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 65.1
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 5.6
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 26.3
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 170.0
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.047,
+      "QuantaEmission": 13.5
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.047,
+      "QuantaEmission": 63.1
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.047,
+      "QuantaEmission": 408.0
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 21.0
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 134.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.005,
+      "QuantaEmission": 16.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 97.0
+    }
+  },
+  "Over80": {
+    "Quite working, Seated": {
+      "ActivityCode": 1,
+      "Respiration.m3_min": 0.0049,
+      "QuantaEmission": 2.0
+    },
+    "Speaking, Seated": {
+      "ActivityCode": 2,
+      "Respiration.m3_min": 0.0049,
+      "QuantaEmission": 9.4
+    },
+    "Speaking loudly, Seated": {
+      "ActivityCode": 3,
+      "Respiration.m3_min": 0.0049,
+      "QuantaEmission": 60.5
+    },
+    "Quite working, Standing": {
+      "ActivityCode": 4,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 2.3
+    },
+    "Speaking, Standing": {
+      "ActivityCode": 5,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 11.4
+    },
+    "Speaking loudly, Standing": {
+      "ActivityCode": 6,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 65.1
+    },
+    "Quite, moderate activity": {
+      "ActivityCode": 7,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 5.6
+    },
+    "Speaking, moderate activity": {
+      "ActivityCode": 8,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 26.3
+    },
+    "Speaking loudly, moderate activity": {
+      "ActivityCode": 9,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 170.0
+    },
+    "Quite, heavy activity": {
+      "ActivityCode": 10,
+      "Respiration.m3_min": 0.048,
+      "QuantaEmission": 13.5
+    },
+    "Speaking, heavy activity": {
+      "ActivityCode": 11,
+      "Respiration.m3_min": 0.048,
+      "QuantaEmission": 63.1
+    },
+    "Speaking loudly, heavy activity": {
+      "ActivityCode": 12,
+      "Respiration.m3_min": 0.048,
+      "QuantaEmission": 408.0
+    },
+    "Teaching, speaking": {
+      "ActivityCode": 13,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 21.0
+    },
+    "Teaching, speaking loudly/singing": {
+      "ActivityCode": 14,
+      "Respiration.m3_min": 0.025,
+      "QuantaEmission": 134.0
+    },
+    "Student, speaking": {
+      "ActivityCode": 15,
+      "Respiration.m3_min": 0.0049,
+      "QuantaEmission": 16.0
+    },
+    "Student, speaking loudly/singing": {
+      "ActivityCode": 16,
+      "Respiration.m3_min": 0.012,
+      "QuantaEmission": 97.0
+    }
+  }
+}

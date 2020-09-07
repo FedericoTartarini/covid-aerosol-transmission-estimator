@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import InputField from "./InputField";
 import DropDown from "./DropDown";
@@ -19,7 +19,7 @@ class Indoor extends React.Component {
       ventilationOutAir: 3,
       // info people
       activity: "Quite working, Seated",
-      ageGroup: "16 - 20",
+      ageGroup: "16-20",
       people: 10,
       numberInfected: 1,
       fractionImmune: 0,
@@ -85,27 +85,31 @@ class Indoor extends React.Component {
       "Student, speaking loudly",
     ];
 
-    this.ageGroups = [
-      "16 - 20",
-      "21 - 30",
-      "31 - 40",
-      "41 - 50",
-      "51 - 60",
-      "61 - 70",
-      "71 - 80",
-      "80 and above",
-    ];
+    this.quanta_resp_data = require("../Data/quanta_resp_data.json");
+
+    let arrayAge = [];
+    Object.keys(this.quanta_resp_data).forEach(function (key) {
+      arrayAge.push(key);
+    });
+    this.ageGroups = arrayAge;
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleDroDowAct = this.handleDroDowAct.bind(this);
     this.handleDroDowAge = this.handleDroDowAge.bind(this);
+    this.calculateOutputs = this.calculateOutputs.bind(this);
   }
-  // let cases = require("../Data/lut_data.json");
 
   handleInputChange(evt) {
     let tmp = this.state;
     tmp[evt.target.name] = evt.target.value;
 
+    this.setState(tmp);
+
+    this.calculateOutputs();
+  }
+
+  calculateOutputs() {
+    let tmp = this.state;
     tmp.volume = tmp.width * tmp.length * tmp.height;
     tmp.area = tmp.width * tmp.length;
     tmp.areaPerPerson = tmp.area / tmp.people;
@@ -182,25 +186,36 @@ class Indoor extends React.Component {
     tmp.pAbsMultipleEventDeath = tmp.pAbsMultipleEventDeath.toFixed(4);
     tmp.pAbsMultipleEventInfection = tmp.pAbsMultipleEventInfection.toFixed(4);
 
-    this.setState({
-      tmpInputData: tmp,
-    });
-
-    console.log(tmp.pAbsOneEventInfection);
+    this.setState(tmp);
   }
 
-  handleDroDowAct(value) {
-    this.setState({
-      ...this.state,
-      activity: value,
-    });
+  handleDroDowAct(activity) {
+    const values = this.quanta_resp_data[this.state.ageGroup][activity];
+
+    let tmp = this.state;
+
+    tmp.activity = activity;
+    tmp.breathingRate = values["Respiration.m3_min"];
+    tmp.quanta = values["QuantaEmission"];
+
+    console.log(tmp);
+
+    this.setState(tmp);
+
+    this.calculateOutputs();
   }
 
-  handleDroDowAge(value) {
-    this.setState({
-      ...this.state,
-      ageGroup: value,
-    });
+  handleDroDowAge(ageGroup) {
+    const values = this.quanta_resp_data[ageGroup][this.state.activity];
+    let tmp = this.state;
+
+    tmp.ageGroup = ageGroup;
+    tmp.breathingRate = values["Respiration.m3_min"];
+    tmp.quanta = values["QuantaEmission"];
+
+    this.setState(tmp);
+
+    this.calculateOutputs();
   }
 
   render() {

@@ -1,129 +1,161 @@
 AgeGrp,Activity,ActivityCode,Respiration.m3_min,QuantaEmission
-18.5,"Quite working, Seated",1,0.0053,2
-18.5,"Speaking, Seated",2,0.0053,9.4
-18.5,"Speaking loudly, Seated",3,0.0053,60.5
-18.5,"Quite working, Standing",4,0.012,2.3
-18.5,"Speaking, Standing",5,0.012,11.4
-18.5,"Speaking loudly, Standing",6,0.012,65.1
-18.5,"Quite, moderate activity",7,0.026,5.6
-18.5,"Speaking, moderate activity",8,0.026,26.3
-18.5,"Speaking loudly, moderate activity",9,0.026,170
-18.5,"Quite, heavy activity",10,0.049,13.5
-18.5,"Speaking, heavy activity",11,0.049,63.1
-18.5,"Speaking loudly, heavy activity",12,0.049,408
-18.5,"Teaching, speaking",13,0.012,21
-18.5,"Teaching, speaking loudly",14,0.026,134
-18.5,"Student, speaking",15,0.0053,16
-18.5,"Student, speaking loudly",16,0.012,97
-26,"Quite working, Seated",1,0.0042,2
-26,"Speaking, Seated",2,0.0042,9.4
-26,"Speaking loudly, Seated",3,0.0042,60.5
-26,"Quite working, Standing",4,,2.3
-26,"Speaking, Standing",5,,11.4
-26,"Speaking loudly, Standing",6,,65.1
-26,"Quite, moderate activity",7,,5.6
-26,"Speaking, moderate activity",8,,26.3
-26,"Speaking loudly, moderate activity",9,,170
-26,"Quite, heavy activity",10,,13.5
-26,"Speaking, heavy activity",11,,63.1
-26,"Speaking loudly, heavy activity",12,,408
-26,"Teaching, speaking",13,,21
-26,"Teaching, speaking loudly",14,,134
-26,"Student, speaking",15,,16
-26,"Student, speaking loudly",16,,97
-36,"Quite working, Seated",1,,2
-36,"Speaking, Seated",2,,9.4
-36,"Speaking loudly, Seated",3,,60.5
-36,"Quite working, Standing",4,,2.3
-36,"Speaking, Standing",5,,11.4
-36,"Speaking loudly, Standing",6,,65.1
-36,"Quite, moderate activity",7,,5.6
-36,"Speaking, moderate activity",8,,26.3
-36,"Speaking loudly, moderate activity",9,,170
-36,"Quite, heavy activity",10,,13.5
-36,"Speaking, heavy activity",11,,63.1
-36,"Speaking loudly, heavy activity",12,,408
-36,"Teaching, speaking",13,,21
-36,"Teaching, speaking loudly",14,,134
-36,"Student, speaking",15,,16
-36,"Student, speaking loudly",16,,97
-46,"Quite working, Seated",1,,2
-46,"Speaking, Seated",2,,9.4
-46,"Speaking loudly, Seated",3,,60.5
-46,"Quite working, Standing",4,,2.3
-46,"Speaking, Standing",5,,11.4
-46,"Speaking loudly, Standing",6,,65.1
-46,"Quite, moderate activity",7,,5.6
-46,"Speaking, moderate activity",8,,26.3
-46,"Speaking loudly, moderate activity",9,,170
-46,"Quite, heavy activity",10,,13.5
-46,"Speaking, heavy activity",11,,63.1
-46,"Speaking loudly, heavy activity",12,,408
-46,"Teaching, speaking",13,,21
-46,"Teaching, speaking loudly",14,,134
-46,"Student, speaking",15,,16
-46,"Student, speaking loudly",16,,97
-56,"Quite working, Seated",1,,2
-56,"Speaking, Seated",2,,9.4
-56,"Speaking loudly, Seated",3,,60.5
-56,"Quite working, Standing",4,,2.3
-56,"Speaking, Standing",5,,11.4
-56,"Speaking loudly, Standing",6,,65.1
-56,"Quite, moderate activity",7,,5.6
-56,"Speaking, moderate activity",8,,26.3
-56,"Speaking loudly, moderate activity",9,,170
-56,"Quite, heavy activity",10,,13.5
-56,"Speaking, heavy activity",11,,63.1
-56,"Speaking loudly, heavy activity",12,,408
-56,"Teaching, speaking",13,,21
-56,"Teaching, speaking loudly",14,,134
-56,"Student, speaking",15,,16
-56,"Student, speaking loudly",16,,97
-66,"Quite working, Seated",1,,2
-66,"Speaking, Seated",2,,9.4
-66,"Speaking loudly, Seated",3,,60.5
-66,"Quite working, Standing",4,,2.3
-66,"Speaking, Standing",5,,11.4
-66,"Speaking loudly, Standing",6,,65.1
-66,"Quite, moderate activity",7,,5.6
-66,"Speaking, moderate activity",8,,26.3
-66,"Speaking loudly, moderate activity",9,,170
-66,"Quite, heavy activity",10,,13.5
-66,"Speaking, heavy activity",11,,63.1
-66,"Speaking loudly, heavy activity",12,,408
-66,"Teaching, speaking",13,,21
-66,"Teaching, speaking loudly",14,,134
-66,"Student, speaking",15,,16
-66,"Student, speaking loudly",16,,97
-76,"Quite working, Seated",1,,2
-76,"Speaking, Seated",2,,9.4
-76,"Speaking loudly, Seated",3,,60.5
-76,"Quite working, Standing",4,,2.3
-76,"Speaking, Standing",5,,11.4
-76,"Speaking loudly, Standing",6,,65.1
-76,"Quite, moderate activity",7,,5.6
-76,"Speaking, moderate activity",8,,26.3
-76,"Speaking loudly, moderate activity",9,,170
-76,"Quite, heavy activity",10,,13.5
-76,"Speaking, heavy activity",11,,63.1
-76,"Speaking loudly, heavy activity",12,,408
-76,"Teaching, speaking",13,,21
-76,"Teaching, speaking loudly",14,,134
-76,"Student, speaking",15,,16
-76,"Student, speaking loudly",16,,97
-85,"Quite working, Seated",1,,2
-85,"Speaking, Seated",2,,9.4
-85,"Speaking loudly, Seated",3,,60.5
-85,"Quite working, Standing",4,,2.3
-85,"Speaking, Standing",5,,11.4
-85,"Speaking loudly, Standing",6,,65.1
-85,"Quite, moderate activity",7,,5.6
-85,"Speaking, moderate activity",8,,26.3
-85,"Speaking loudly, moderate activity",9,,170
-85,"Quite, heavy activity",10,,13.5
-85,"Speaking, heavy activity",11,,63.1
-85,"Speaking loudly, heavy activity",12,,408
-85,"Teaching, speaking",13,,21
-85,"Teaching, speaking loudly",14,,134
-85,"Student, speaking",15,,16
-85,"Student, speaking loudly",16,,97
+6-10,"Quite working, Seated",1,0.0048,0.9
+6-10,"Speaking, Seated",2,0.0048,4.0
+6-10,"Speaking loudly, Seated",3,0.0048,25.7
+6-10,"Quite working, Standing",4,0.011,1.0
+6-10,"Speaking, Standing",5,0.011,4.9
+6-10,"Speaking loudly, Standing",6,0.011,27.7
+6-10,"Quite, moderate activity",7,0.022,2.4
+6-10,"Speaking, moderate activity",8,0.022,11.2
+6-10,"Speaking loudly, moderate activity",9,0.022,72.4
+6-10,"Quite, heavy activity",10,0.042,5.7
+6-10,"Speaking, heavy activity",11,0.042,26.9
+6-10,"Speaking loudly, heavy activity",12,0.042,173.7
+6-10,"Teaching, speaking",13,0.011,8.9
+6-10,"Teaching, speaking loudly/singing",14,0.022,57.0
+6-10,"Student, speaking",15,0.0048,6.8
+6-10,"Student, speaking loudly/singing",16,0.011,41.3
+11-15,"Quite working, Seated",1,0.0054,1.5
+11-15,"Speaking, Seated",2,0.0054,7.0
+11-15,"Speaking loudly, Seated",3,0.0054,45.3
+11-15,"Quite working, Standing",4,0.013,1.7
+11-15,"Speaking, Standing",5,0.013,8.5
+11-15,"Speaking loudly, Standing",6,0.013,48.7
+11-15,"Quite, moderate activity",7,0.025,4.2
+11-15,"Speaking, moderate activity",8,0.025,19.7
+11-15,"Speaking loudly, moderate activity",9,0.025,127.2
+11-15,"Quite, heavy activity",10,0.049,10.1
+11-15,"Speaking, heavy activity",11,0.049,47.2
+11-15,"Speaking loudly, heavy activity",12,0.049,305.2
+11-15,"Teaching, speaking",13,0.013,15.7
+11-15,"Teaching, speaking loudly/singing",14,0.025,100.2
+11-15,"Student, speaking",15,0.0054,12.0
+11-15,"Student, speaking loudly/singing",16,0.013,72.6
+16-20,"Quite working, Seated",1,0.0053,2
+16-20,"Speaking, Seated",2,0.0053,9.4
+16-20,"Speaking loudly, Seated",3,0.0053,60.5
+16-20,"Quite working, Standing",4,0.012,2.3
+16-20,"Speaking, Standing",5,0.012,11.4
+16-20,"Speaking loudly, Standing",6,0.012,65.1
+16-20,"Quite, moderate activity",7,0.026,5.6
+16-20,"Speaking, moderate activity",8,0.026,26.3
+16-20,"Speaking loudly, moderate activity",9,0.026,170
+16-20,"Quite, heavy activity",10,0.049,13.5
+16-20,"Speaking, heavy activity",11,0.049,63.1
+16-20,"Speaking loudly, heavy activity",12,0.049,408
+16-20,"Teaching, speaking",13,0.012,21
+16-20,"Teaching, speaking loudly/singing",14,0.026,134
+16-20,"Student, speaking",15,0.0053,16
+16-20,"Student, speaking loudly/singing",16,0.012,97
+21-30,"Quite working, Seated",1,0.0042,2
+21-30,"Speaking, Seated",2,0.0042,9.4
+21-30,"Speaking loudly, Seated",3,0.0042,60.5
+21-30,"Quite working, Standing",4,0.012,2.3
+21-30,"Speaking, Standing",5,0.012,11.4
+21-30,"Speaking loudly, Standing",6,0.012,65.1
+21-30,"Quite, moderate activity",7,0.026,5.6
+21-30,"Speaking, moderate activity",8,0.026,26.3
+21-30,"Speaking loudly, moderate activity",9,0.026,170
+21-30,"Quite, heavy activity",10,0.05,13.5
+21-30,"Speaking, heavy activity",11,0.05,63.1
+21-30,"Speaking loudly, heavy activity",12,0.05,408
+21-30,"Teaching, speaking",13,0.012,21
+21-30,"Teaching, speaking loudly/singing",14,0.026,134
+21-30,"Student, speaking",15,0.0042,16
+21-30,"Student, speaking loudly/singing",16,0.012,97
+31-40,"Quite working, Seated",1,0.0043,2
+31-40,"Speaking, Seated",2,0.0043,9.4
+31-40,"Speaking loudly, Seated",3,0.0043,60.5
+31-40,"Quite working, Standing",4,0.012,2.3
+31-40,"Speaking, Standing",5,0.012,11.4
+31-40,"Speaking loudly, Standing",6,0.012,65.1
+31-40,"Quite, moderate activity",7,0.027,5.6
+31-40,"Speaking, moderate activity",8,0.027,26.3
+31-40,"Speaking loudly, moderate activity",9,0.027,170
+31-40,"Quite, heavy activity",10,0.049,13.5
+31-40,"Speaking, heavy activity",11,0.049,63.1
+31-40,"Speaking loudly, heavy activity",12,0.049,408
+31-40,"Teaching, speaking",13,0.012,21
+31-40,"Teaching, speaking loudly/singing",14,0.027,134
+31-40,"Student, speaking",15,0.0043,16
+31-40,"Student, speaking loudly/singing",16,0.012,97
+41-50,"Quite working, Seated",1,0.0048,2
+41-50,"Speaking, Seated",2,0.0048,9.4
+41-50,"Speaking loudly, Seated",3,0.0048,60.5
+41-50,"Quite working, Standing",4,0.013,2.3
+41-50,"Speaking, Standing",5,0.013,11.4
+41-50,"Speaking loudly, Standing",6,0.013,65.1
+41-50,"Quite, moderate activity",7,0.028,5.6
+41-50,"Speaking, moderate activity",8,0.028,26.3
+41-50,"Speaking loudly, moderate activity",9,0.028,170
+41-50,"Quite, heavy activity",10,0.052,13.5
+41-50,"Speaking, heavy activity",11,0.052,63.1
+41-50,"Speaking loudly, heavy activity",12,0.052,408
+41-50,"Teaching, speaking",13,0.013,21
+41-50,"Teaching, speaking loudly/singing",14,0.028,134
+41-50,"Student, speaking",15,0.0048,16
+41-50,"Student, speaking loudly/singing",16,0.013,97
+51-60,"Quite working, Seated",1,0.005,2
+51-60,"Speaking, Seated",2,0.005,9.4
+51-60,"Speaking loudly, Seated",3,0.005,60.5
+51-60,"Quite working, Standing",4,0.013,2.3
+51-60,"Speaking, Standing",5,0.013,11.4
+51-60,"Speaking loudly, Standing",6,0.013,65.1
+51-60,"Quite, moderate activity",7,0.029,5.6
+51-60,"Speaking, moderate activity",8,0.029,26.3
+51-60,"Speaking loudly, moderate activity",9,0.029,170
+51-60,"Quite, heavy activity",10,0.053,13.5
+51-60,"Speaking, heavy activity",11,0.053,63.1
+51-60,"Speaking loudly, heavy activity",12,0.053,408
+51-60,"Teaching, speaking",13,0.013,21
+51-60,"Teaching, speaking loudly/singing",14,0.029,134
+51-60,"Student, speaking",15,0.005,16
+51-60,"Student, speaking loudly/singing",16,0.013,97
+61-70,"Quite working, Seated",1,0.0049,2
+61-70,"Speaking, Seated",2,0.0049,9.4
+61-70,"Speaking loudly, Seated",3,0.0049,60.5
+61-70,"Quite working, Standing",4,0.012,2.3
+61-70,"Speaking, Standing",5,0.012,11.4
+61-70,"Speaking loudly, Standing",6,0.012,65.1
+61-70,"Quite, moderate activity",7,0.026,5.6
+61-70,"Speaking, moderate activity",8,0.026,26.3
+61-70,"Speaking loudly, moderate activity",9,0.026,170
+61-70,"Quite, heavy activity",10,0.047,13.5
+61-70,"Speaking, heavy activity",11,0.047,63.1
+61-70,"Speaking loudly, heavy activity",12,0.047,408
+61-70,"Teaching, speaking",13,0.012,21
+61-70,"Teaching, speaking loudly/singing",14,0.026,134
+61-70,"Student, speaking",15,0.0049,16
+61-70,"Student, speaking loudly/singing",16,0.012,97
+71-80,"Quite working, Seated",1,0.005,2
+71-80,"Speaking, Seated",2,0.005,9.4
+71-80,"Speaking loudly, Seated",3,0.005,60.5
+71-80,"Quite working, Standing",4,0.012,2.3
+71-80,"Speaking, Standing",5,0.012,11.4
+71-80,"Speaking loudly, Standing",6,0.012,65.1
+71-80,"Quite, moderate activity",7,0.025,5.6
+71-80,"Speaking, moderate activity",8,0.025,26.3
+71-80,"Speaking loudly, moderate activity",9,0.025,170
+71-80,"Quite, heavy activity",10,0.047,13.5
+71-80,"Speaking, heavy activity",11,0.047,63.1
+71-80,"Speaking loudly, heavy activity",12,0.047,408
+71-80,"Teaching, speaking",13,0.012,21
+71-80,"Teaching, speaking loudly/singing",14,0.025,134
+71-80,"Student, speaking",15,0.005,16
+71-80,"Student, speaking loudly/singing",16,0.012,97
+Over80,"Quite working, Seated",1,0.0049,2
+Over80,"Speaking, Seated",2,0.0049,9.4
+Over80,"Speaking loudly, Seated",3,0.0049,60.5
+Over80,"Quite working, Standing",4,0.012,2.3
+Over80,"Speaking, Standing",5,0.012,11.4
+Over80,"Speaking loudly, Standing",6,0.012,65.1
+Over80,"Quite, moderate activity",7,0.025,5.6
+Over80,"Speaking, moderate activity",8,0.025,26.3
+Over80,"Speaking loudly, moderate activity",9,0.025,170
+Over80,"Quite, heavy activity",10,0.048,13.5
+Over80,"Speaking, heavy activity",11,0.048,63.1
+Over80,"Speaking loudly, heavy activity",12,0.048,408
+Over80,"Teaching, speaking",13,0.012,21
+Over80,"Teaching, speaking loudly/singing",14,0.025,134
+Over80,"Student, speaking",15,0.0049,16
+Over80,"Student, speaking loudly/singing",16,0.012,97
