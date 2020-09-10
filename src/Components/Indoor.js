@@ -63,18 +63,18 @@ class Indoor extends React.Component {
       netEmissionRate: 12.5,
       avgQuantaConcentration: 0.01585,
       quantaInhaledPerson: 0.00477,
-      pCondOneEventInfection: 0.4762,
-      pCondOneEventHospitalization: 0.0952,
-      pCondOneEventDeath: 0.0048,
-      pCondOneEventCarTravel: 79.4,
-      pAbsOneEventInfection: 0.0086,
-      pAbsOneEventHospitalization: 0.0017,
-      pAbsOneEventDeath: 0.0001,
-      pAbsOneEventCarTravel: 1.4,
-      pAbsMultipleEventInfection: 1.5311,
-      pAbsMultipleEventHospitalization: 0.3062,
-      pAbsMultipleEventDeath: 0.0153,
-      pAbsMultipleEventCarTravel: 1.4,
+      pCondOneEventInfection: 0.0235,
+      pCondOneEventHospitalization: 0.0047,
+      pCondOneEventDeath: 0.0002,
+      pCondOneEventCarTravel: 3.3,
+      pAbsOneEventInfection: 0.0004,
+      pAbsOneEventHospitalization: 0.0001,
+      pAbsOneEventDeath: 0.0,
+      pAbsOneEventCarTravel: 0.1,
+      pAbsMultipleEventInfection: 0.0761,
+      pAbsMultipleEventHospitalization: 0.0152,
+      pAbsMultipleEventDeath: 0.0008,
+      pAbsMultipleEventCarTravel: 0.1,
     };
 
     // todo programmatically generate this list as for age groups
@@ -162,6 +162,7 @@ class Indoor extends React.Component {
       data.pCondOneEventInfection,
       data.hospitalizationRate
     );
+    // todo create functions and test them
     data.pCondOneEventDeath = (
       data.pCondOneEventInfection * data.deathRate
     ).toFixed(4);
