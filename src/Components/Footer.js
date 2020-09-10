@@ -14,12 +14,28 @@ function Footer() {
         <p className="text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
           © 2020
           <a
-            href="https://scholar.google.com/citations?user=FyhhQHkAAAAJ&hl=en"
+            href="https://www.linkedin.com/in/federico-tartarini"
             className="ml-1"
             rel="noopener noreferrer"
             target="_blank"
           >
-            Federico Tartarini, Asit Mishra, Jose L Jimenez
+            Federico Tartarini,
+          </a>
+          <a
+            href="https://www.linkedin.com/in/asitk/"
+            className="ml-1"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Asit Mishra,
+          </a>
+          <a
+            href="https://twitter.com/jljcolorado"
+            className="ml-1"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Jose L. Jimenez
           </a>
         </p>
         <span className="inline-flex text-gray-700 sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
