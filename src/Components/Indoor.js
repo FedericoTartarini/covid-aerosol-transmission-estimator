@@ -3,6 +3,17 @@ import { Helmet } from "react-helmet";
 import InputField from "./InputField";
 import DropDown from "./DropDown";
 import OutputsIndoor from "./OutputsIndoor";
+import {
+  area,
+  avgQuantaConcentration,
+  firstOrderLoss,
+  netEmissionRate,
+  pCondOneEventHospitalization,
+  pCondOneEventInfection,
+  quantaInhaledPerson,
+  ventilationRate,
+  volume,
+} from "../Functions/Utils";
 
 class Indoor extends React.Component {
   constructor(props) {
@@ -28,6 +39,8 @@ class Indoor extends React.Component {
       inhalationMaskEff: 0.3,
       // covid parameters
       pBeingInfected: 0.2,
+      hospitalizationRate: 0.2,
+      deathRate: 0.01,
       // CALCULATED AND ESTIMATED inputs
       // info environment
       temperature: 20,
@@ -41,11 +54,8 @@ class Indoor extends React.Component {
       // info people
       susceptiblePeople: 9,
       co2EmissionRate: 0.005,
-      breathingRate: 0.0086 * 60, // todo estimate this value from tables
-      quanta: 25, // todo estimate this value from tables
-      // info covid
-      hospitalizationRate: 0.2, // todo estimate this value from tables
-      deathRate: 0.01, // todo estimate this value from tables
+      breathingRate: 0.0086 * 60, // todo change this default value, or change default activity and age
+      quanta: 25, // todo change this default value, or change default activity and age
       // OUTPUTS
       area: 47,
       volume: 142,
@@ -66,6 +76,8 @@ class Indoor extends React.Component {
       pAbsMultipleEventDeath: 0.0153,
       pAbsMultipleEventCarTravel: 1.4,
     };
+
+    // todo programmatically generate this list as for age groups
     this.listActivities = [
       "Quite working, Seated",
       "Speaking, Seated",
@@ -109,84 +121,93 @@ class Indoor extends React.Component {
   }
 
   calculateOutputs() {
-    let tmp = this.state;
-    tmp.volume = tmp.width * tmp.length * tmp.height;
-    tmp.area = tmp.width * tmp.length;
-    tmp.areaPerPerson = tmp.area / tmp.people;
-    tmp.peoplePerArea = tmp.people / tmp.area;
-    tmp.volumePerPerson = tmp.volume / tmp.people;
-    tmp.firstOrderLoss =
-      tmp.ventilationOutAir +
-      tmp.decayRateVirus +
-      tmp.controlMeasure +
-      tmp.depositionSurface;
-    tmp.ventilationRate =
-      (tmp.volume * (tmp.ventilationOutAir + tmp.controlMeasure) * 1000) /
-      3600 /
-      tmp.people;
-    tmp.netEmissionRate =
-      tmp.quanta *
-      (1 - tmp.exhalationMaskEff * tmp.perPeopleMask) *
-      tmp.numberInfected;
-    tmp.avgQuantaConcentration =
-      (tmp.netEmissionRate / tmp.firstOrderLoss / tmp.volume) *
-      (1 -
-        (1 / tmp.firstOrderLoss / (tmp.durationEvent / 60)) *
-          (1 - Math.exp(-tmp.firstOrderLoss * (tmp.durationEvent / 60))));
-    tmp.quantaInhaledPerson =
-      tmp.avgQuantaConcentration *
-      tmp.breathingRate *
-      (tmp.durationEvent / 60) *
-      (1 - tmp.inhalationMaskEff * tmp.perPeopleMask);
-    tmp.pCondOneEventInfection = (
-      (1 - Math.exp(-tmp.quantaInhaledPerson)) *
-      100
+    let data = this.state;
+    data.volume = volume(data.width, data.length, data.height);
+    data.area = area(data.width, data.length);
+    data.firstOrderLoss = firstOrderLoss(
+      data.ventilationOutAir,
+      data.decayRateVirus,
+      data.controlMeasure,
+      data.depositionSurface
+    );
+    data.ventilationRate = ventilationRate(
+      data.volume,
+      data.ventilationOutAir,
+      data.controlMeasure,
+      data.people
+    );
+    data.netEmissionRate = netEmissionRate(
+      data.quanta,
+      data.exhalationMaskEff,
+      data.perPeopleMask,
+      data.numberInfected
+    );
+    data.avgQuantaConcentration = avgQuantaConcentration(
+      data.netEmissionRate,
+      data.firstOrderLoss,
+      data.volume,
+      data.durationEvent
+    );
+    data.quantaInhaledPerson = quantaInhaledPerson(
+      data.avgQuantaConcentration,
+      data.breathingRate,
+      data.durationEvent,
+      data.inhalationMaskEff,
+      data.perPeopleMask
+    );
+    data.pCondOneEventInfection = pCondOneEventInfection(
+      data.quantaInhaledPerson
+    );
+    data.pCondOneEventHospitalization = pCondOneEventHospitalization(
+      data.pCondOneEventInfection,
+      data.hospitalizationRate
+    );
+    data.pCondOneEventDeath = (
+      data.pCondOneEventInfection * data.deathRate
     ).toFixed(4);
-    tmp.pCondOneEventHospitalization = (
-      tmp.pCondOneEventInfection * tmp.hospitalizationRate
-    ).toFixed(4);
-    tmp.pCondOneEventDeath = (
-      tmp.pCondOneEventInfection * tmp.deathRate
-    ).toFixed(4);
-    tmp.pCondOneEventCarTravel = (
-      tmp.pCondOneEventDeath /
+    data.pCondOneEventCarTravel = (
+      data.pCondOneEventDeath /
       100 /
       0.0000006
     ).toFixed(1);
-    tmp.pAbsOneEventInfection =
+    data.pAbsOneEventInfection =
       (1 -
         Math.pow(
-          1 - ((tmp.pCondOneEventInfection / 100) * tmp.pBeingInfected) / 100,
-          tmp.susceptiblePeople
+          1 - ((data.pCondOneEventInfection / 100) * data.pBeingInfected) / 100,
+          data.susceptiblePeople
         )) *
       100;
-    tmp.pAbsOneEventHospitalization = (
-      tmp.pAbsOneEventInfection * tmp.hospitalizationRate
+    data.pAbsOneEventHospitalization = (
+      data.pAbsOneEventInfection * data.hospitalizationRate
     ).toFixed(4);
-    tmp.pAbsOneEventDeath = tmp.pAbsOneEventInfection * tmp.deathRate;
-    tmp.pAbsOneEventCarTravel = (
-      tmp.pAbsOneEventDeath /
+    data.pAbsOneEventDeath = data.pAbsOneEventInfection * data.deathRate;
+    data.pAbsOneEventCarTravel = (
+      data.pAbsOneEventDeath /
       100 /
       0.0000006
     ).toFixed(1);
-    tmp.pAbsMultipleEventInfection =
-      (1 - Math.pow(1 - tmp.pAbsOneEventInfection / 100, tmp.repetitionEvent)) *
+    data.pAbsMultipleEventInfection =
+      (1 -
+        Math.pow(1 - data.pAbsOneEventInfection / 100, data.repetitionEvent)) *
       100;
-    tmp.pAbsMultipleEventHospitalization = (
-      tmp.pAbsMultipleEventInfection * tmp.hospitalizationRate
+    data.pAbsMultipleEventHospitalization = (
+      data.pAbsMultipleEventInfection * data.hospitalizationRate
     ).toFixed(4);
-    tmp.pAbsMultipleEventDeath = tmp.pAbsMultipleEventInfection * tmp.deathRate;
-    tmp.pAbsMultipleEventCarTravel = (
-      tmp.pAbsMultipleEventDeath /
+    data.pAbsMultipleEventDeath =
+      data.pAbsMultipleEventInfection * data.deathRate;
+    data.pAbsMultipleEventCarTravel = (
+      data.pAbsMultipleEventDeath /
       100 /
-      (0.0000006 * tmp.repetitionEvent)
+      (0.0000006 * data.repetitionEvent)
     ).toFixed(1);
-    tmp.pAbsOneEventInfection = tmp.pAbsOneEventInfection.toFixed(4);
-    tmp.pAbsOneEventDeath = tmp.pAbsOneEventDeath.toFixed(4);
-    tmp.pAbsMultipleEventDeath = tmp.pAbsMultipleEventDeath.toFixed(4);
-    tmp.pAbsMultipleEventInfection = tmp.pAbsMultipleEventInfection.toFixed(4);
+    data.pAbsOneEventInfection = data.pAbsOneEventInfection.toFixed(4);
+    data.pAbsOneEventDeath = data.pAbsOneEventDeath.toFixed(4);
+    data.pAbsMultipleEventDeath = data.pAbsMultipleEventDeath.toFixed(4);
+    data.pAbsMultipleEventInfection = data.pAbsMultipleEventInfection.toFixed(
+      4
+    );
 
-    this.setState(tmp);
+    this.setState(data);
   }
 
   handleDroDowAct(activity) {
@@ -195,7 +216,7 @@ class Indoor extends React.Component {
     let tmp = this.state;
 
     tmp.activity = activity;
-    tmp.breathingRate = values["Respiration.m3_min"];
+    tmp.breathingRate = values["Respiration.m3_min"] * 60;
     tmp.quanta = values["QuantaEmission"];
 
     console.log(tmp);
@@ -210,7 +231,7 @@ class Indoor extends React.Component {
     let tmp = this.state;
 
     tmp.ageGroup = ageGroup;
-    tmp.breathingRate = values["Respiration.m3_min"];
+    tmp.breathingRate = values["Respiration.m3_min"] * 60;
     tmp.quanta = values["QuantaEmission"];
 
     this.setState(tmp);

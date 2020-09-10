@@ -23,7 +23,7 @@ function DropDown({ selected, listItems, setValue }) {
   return (
     <div className="relative">
       <button
-        className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-8 rounded inline-flex items-center"
+        className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-2 rounded inline-flex items-center"
         onClick={() => setDropDownOpen(!dropDownOpen)}
       >
         <span className="capitalize mx-4">{selected}</span>
