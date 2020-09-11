@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Footer() {
   return (
-    <footer className="text-gray-900 body-font absolute w-full">
+    <footer className=" body-font absolute w-full">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <span className="flex title-font font-medium items-center md:justify-start justify-center">
           <div>
@@ -38,7 +38,7 @@ function Footer() {
             Jose L. Jimenez
           </a>
         </p>
-        <span className="inline-flex text-gray-700 sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <span className="inline-flex  sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
           <a
             className="mx-3"
             href="https://www.linkedin.com"

@@ -59,16 +59,13 @@ function HelpPage({ match }) {
   }
 
   return (
-    <section className="text-gray-700 body-font">
+    <section className=" body-font">
       <Helmet>
-        <title>About Page</title>
-        <meta
-          name="description"
-          content="This page is about the author, Federico Tartarini."
-        />
+        <title>Help Page</title>
+        <meta name="description" content="This is the help page" />
       </Helmet>
       <div className="container mx-auto flex flex-col py-8 mb16 justify-center items-center">
-        <h1 className="title-font sm:text-4xl text-3xl text-center mb-4 capitalize font-medium text-gray-900">
+        <h1 className="title-font sm:text-4xl text-3xl text-center mb-4 capitalize font-medium">
           {match.params.id}
         </h1>
         <div className="mt-4 max-w-md">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function HomeView() {
   return (
-    <section className="text-gray-700 body-font">
+    <section className="body-font">
       <div className="container mx-auto flex px-5 py-8 lg:py-24 items-center justify-center flex-col">
         <img
           className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded-lg shadow-lg"
@@ -11,26 +11,26 @@ function HomeView() {
           src={require("../Static/Images/mask.jpg")}
         />
         <div className="text-center lg:w-2/3 w-full">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium">
             COVID-19 aerosol transmission estimator
           </h1>
           <p className="leading-relaxed">
             This tool tries to estimate the propagation of COVID-19 by aerosol
             transmission only.
           </p>
-          <div className="flex my-8 justify-center">
+          <div className="flex my-8 justify-center font-semibold">
             <Link to="/indoor">
-              <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button className="inline-flex border-0 py-2 px-6 focus:outline-none rounded text-lg">
                 Indoor Space
               </button>
             </Link>
             <Link to="/outdoor">
-              <button className="ml-4 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button className="ml-4 inline-flex border-0 py-2 px-6 focus:outline-none rounded text-lg">
                 Outdoor Space
               </button>
             </Link>
             <Link to="/learnMore">
-              <button className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">
+              <button className="ml-4 inline-flex border-0 py-2 px-6 focus:outline-none rounded text-lg">
                 Learn More
               </button>
             </Link>

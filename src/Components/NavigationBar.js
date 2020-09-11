@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdjust } from "@fortawesome/free-solid-svg-icons";
+import { darkTheme, lightTheme } from "../Functions/theme";
 
-function NavigationBar() {
+function NavigationBar({ themeToggler, theme }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
     <nav className="container mx-auto flex items-center justify-between flex-wrap p-4 border-b-2">
-      <div className="flex items-center flex-shrink-0 w-3/4 md:w-1/2">
+      <div className="flex items-center flex-shrink-0 w-3/4 lg:w-1/2">
         <Link to="/">
-          <span className="font-semibold text-xl tracking-tight">
+          <a className="font-semibold text-xl tracking-tight">
             COVID-19 aerosol transmission estimator
-          </span>
+          </a>
         </Link>
       </div>
 
-      <div className="block md:hidden">
+      <div className="block lg:hidden">
         <button
-          className="flex items-center px-3 py-2 border rounded hover:text-gray-700 hover:border-white"
+          className="flex items-center px-3 py-2 border rounded hover:border-white"
           type="button"
           onClick={() => setNavbarOpen(!navbarOpen)}
         >
@@ -32,37 +35,38 @@ function NavigationBar() {
       </div>
       <div
         className={
-          "w-full block flex-end md:flex md:items-center md:w-auto" +
+          "w-full block flex-end lg:flex lg:items-center lg:w-auto" +
           (navbarOpen ? "" : " hidden")
         }
         onClick={() => setNavbarOpen(!navbarOpen)}
       >
-        <div className="md:flex-grow">
+        <div className="lg:flex-grow">
           <Link to="/">
-            <span className="block mt-4 md:inline-block md:mt-0 hover:text-gray-600 ml-4">
-              Home
-            </span>
+            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">Home</a>
           </Link>
           <Link to="/indoor">
-            <span className="block mt-4 md:inline-block md:mt-0 over:text-gray-600 ml-4">
-              Indoor
-            </span>
+            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">Indoor</a>
           </Link>
           <Link to="/outdoor">
-            <span className="block mt-4 md:inline-block md:mt-0 over:text-gray-600 ml-4">
-              Outdoor
-            </span>
+            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">Outdoor</a>
           </Link>
           <Link to="/learnMore">
-            <span className="block mt-4 md:inline-block md:mt-0 over:text-gray-600 ml-4">
+            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">
               Learn More
-            </span>
+            </a>
           </Link>
           <Link to="/about">
-            <span className="block mt-4 md:inline-block md:mt-0 over:text-gray-600 ml-4">
-              About
-            </span>
+            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">About</a>
           </Link>
+          <div
+            className="block mt-4 lg:inline-block lg:mt-0 ml-4"
+            onClick={themeToggler}
+          >
+            <FontAwesomeIcon
+              icon={faAdjust}
+              color={theme === "light" ? lightTheme.text : darkTheme.text}
+            />
+          </div>
         </div>
       </div>
     </nav>

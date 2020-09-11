@@ -247,13 +247,11 @@ class Indoor extends React.Component {
           <title>Indoor space</title>
           <meta name="description" content="content" />
         </Helmet>
-        <section className="container mx-auto text-gray-700 body-font">
+        <section className="container mx-auto">
           <div className="m-6">
-            <h1 className="title-font text-2xl mb-4 mt-12 font-bold text-gray-900">
-              Inputs
-            </h1>
+            <h1 className="title-font text-2xl mb-4 mt-12 font-bold">Inputs</h1>
             <form className="w-full">
-              <h1 className="title-font mb-4 font-bold text-gray-900">
+              <h1 className="title-font mb-4 font-bold">
                 Information about the environment
               </h1>{" "}
               <div className="flex items-end flex-wrap -mx-3 mb-2">
@@ -278,7 +276,7 @@ class Indoor extends React.Component {
               </div>
             </form>
             <form className="w-full">
-              <h1 className="title-font mb-4 mt-12 font-bold text-gray-900">
+              <h1 className="title-font mb-4 mt-12 font-bold">
                 Information about the event
               </h1>
               <div className="flex items-end flex-wrap -mx-3 mb-2">
@@ -302,7 +300,7 @@ class Indoor extends React.Component {
                 />
               </div>
             </form>
-            <h1 className="title-font mb-4 mt-12 font-bold text-gray-900">
+            <h1 className="title-font mb-4 mt-12 font-bold">
               Information about peoples' activity in the room
             </h1>
             <div className="flex content-center my-4">
@@ -360,7 +358,7 @@ class Indoor extends React.Component {
                   label={"Inhalation mask efficiency"}
                 />
               </div>
-              <h1 className="title-font mb-4 mt-12 font-bold text-gray-900">
+              <h1 className="title-font mb-4 mt-12 font-bold">
                 Parameters related to COVID-19
               </h1>
               <div className="flex items-end flex-wrap -mx-3 mb-2">

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 function LearnMoreView() {
   return (
-    <section className="text-gray-700 body-font">
+    <section className="body-font">
       <Helmet>
         <title>Learn More</title>
         <meta
@@ -13,7 +13,7 @@ function LearnMoreView() {
       </Helmet>
       <div className="container mx-auto max-w-2xl flex flex-col py-8 justify-center items-center">
         <div className="w-full flex flex-col mb-16 items-center text-center">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium">
             COVID-19 aerosol transmission estimator
           </h1>
           <p className="mb-8 leading-relaxed">
@@ -47,7 +47,7 @@ function LearnMoreView() {
             average probability. Any one event may have much fewer or many more
             transmission cases.
           </p>
-          <h1 className="title-font sm:text-2xl text-2xl mb-4 font-medium text-gray-900">
+          <h1 className="title-font sm:text-2xl text-2xl mb-4 font-medium">
             Scientific Approach
           </h1>
           <p className="mb-8 leading-relaxed">

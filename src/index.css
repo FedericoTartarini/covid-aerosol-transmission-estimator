@@ -18,3 +18,13 @@
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
+
+.toggle-checkbox:checked {
+  @apply: right-0 border-green-400;
+  right: 0;
+  border-color: #68D391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+  background-color: #68D391;
+}

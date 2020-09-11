@@ -8,7 +8,7 @@ function DropDown({ selected, listItems, setValue }) {
   function DropDownItem({ item }) {
     return (
       <span
-        className="block py-1 px-4 hover:bg-gray-200 capitalize"
+        className="dropDown block py-1 px-4 capitalize"
         onClick={() => {
           setDropDownOpen(!dropDownOpen);
           setValue(item);
@@ -23,7 +23,7 @@ function DropDown({ selected, listItems, setValue }) {
   return (
     <div className="relative">
       <button
-        className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-2 rounded inline-flex items-center"
+        className="font-semibold focus:outline-none py-2 px-2 rounded inline-flex items-center"
         onClick={() => setDropDownOpen(!dropDownOpen)}
       >
         <span className="capitalize mx-4">{selected}</span>

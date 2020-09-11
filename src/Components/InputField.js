@@ -8,7 +8,7 @@ function InputField({ handleChange, data, id, label }) {
     <div className="w-1/3 px-3 my-1">
       <Link to={`/help/${id}`}>
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          className="block uppercase tracking-wide text-xs font-bold mb-2"
           htmlFor={id}
         >
           {label}{" "}
@@ -18,7 +18,7 @@ function InputField({ handleChange, data, id, label }) {
         </label>
       </Link>
       <input
-        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className="appearance-none block w-full rounded focus:outline-none py-3 px-4 leading-tight"
         id={id}
         type="number"
         name={id}
