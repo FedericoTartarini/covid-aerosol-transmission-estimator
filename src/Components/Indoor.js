@@ -27,7 +27,11 @@ class Indoor extends React.Component {
       // info event
       durationEvent: 50,
       repetitionEvent: 180,
+      airChangesHour: 10,
+      perRecirculatedAir: 0.7,
       ventilationOutAir: 3,
+      filterType: "No filter",
+      filterEfficiency: 0,
       // info people
       activity: "Quite working, Seated",
       ageGroup: "16-20",
@@ -108,6 +112,19 @@ class Indoor extends React.Component {
       "Face shields",
     ];
 
+    this.listFilters = [
+      "No filter",
+      "MERV8",
+      "MERV9",
+      "MERV10",
+      "MERV11",
+      "MERV12",
+      "MERV13",
+      "MERV14",
+      "MERV15",
+      "MERV16",
+    ];
+
     this.quanta_resp_data = require("../Data/quanta_resp_data.json");
 
     let arrayAge = [];
@@ -120,6 +137,7 @@ class Indoor extends React.Component {
     this.handleDroDowAct = this.handleDroDowAct.bind(this);
     this.handleDroDowAge = this.handleDroDowAge.bind(this);
     this.handleDroDowMask = this.handleDroDowMask.bind(this);
+    this.handleDroDowFilter = this.handleDroDowFilter.bind(this);
     this.calculateOutputs = this.calculateOutputs.bind(this);
   }
 
@@ -136,6 +154,11 @@ class Indoor extends React.Component {
     let data = this.state;
     data.volume = volume(data.width, data.length, data.height);
     data.area = area(data.width, data.length);
+    // todo test the following function
+    data.ventilationOutAir =
+      data.airChangesHour * (1 - data.perRecirculatedAir);
+    data.controlMeasure =
+      data.airChangesHour * data.perRecirculatedAir * data.filterEfficiency;
     data.firstOrderLoss = firstOrderLoss(
       data.ventilationOutAir,
       data.decayRateVirus,
@@ -250,6 +273,51 @@ class Indoor extends React.Component {
     this.calculateOutputs();
   }
 
+  handleDroDowFilter(filterType) {
+    let tmp = this.state;
+
+    switch (filterType) {
+      case "No filter":
+        tmp.filterEfficiency = 0;
+        break;
+      case "MERV8":
+        tmp.filterEfficiency = 0.2;
+        break;
+      case "MERV9":
+        tmp.filterEfficiency = 0.35;
+        break;
+      case "MERV10":
+        tmp.filterEfficiency = 0.5;
+        break;
+      case "MERV11":
+        tmp.filterEfficiency = 0.65;
+        break;
+      case "MERV12":
+        tmp.filterEfficiency = 0.8;
+        break;
+      case "MERV13":
+        tmp.filterEfficiency = 0.85;
+        break;
+      case "MERV14":
+        tmp.filterEfficiency = 0.9;
+        break;
+      case "MERV15":
+        tmp.filterEfficiency = 0.9;
+        break;
+      case "MERV16":
+        tmp.filterEfficiency = 0.95;
+        break;
+      default:
+        tmp.filterEfficiency = 0.3;
+    }
+
+    tmp.filterType = filterType;
+
+    this.setState(tmp);
+
+    this.calculateOutputs();
+  }
+
   handleDroDowMask(maskType) {
     let tmp = this.state;
 
@@ -349,11 +417,25 @@ class Indoor extends React.Component {
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
-                  id={"ventilationOutAir"}
-                  label={"Ventilation outside air (h-1)"}
+                  id={"airChangesHour"}
+                  label={"Air changes per hour (h-1)"}
+                />
+                <InputField
+                  handleChange={this.handleInputChange}
+                  data={this.state}
+                  id={"perRecirculatedAir"}
+                  label={"Recirculated air (%)"}
                 />
               </div>
             </form>
+            <div className="flex content-center my-4">
+              <p className="py-2 mr-2">Select filter: </p>
+              <DropDown
+                selected={this.state["filterType"]}
+                listItems={this.listFilters}
+                setValue={this.handleDroDowFilter}
+              />
+            </div>
             <h1 className="title-font mb-4 mt-12 font-bold">
               Information about peoples' activity in the room
             </h1>
