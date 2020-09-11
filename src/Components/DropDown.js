@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-function DropDown({ selected, listItems, setValue }) {
+function DropDown({ selected, listItems, setValue, width }) {
   const [dropDownOpen, setDropDownOpen] = useState(false);
 
   function DropDownItem({ item }) {
@@ -30,7 +30,8 @@ function DropDown({ selected, listItems, setValue }) {
       </button>
       <div
         className={
-          "bg-gray-100 w-56 absolute right-0 rounded mt-1 py-1 text-center shadow-md z-10" +
+          width +
+          " bg-gray-100 absolute right-0 rounded mt-1 py-1 text-center shadow-md z-10" +
           (dropDownOpen ? "" : " hidden")
         }
       >

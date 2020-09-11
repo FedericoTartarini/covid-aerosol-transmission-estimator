@@ -50,4 +50,10 @@ export const GlobalStyles = createGlobalStyle`
       color: ${({ theme }) => theme.primary};
     }
   }
+  
+  span.nav-item {
+    &:hover {
+      color: ${({ theme }) => theme.primary};
+    }
+  }
 `;

@@ -48,9 +48,9 @@ function HomeView() {
             various parameters.
           </p>
           <p className="mb-8 leading-relaxed">
-            This model does NOT include droplet or contact / fomite
-            transmission, and assumes that 6 ft / 2 m social distancing is
-            respected. Otherwise higher transmission will result.
+            This model does NOT include droplet or contact transmission, and
+            assumes that 6 ft / 2 m social distancing is respected. Otherwise
+            higher transmission will result.
           </p>
           <p className="mb-8 leading-relaxed">
             This model does NOT include transmission to the people present, when

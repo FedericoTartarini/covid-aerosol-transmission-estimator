@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdjust } from "@fortawesome/free-solid-svg-icons";
@@ -11,15 +11,15 @@ function NavigationBar({ themeToggler, theme }) {
     <nav className="container mx-auto flex items-center justify-between flex-wrap p-4 border-b-2">
       <div className="flex items-center flex-shrink-0 w-3/4 lg:w-1/2">
         <Link to="/">
-          <a className="font-semibold text-xl tracking-tight">
+          <span className="font-semibold text-xl tracking-tight">
             COVID-19 aerosol transmission estimator
-          </a>
+          </span>
         </Link>
       </div>
 
       <div className="block lg:hidden">
         <button
-          className="flex items-center px-3 py-2 border rounded hover:border-white"
+          className="flex items-center px-3 py-2 rounded"
           type="button"
           onClick={() => setNavbarOpen(!navbarOpen)}
         >
@@ -42,21 +42,29 @@ function NavigationBar({ themeToggler, theme }) {
       >
         <div className="lg:flex-grow">
           <Link to="/">
-            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">Home</a>
+            <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
+              Home
+            </span>
           </Link>
           <Link to="/indoor">
-            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">Indoor</a>
+            <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
+              Indoor
+            </span>
           </Link>
           <Link to="/outdoor">
-            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">Outdoor</a>
+            <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
+              Outdoor
+            </span>
           </Link>
           <Link to="/learnMore">
-            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">
+            <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
               Learn More
-            </a>
+            </span>
           </Link>
           <Link to="/about">
-            <a className="block mt-4 lg:inline-block lg:mt-0 ml-4">About</a>
+            <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
+              About
+            </span>
           </Link>
           <div
             className="block mt-4 lg:inline-block lg:mt-0 ml-4"

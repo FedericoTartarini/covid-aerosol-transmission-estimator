@@ -434,6 +434,7 @@ class Indoor extends React.Component {
                 selected={this.state["filterType"]}
                 listItems={this.listFilters}
                 setValue={this.handleDroDowFilter}
+                width={"w-32"}
               />
             </div>
             <h1 className="title-font mb-4 mt-12 font-bold">
@@ -445,6 +446,7 @@ class Indoor extends React.Component {
                 selected={this.state["activity"]}
                 listItems={this.listActivities}
                 setValue={this.handleDroDowAct}
+                width={"w-56"}
               />
             </div>
             <div className="flex content-center my-4">
@@ -453,6 +455,7 @@ class Indoor extends React.Component {
                 selected={this.state["ageGroup"]}
                 listItems={this.ageGroups}
                 setValue={this.handleDroDowAge}
+                width={"w-24"}
               />
             </div>
             <div className="flex content-center my-4">
@@ -461,6 +464,7 @@ class Indoor extends React.Component {
                 selected={this.state["maskType"]}
                 listItems={this.maskTypes}
                 setValue={this.handleDroDowMask}
+                width={"w-34"}
               />
             </div>
             <form className="w-full">
