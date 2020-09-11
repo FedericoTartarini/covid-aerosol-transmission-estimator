@@ -12,7 +12,6 @@ function DropDown({ selected, listItems, setValue }) {
         onClick={() => {
           setDropDownOpen(!dropDownOpen);
           setValue(item);
-          console.log("Item selected", item);
         }}
       >
         {item}
@@ -31,7 +30,7 @@ function DropDown({ selected, listItems, setValue }) {
       </button>
       <div
         className={
-          "bg-gray-100 absolute right-0 rounded mt-1 py-1 text-center shadow-md z-10" +
+          "bg-gray-100 w-56 absolute right-0 rounded mt-1 py-1 text-center shadow-md z-10" +
           (dropDownOpen ? "" : " hidden")
         }
       >

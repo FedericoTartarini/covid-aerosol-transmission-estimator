@@ -34,9 +34,7 @@ class Indoor extends React.Component {
       people: 10,
       numberInfected: 1,
       fractionImmune: 0,
-      exhalationMaskEff: 0.5,
       perPeopleMask: 1,
-      inhalationMaskEff: 0.3,
       // covid parameters
       pBeingInfected: 0.2,
       hospitalizationRate: 0.2,
@@ -54,8 +52,11 @@ class Indoor extends React.Component {
       // info people
       susceptiblePeople: 9,
       co2EmissionRate: 0.005,
-      breathingRate: 0.0086 * 60, // todo change this default value, or change default activity and age
-      quanta: 25, // todo change this default value, or change default activity and age
+      breathingRate: 0.318,
+      quanta: 2,
+      maskType: "Cloth mask",
+      exhalationMaskEff: 0.5,
+      inhalationMaskEff: 0.3,
       // OUTPUTS
       area: 47,
       volume: 142,
@@ -97,6 +98,16 @@ class Indoor extends React.Component {
       "Student, speaking loudly",
     ];
 
+    this.maskTypes = [
+      "No mask",
+      "Mixed (if unsure)",
+      "Surgical mask",
+      "Cloth mask",
+      "N95",
+      "N95 - valved",
+      "Face shields",
+    ];
+
     this.quanta_resp_data = require("../Data/quanta_resp_data.json");
 
     let arrayAge = [];
@@ -108,6 +119,7 @@ class Indoor extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleDroDowAct = this.handleDroDowAct.bind(this);
     this.handleDroDowAge = this.handleDroDowAge.bind(this);
+    this.handleDroDowMask = this.handleDroDowMask.bind(this);
     this.calculateOutputs = this.calculateOutputs.bind(this);
   }
 
@@ -220,8 +232,6 @@ class Indoor extends React.Component {
     tmp.breathingRate = values["Respiration.m3_min"] * 60;
     tmp.quanta = values["QuantaEmission"];
 
-    console.log(tmp);
-
     this.setState(tmp);
 
     this.calculateOutputs();
@@ -234,6 +244,50 @@ class Indoor extends React.Component {
     tmp.ageGroup = ageGroup;
     tmp.breathingRate = values["Respiration.m3_min"] * 60;
     tmp.quanta = values["QuantaEmission"];
+
+    this.setState(tmp);
+
+    this.calculateOutputs();
+  }
+
+  handleDroDowMask(maskType) {
+    let tmp = this.state;
+
+    switch (maskType) {
+      case "No mask":
+        tmp.exhalationMaskEff = 0;
+        tmp.inhalationMaskEff = 0;
+        break;
+      case "Mixed (if unsure)":
+        tmp.exhalationMaskEff = 0.5;
+        tmp.inhalationMaskEff = 0.3;
+        break;
+      case "Surgical mask":
+        tmp.exhalationMaskEff = 0.65;
+        tmp.inhalationMaskEff = 0.5;
+        break;
+      case "Cloth mask":
+        tmp.exhalationMaskEff = 0.5;
+        tmp.inhalationMaskEff = 0.3;
+        break;
+      case "N95":
+        tmp.exhalationMaskEff = 0.85;
+        tmp.inhalationMaskEff = 0.85;
+        break;
+      case "N95 - valved":
+        tmp.exhalationMaskEff = 0;
+        tmp.inhalationMaskEff = 0.85;
+        break;
+      case "Face shields":
+        tmp.exhalationMaskEff = 0.23;
+        tmp.inhalationMaskEff = 0.23;
+        break;
+      default:
+        tmp.exhalationMaskEff = 0.5;
+        tmp.inhalationMaskEff = 0.3;
+    }
+
+    tmp.maskType = maskType;
 
     this.setState(tmp);
 
@@ -317,6 +371,14 @@ class Indoor extends React.Component {
                 selected={this.state["ageGroup"]}
                 listItems={this.ageGroups}
                 setValue={this.handleDroDowAge}
+              />
+            </div>
+            <div className="flex content-center my-4">
+              <p className="py-2 mr-2">Select mask type: </p>
+              <DropDown
+                selected={this.state["maskType"]}
+                listItems={this.maskTypes}
+                setValue={this.handleDroDowMask}
               />
             </div>
             <form className="w-full">
