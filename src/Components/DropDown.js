@@ -31,7 +31,7 @@ function DropDown({ selected, listItems, setValue, width }) {
       <div
         className={
           width +
-          " bg-gray-100 absolute right-0 rounded mt-1 py-1 text-center shadow-md z-10" +
+          "dropDownList absolute right-0 rounded mt-1 py-1 text-center shadow-md z-10" +
           (dropDownOpen ? "" : " hidden")
         }
       >

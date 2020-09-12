@@ -41,6 +41,10 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   
+  span.dropDownList {
+    background: ${({ theme }) => theme.surface};
+  }
+  
   p.outputBox {
     background: ${({ theme }) => theme.surface};
   }

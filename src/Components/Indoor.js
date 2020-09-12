@@ -20,6 +20,9 @@ import {
   pAbsOneEventInfection,
   pAbsMultipleEventInfection,
 } from "../Functions/Utils";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 class Indoor extends React.Component {
   constructor(props) {
@@ -431,12 +434,19 @@ class Indoor extends React.Component {
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"perRecirculatedAir"}
-                  label={"Recirculated air (%)"}
+                  label={"Percentage recirculated air (%)"}
                 />
               </div>
             </form>
             <div className="flex content-center my-4">
-              <p className="py-2 mr-2">Select filter: </p>
+              <Link to={`/help/filter`}>
+                <p className="py-2 mr-2">
+                  Select filter:{" "}
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </p>
+              </Link>
               <DropDown
                 selected={this.state["filterType"]}
                 listItems={this.listFilters}
@@ -466,7 +476,14 @@ class Indoor extends React.Component {
               />
             </div>
             <div className="flex content-center my-4">
-              <p className="py-2 mr-2">Select mask type: </p>
+              <Link to={`/help/mask`}>
+                <p className="py-2 mr-2">
+                  Select mask type:{" "}
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </p>
+              </Link>
               <DropDown
                 selected={this.state["maskType"]}
                 listItems={this.maskTypes}
