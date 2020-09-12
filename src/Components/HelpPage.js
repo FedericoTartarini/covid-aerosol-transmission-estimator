@@ -23,7 +23,7 @@ function HelpPage({ match }) {
           event.
         </p>
       );
-    } else if (id === "ventilationOutAir") {
+    } else if (id === "outdoorAirACH") {
       return (
         <div>
           <p className="mb-8 leading-relaxed">

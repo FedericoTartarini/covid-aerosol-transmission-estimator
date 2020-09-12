@@ -1,16 +1,34 @@
 import {
   area,
   avgQuantaConcentration,
+  controlMeasure,
   firstOrderLoss,
   netEmissionRate,
-  pCondOneEventHospitalization,
+  outdoorAirACH,
+  probHospitalization,
   pCondOneEventInfection,
+  probDeath,
   quantaInhaledPerson,
   ventilationRate,
   volume,
+  ratioCarTravelRisk,
+  pAbsOneEventInfection,
+  pAbsMultipleEventInfection,
 } from "./Utils";
 
 test("calculates volume", () => {
+  expect(volume(25, 20, 10)).toBe(5000);
+});
+
+test("calculates outdoor ACH", () => {
+  expect(Number(outdoorAirACH(10, 0.7).toFixed(2))).toBe(3);
+});
+
+test("calculates control measure ACH", () => {
+  expect(controlMeasure(10, 0.7, 0.5)).toBe(3.5);
+});
+
+test("calculates ACH outdoor air", () => {
   expect(volume(25, 20, 10)).toBe(5000);
 });
 
@@ -46,6 +64,30 @@ test("prob conditional one event infection", () => {
   expect(Number(pCondOneEventInfection(0.006765242))).toBe(0.6742);
 });
 
+test("prob absolute one event infection", () => {
+  expect(Number(pAbsOneEventInfection(0.0235, 0.2, 9))).toBe(
+    0.00042299920478550135
+  );
+  expect(Number(pAbsOneEventInfection(0.47623, 0.2, 9))).toBe(
+    0.00857181342246438
+  );
+});
+
+test("prob absolute multiple event infection", () => {
+  expect(Number(pAbsMultipleEventInfection(0.00857181342246438, 180))).toBe(
+    1.53114940934993
+  );
+});
+
 test("prob conditional one event hospitalization", () => {
-  expect(Number(pCondOneEventHospitalization(0.6742, 0.2))).toBe(0.1348);
+  expect(Number(probHospitalization(0.6742, 0.2))).toBe(0.1348);
+});
+
+test("prob death", () => {
+  expect(Number(probDeath(0.6742, 0.01))).toBe(0.0067);
+});
+
+test("comparison with car travel", () => {
+  expect(Number(ratioCarTravelRisk(0.021609, 180))).toBe(2);
+  expect(Number(ratioCarTravelRisk(0.000121, 1))).toBe(2);
 });

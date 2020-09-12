@@ -6,13 +6,19 @@ import OutputsIndoor from "./OutputsIndoor";
 import {
   area,
   avgQuantaConcentration,
+  controlMeasure,
   firstOrderLoss,
   netEmissionRate,
-  pCondOneEventHospitalization,
+  outdoorAirACH,
+  probHospitalization,
   pCondOneEventInfection,
   quantaInhaledPerson,
   ventilationRate,
   volume,
+  probDeath,
+  ratioCarTravelRisk,
+  pAbsOneEventInfection,
+  pAbsMultipleEventInfection,
 } from "../Functions/Utils";
 
 class Indoor extends React.Component {
@@ -27,22 +33,23 @@ class Indoor extends React.Component {
       // info event
       durationEvent: 50,
       repetitionEvent: 180,
-      airChangesHour: 10,
-      perRecirculatedAir: 0.7,
-      ventilationOutAir: 3,
+      roomACH: 10,
+      perRecirculatedAir: 70,
+      outdoorAirACH: 3,
       filterType: "No filter",
       filterEfficiency: 0,
+      controlMeasure: 0,
       // info people
       activity: "Quite working, Seated",
       ageGroup: "16-20",
       people: 10,
       numberInfected: 1,
       fractionImmune: 0,
-      perPeopleMask: 1,
+      perPeopleMask: 100,
       // covid parameters
       pBeingInfected: 0.2,
-      hospitalizationRate: 0.2,
-      deathRate: 0.01,
+      percentageHospitalizationRate: 20,
+      percentageDeathRate: 1,
       // CALCULATED AND ESTIMATED inputs
       // info environment
       temperature: 20,
@@ -52,7 +59,6 @@ class Indoor extends React.Component {
       // info event
       decayRateVirus: 0.62,
       depositionSurface: 0.3,
-      controlMeasure: 0, // todo estimate this value from tables
       // info people
       susceptiblePeople: 9,
       co2EmissionRate: 0.005,
@@ -82,7 +88,6 @@ class Indoor extends React.Component {
       pAbsMultipleEventCarTravel: 0.1,
     };
 
-    // todo programmatically generate this list as for age groups
     this.listActivities = [
       "Quite working, Seated",
       "Speaking, Seated",
@@ -154,27 +159,31 @@ class Indoor extends React.Component {
     let data = this.state;
     data.volume = volume(data.width, data.length, data.height);
     data.area = area(data.width, data.length);
-    // todo test the following function
-    data.ventilationOutAir =
-      data.airChangesHour * (1 - data.perRecirculatedAir);
-    data.controlMeasure =
-      data.airChangesHour * data.perRecirculatedAir * data.filterEfficiency;
+    data.outdoorAirACH = outdoorAirACH(
+      data.roomACH,
+      data.perRecirculatedAir / 100
+    );
+    data.controlMeasure = controlMeasure(
+      data.roomACH,
+      data.perRecirculatedAir / 100,
+      data.filterEfficiency
+    );
     data.firstOrderLoss = firstOrderLoss(
-      data.ventilationOutAir,
+      data.outdoorAirACH,
       data.decayRateVirus,
       data.controlMeasure,
       data.depositionSurface
     );
     data.ventilationRate = ventilationRate(
       data.volume,
-      data.ventilationOutAir,
+      data.outdoorAirACH,
       data.controlMeasure,
       data.people
     );
     data.netEmissionRate = netEmissionRate(
       data.quanta,
       data.exhalationMaskEff,
-      data.perPeopleMask,
+      data.perPeopleMask / 100,
       data.numberInfected
     );
     data.avgQuantaConcentration = avgQuantaConcentration(
@@ -188,57 +197,55 @@ class Indoor extends React.Component {
       data.breathingRate,
       data.durationEvent,
       data.inhalationMaskEff,
-      data.perPeopleMask
+      data.perPeopleMask / 100
     );
     data.pCondOneEventInfection = pCondOneEventInfection(
       data.quantaInhaledPerson
     );
-    data.pCondOneEventHospitalization = pCondOneEventHospitalization(
+    data.pCondOneEventHospitalization = probHospitalization(
       data.pCondOneEventInfection,
-      data.hospitalizationRate
+      data.percentageHospitalizationRate
     );
-    // todo create functions and test them
-    data.pCondOneEventDeath = (
-      data.pCondOneEventInfection * data.deathRate
-    ).toFixed(4);
-    data.pCondOneEventCarTravel = (
-      data.pCondOneEventDeath /
-      100 /
-      0.0000006
-    ).toFixed(1);
-    data.pAbsOneEventInfection =
-      (1 -
-        Math.pow(
-          1 - ((data.pCondOneEventInfection / 100) * data.pBeingInfected) / 100,
-          data.susceptiblePeople
-        )) *
-      100;
-    data.pAbsOneEventHospitalization = (
-      data.pAbsOneEventInfection * data.hospitalizationRate
-    ).toFixed(4);
-    data.pAbsOneEventDeath = data.pAbsOneEventInfection * data.deathRate;
-    data.pAbsOneEventCarTravel = (
-      data.pAbsOneEventDeath /
-      100 /
-      0.0000006
-    ).toFixed(1);
-    data.pAbsMultipleEventInfection =
-      (1 -
-        Math.pow(1 - data.pAbsOneEventInfection / 100, data.repetitionEvent)) *
-      100;
-    data.pAbsMultipleEventHospitalization = (
-      data.pAbsMultipleEventInfection * data.hospitalizationRate
-    ).toFixed(4);
-    data.pAbsMultipleEventDeath =
-      data.pAbsMultipleEventInfection * data.deathRate;
-    data.pAbsMultipleEventCarTravel = (
-      data.pAbsMultipleEventDeath /
-      100 /
-      (0.0000006 * data.repetitionEvent)
-    ).toFixed(1);
+    data.pCondOneEventDeath = probDeath(
+      data.pCondOneEventInfection,
+      data.percentageDeathRate
+    );
+    data.pCondOneEventCarTravel = ratioCarTravelRisk(
+      data.pCondOneEventDeath,
+      1
+    );
+    data.pAbsOneEventInfection = pAbsOneEventInfection(
+      data.pCondOneEventInfection,
+      data.pBeingInfected,
+      data.susceptiblePeople
+    );
+    data.pAbsOneEventHospitalization = probHospitalization(
+      data.pAbsOneEventInfection,
+      data.percentageHospitalizationRate
+    );
+    data.pAbsOneEventDeath = probDeath(
+      data.pAbsOneEventInfection,
+      data.percentageDeathRate
+    );
+    data.pAbsOneEventCarTravel = ratioCarTravelRisk(data.pAbsOneEventDeath, 1);
+    data.pAbsMultipleEventInfection = pAbsMultipleEventInfection(
+      data.pAbsOneEventInfection,
+      data.repetitionEvent
+    );
+    data.pAbsMultipleEventHospitalization = probHospitalization(
+      data.pAbsMultipleEventInfection,
+      data.percentageHospitalizationRate
+    );
+    data.pAbsMultipleEventDeath = probDeath(
+      data.pAbsMultipleEventInfection,
+      data.percentageDeathRate
+    );
+    data.pAbsMultipleEventCarTravel = ratioCarTravelRisk(
+      data.pAbsMultipleEventDeath,
+      data.repetitionEvent
+    );
+    data.pCondOneEventInfection = data.pCondOneEventInfection.toFixed(4);
     data.pAbsOneEventInfection = data.pAbsOneEventInfection.toFixed(4);
-    data.pAbsOneEventDeath = data.pAbsOneEventDeath.toFixed(4);
-    data.pAbsMultipleEventDeath = data.pAbsMultipleEventDeath.toFixed(4);
     data.pAbsMultipleEventInfection = data.pAbsMultipleEventInfection.toFixed(
       4
     );
@@ -370,7 +377,7 @@ class Indoor extends React.Component {
           <meta name="description" content="content" />
         </Helmet>
         <section className="container mx-auto">
-          <div className="m-6">
+          <div className="lg:mx-12">
             <h1 className="title-font text-2xl mb-4 mt-12 font-bold">Inputs</h1>
             <form className="w-full">
               <h1 className="title-font mb-4 font-bold">
@@ -417,7 +424,7 @@ class Indoor extends React.Component {
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
-                  id={"airChangesHour"}
+                  id={"roomACH"}
                   label={"Air changes per hour (h-1)"}
                 />
                 <InputField
@@ -479,31 +486,13 @@ class Indoor extends React.Component {
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"numberInfected"}
-                  label={"People infected"}
-                />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"fractionImmune"}
-                  label={"Fraction Immune"}
-                />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"exhalationMaskEff"}
-                  label={"Exhalation mask efficiency"}
+                  label={"Number people infected"}
                 />
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"perPeopleMask"}
-                  label={"Percentage people with mask"}
-                />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"inhalationMaskEff"}
-                  label={"Inhalation mask efficiency"}
+                  label={"Percentage people with mask (%)"}
                 />
               </div>
               <h1 className="title-font mb-4 mt-12 font-bold">
@@ -519,13 +508,13 @@ class Indoor extends React.Component {
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
-                  id={"hospitalizationRate"}
+                  id={"percentageHospitalizationRate"}
                   label={"Hospitalization rate (%)"}
                 />
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
-                  id={"deathRate"}
+                  id={"percentageDeathRate"}
                   label={"Death rate (%)"}
                 />
               </div>

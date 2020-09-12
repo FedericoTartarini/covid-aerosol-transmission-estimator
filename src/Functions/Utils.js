@@ -2,28 +2,33 @@ export function volume(width, length, height) {
   return width * length * height;
 }
 
+export function outdoorAirACH(roomACH, ratioRecirculatedAir) {
+  return roomACH * (1 - ratioRecirculatedAir);
+}
+
+export function controlMeasure(
+  roomACH,
+  ratioRecirculatedAir,
+  filterEfficiency
+) {
+  return roomACH * ratioRecirculatedAir * filterEfficiency;
+}
+
 export function area(width, length) {
   return width * length;
 }
 
 export function firstOrderLoss(
-  ventilationOutAir,
+  outdoorAirACH,
   decayRateVirus,
   controlMeasure,
   depositionSurface
 ) {
-  return (
-    ventilationOutAir + decayRateVirus + controlMeasure + depositionSurface
-  );
+  return outdoorAirACH + decayRateVirus + controlMeasure + depositionSurface;
 }
 
-export function ventilationRate(
-  volume,
-  ventilationOutAir,
-  controlMeasure,
-  people
-) {
-  return (volume * (ventilationOutAir + controlMeasure) * 1000) / 3600 / people;
+export function ventilationRate(volume, outdoorAirACH, controlMeasure, people) {
+  return (volume * (outdoorAirACH + controlMeasure) * 1000) / 3600 / people;
 }
 
 export function netEmissionRate(
@@ -65,12 +70,45 @@ export function quantaInhaledPerson(
 }
 
 export function pCondOneEventInfection(quantaInhaledPerson) {
-  return ((1 - Math.exp(-quantaInhaledPerson)) * 100).toFixed(4);
+  return (1 - Math.exp(-quantaInhaledPerson)) * 100;
 }
 
-export function pCondOneEventHospitalization(
+export function pAbsOneEventInfection(
   pCondOneEventInfection,
-  hospitalizationRate
+  pBeingInfected,
+  susceptiblePeople
 ) {
-  return (pCondOneEventInfection * hospitalizationRate).toFixed(4);
+  return (
+    (1 -
+      Math.pow(
+        1 - ((pCondOneEventInfection / 100) * pBeingInfected) / 100,
+        susceptiblePeople
+      )) *
+    100
+  );
+}
+
+export function pAbsMultipleEventInfection(
+  pAbsOneEventInfection,
+  repetitionEvent
+) {
+  return (1 - Math.pow(1 - pAbsOneEventInfection / 100, repetitionEvent)) * 100;
+}
+
+export function probHospitalization(
+  pCondOneEventInfection,
+  percentageHospitalizationRate
+) {
+  return (
+    (pCondOneEventInfection * percentageHospitalizationRate) /
+    100
+  ).toFixed(4);
+}
+
+export function probDeath(probInfection, percentageDeathRate) {
+  return ((probInfection * percentageDeathRate) / 100).toFixed(4);
+}
+
+export function ratioCarTravelRisk(probDeath, repetitionEvents) {
+  return (probDeath / 100 / (0.0000006 * repetitionEvents)).toFixed(1);
 }

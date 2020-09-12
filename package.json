@@ -1,6 +1,6 @@
 {
   "homepage": "https://covid-transmission-calculator.netlify.app",
-  "name": "my-app",
+  "name": "covid-transmission-calculator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -32,7 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "netlify deploy --dir=build"
   },
   "eslintConfig": {
     "extends": "react-app"
