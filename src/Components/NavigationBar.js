@@ -41,11 +41,6 @@ function NavigationBar({ themeToggler, theme }) {
         onClick={() => setNavbarOpen(!navbarOpen)}
       >
         <div className="lg:flex-grow">
-          <Link to="/">
-            <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
-              Home
-            </span>
-          </Link>
           <Link to="/indoor">
             <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
               Indoor

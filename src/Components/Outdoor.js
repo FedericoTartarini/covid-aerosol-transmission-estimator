@@ -263,10 +263,12 @@ class Outdoor extends React.Component {
               </h1>
               <div className="flex items-end flex-wrap -mx-3 mb-2">
                 <OutputField
+                  id="pCondOneEventInfection"
                   label={"Probability of infection (%)"}
                   value={this.state.pCondOneEventInfection}
                 />
                 <OutputField
+                  id="casesArising"
                   label={"Number of COVID cases arising"}
                   value={this.state.casesArising}
                 />
