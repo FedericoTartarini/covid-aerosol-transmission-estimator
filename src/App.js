@@ -1,5 +1,6 @@
 import React, { Suspense, useState } from "react";
 import Indoor from "./Components/Indoor";
+import Outdoor from "./Components/Outdoor";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loader from "./Components/Loader";
 import NavigationBar from "./Components/NavigationBar";
@@ -37,6 +38,9 @@ function App() {
               </Route>
               <Route path="/indoor">
                 <Indoor />
+              </Route>
+              <Route path="/outdoor">
+                <Outdoor />
               </Route>
               <Route path="/help/:id" component={HelpPage} />
             </Switch>

@@ -6,7 +6,7 @@ function OutputField({ label, value }) {
       <p className="flex-1 uppercase tracking-wide text-xs font-bold">
         {label}
       </p>
-      <p className="outputBox flex-none w-20 rounded py-2 px-4 leading-tight">
+      <p className="outputBox h-10 w-20 rounded text-center py-2 leading-tight">
         {value}
       </p>
     </div>

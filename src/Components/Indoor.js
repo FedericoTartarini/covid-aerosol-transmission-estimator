@@ -57,8 +57,8 @@ class Indoor extends React.Component {
       pressure: 0.95,
       co2Outdoors: 415,
       // info event
-      decayRateVirus: 0.62,
-      depositionSurface: 0.3,
+      decayRateVirus: 0.62, // todo write about this assumption
+      depositionSurface: 0.3, // todo write about this assumption
       // info people
       susceptiblePeople: 9,
       co2EmissionRate: 0.005,
@@ -68,24 +68,24 @@ class Indoor extends React.Component {
       exhalationMaskEff: 0.5,
       inhalationMaskEff: 0.3,
       // OUTPUTS
-      area: 47,
-      volume: 142,
-      firstOrderLoss: 3.92,
-      netEmissionRate: 12.5,
-      avgQuantaConcentration: 0.01585,
-      quantaInhaledPerson: 0.00477,
-      pCondOneEventInfection: 0.0235,
-      pCondOneEventHospitalization: 0.0047,
-      pCondOneEventDeath: 0.0002,
-      pCondOneEventCarTravel: 3.3,
-      pAbsOneEventInfection: 0.0004,
-      pAbsOneEventHospitalization: 0.0001,
-      pAbsOneEventDeath: 0.0,
-      pAbsOneEventCarTravel: 0.1,
-      pAbsMultipleEventInfection: 0.0761,
-      pAbsMultipleEventHospitalization: 0.0152,
-      pAbsMultipleEventDeath: 0.0008,
-      pAbsMultipleEventCarTravel: 0.1,
+      area: "",
+      volume: "",
+      firstOrderLoss: "",
+      netEmissionRate: "",
+      avgQuantaConcentration: "",
+      quantaInhaledPerson: "",
+      pCondOneEventInfection: "",
+      pCondOneEventHospitalization: "",
+      pCondOneEventDeath: "",
+      pCondOneEventCarTravel: "",
+      pAbsOneEventInfection: "",
+      pAbsOneEventHospitalization: "",
+      pAbsOneEventDeath: "",
+      pAbsOneEventCarTravel: "",
+      pAbsMultipleEventInfection: "",
+      pAbsMultipleEventHospitalization: "",
+      pAbsMultipleEventDeath: "",
+      pAbsMultipleEventCarTravel: "",
     };
 
     this.listActivities = [
@@ -377,8 +377,8 @@ class Indoor extends React.Component {
           <meta name="description" content="content" />
         </Helmet>
         <section className="container mx-auto">
-          <div className="lg:mx-12">
-            <h1 className="title-font text-2xl mb-4 mt-12 font-bold">Inputs</h1>
+          <div className="lg:mx-12 my-4 lg:my-12">
+            <h1 className="title-font text-2xl mb-4 font-bold">Inputs</h1>
             <form className="w-full">
               <h1 className="title-font mb-4 font-bold">
                 Information about the environment
