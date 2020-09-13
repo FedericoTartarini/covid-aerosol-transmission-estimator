@@ -13,6 +13,8 @@ import {
   pAbsOneEventInfection,
   pAbsMultipleEventInfection,
   calculateOutputs,
+  probHospitalization,
+  probDeath,
 } from "./Utils";
 
 test("calculates volume", () => {
@@ -79,15 +81,13 @@ test("prob absolute multiple event infection", () => {
 });
 
 // todo check the following tests
-// test("prob conditional one event hospitalization", () => {
-//   expect(Number(probHospitalization(0.6742409269006155, 0.2))).toBe(
-//     0.1348481853801231
-//   );
-// });
-//
-// test("prob death", () => {
-//   expect(Number(probDeath(0.6742, 0.01))).toBe(0.006742000000000001);
-// });
+test("prob conditional one event hospitalization", () => {
+  expect(Number(probHospitalization(99.93708, 40))).toBe(39.974832);
+});
+
+test("prob death", () => {
+  expect(Number(probDeath(99.93, 10))).toBe(9.993);
+});
 
 test("comparison with car travel", () => {
   expect(Number(ratioCarTravelRisk(0.021609, 180))).toBe(2);
