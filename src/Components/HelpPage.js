@@ -70,14 +70,30 @@ function HelpPage({ match }) {
             <p className="mb-8 leading-relaxed">
               We have listed here a list of approximations for some typical
               activity levels. Based on the selection you make from this list,
-              we estimate the breathing rate of occupants and the rate at which
-              an infected person may be exhaling infectious quanta. You may not
-              find your exact activity level, in that case, try to choose
-              something that closely resembles what your occupants would be
-              doing. For example, office work could be close to Quite working,
-              Seated, while a small office meeting could be Speaking, Seated,
-              and a large, crowded meeting could require Speaking loudly,
-              Seated.
+              we estimate the breathing rate (from the tables below) of
+              occupants and the rate at which an infected person may be exhaling
+              infectious quanta. You may not find your exact activity level, in
+              that case, try to choose something that closely resembles what
+              your occupants would be doing. For example, office work could be
+              close to Quite working, Seated, while a small office meeting could
+              be Speaking, Seated, and a large, crowded meeting could require
+              Speaking loudly, Seated.
+            </p>
+            <img
+              className="mb-10 object-cover object-center rounded-lg shadow-lg"
+              alt="hero"
+              src={require("../Static/Images/breathing_rate.png")}
+            />
+            <img
+              className="object-cover object-center rounded-lg shadow-lg"
+              alt="hero"
+              src={require("../Static/Images/breathing_rate_2.png")}
+            />
+            <p className="mb-8 text-sm leading-relaxed">
+              Source:{" "}
+              <p className="mb-8 leading-relaxed">
+                https://www.epa.gov/expobox/exposure-factors-handbook-chapter-6
+              </p>
             </p>
           </div>
         </div>
@@ -92,10 +108,20 @@ function HelpPage({ match }) {
             <p className="mb-8 leading-relaxed">
               We have listed here a range of age groups. Choose the age group
               that most closely matches your occupant demographics. Age, along
-              with activity type, is used to estimate the breathing rate of
-              occupants and the rate at which an infected person may be exhaling
-              infectious quanta.
+              with activity type, is used to estimate the breathing rate (from
+              the tables below) of occupants and the rate at which an infected
+              person may be exhaling infectious quanta.
             </p>
+            <img
+              className="mb-10 object-cover object-center rounded-lg shadow-lg"
+              alt="hero"
+              src={require("../Static/Images/breathing_rate.png")}
+            />
+            <img
+              className="object-cover object-center rounded-lg shadow-lg"
+              alt="hero"
+              src={require("../Static/Images/breathing_rate_2.png")}
+            />
           </div>
         </div>
       );
@@ -634,12 +660,12 @@ function HelpPage({ match }) {
   }
 
   return (
-    <section className=" body-font">
+    <section className="body-font">
       <Helmet>
         <title>Help Page</title>
         <meta name="description" content="This is the help page" />
       </Helmet>
-      <div className="container mx-auto flex flex-col py-8 mb-16 text-justify justify-center items-center">
+      <div className="container mx-auto flex flex-col py-8 text-justify justify-center items-center">
         <div className="max-w-md">
           <HelpText id={match.params.id} />
         </div>

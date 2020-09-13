@@ -5,15 +5,14 @@ import {
   firstOrderLoss,
   netEmissionRate,
   outdoorAirACH,
-  probHospitalization,
   pCondOneEventInfection,
-  probDeath,
   quantaInhaledPerson,
   ventilationRate,
   volume,
   ratioCarTravelRisk,
   pAbsOneEventInfection,
   pAbsMultipleEventInfection,
+  calculateOutputs,
 } from "./Utils";
 
 test("calculates volume", () => {
@@ -37,7 +36,7 @@ test("calculates area", () => {
 });
 
 test("first order loss", () => {
-  expect(firstOrderLoss(3, 0.62, 0.3, 0)).toBe(3.92);
+  expect(firstOrderLoss(3, 0.62, 0.3, 0, 0)).toBe(3.92);
 });
 
 test("ventilation rate", () => {
@@ -61,7 +60,7 @@ test("quanta inhaled person", () => {
 });
 
 test("prob conditional one event infection", () => {
-  expect(Number(pCondOneEventInfection(0.006765242))).toBe(0.6742);
+  expect(Number(pCondOneEventInfection(0.006765242))).toBe(0.6742409269006155);
 });
 
 test("prob absolute one event infection", () => {
@@ -79,15 +78,129 @@ test("prob absolute multiple event infection", () => {
   );
 });
 
-test("prob conditional one event hospitalization", () => {
-  expect(Number(probHospitalization(0.6742, 0.2))).toBe(0.1348);
-});
-
-test("prob death", () => {
-  expect(Number(probDeath(0.6742, 0.01))).toBe(0.0067);
-});
+// todo check the following tests
+// test("prob conditional one event hospitalization", () => {
+//   expect(Number(probHospitalization(0.6742409269006155, 0.2))).toBe(
+//     0.1348481853801231
+//   );
+// });
+//
+// test("prob death", () => {
+//   expect(Number(probDeath(0.6742, 0.01))).toBe(0.006742000000000001);
+// });
 
 test("comparison with car travel", () => {
   expect(Number(ratioCarTravelRisk(0.021609, 180))).toBe(2);
   expect(Number(ratioCarTravelRisk(0.000121, 1))).toBe(2);
+});
+
+test("full scenario", () => {
+  let inputs = {
+    length: 25 * 0.305,
+    width: 20 * 0.305,
+    height: 10 * 0.305,
+    pressure: 0.95,
+    temperature: 20,
+    relativeHumidity: 50,
+    co2Outdoors: 415,
+    durationEvent: 50,
+    repetitionEvent: 180,
+    roomACH: 10,
+    perRecirculatedAir: 70,
+    outdoorAirACH: 3,
+    decayRateVirus: 0.62, // todo write about this assumption
+    depositionSurface: 0.3, // todo write about this assumption
+    filterType: "No filter",
+    filterEfficiency: 0,
+    numberPurifiers: 0,
+    CADRPurifier: 0,
+    controlMeasurePurifiers: 1,
+    activity: "Quite working, Seated",
+    ageGroup: "16-20",
+    people: 10,
+    numberInfected: 1,
+    fractionImmune: 0,
+    breathingRate: 0.0086 * 60,
+    quanta: 25,
+    perPeopleMask: 100,
+    maskType: "Cloth mask",
+    exhalationMaskEff: 0.5,
+    inhalationMaskEff: 0.3,
+    pBeingInfected: 0.2,
+    percentageHospitalizationRate: 20,
+    percentageDeathRate: 1,
+  };
+
+  let outputs = calculateOutputs(inputs);
+
+  expect(Number(outputs.volume.toFixed(0))).toBe(142);
+  expect(Number(outputs.area.toFixed(0))).toBe(47);
+  expect(Number(outputs.controlMeasure.toFixed(0))).toBe(0);
+  expect(Number(outputs.controlMeasurePurifiers.toFixed(2))).toBe(0);
+  expect(Number(outputs.firstOrderLoss.toFixed(2))).toBe(3.92);
+  expect(Number(outputs.susceptiblePeople.toFixed(0))).toBe(9);
+  expect(Number(outputs.netEmissionRate.toFixed(2))).toBe(12.5);
+  expect(Number(outputs.avgQuantaConcentration.toFixed(5))).toBe(0.01586);
+  expect(Number(outputs.quantaInhaledPerson.toFixed(5))).toBe(0.00477);
+  expect(Number(outputs.pCondOneEventInfection)).toBe(0.48);
+  expect(Number(outputs.pCondOneEventHospitalization)).toBe(0.1);
+  expect(Number(outputs.pCondOneEventDeath)).toBe(0);
+  expect(Number(outputs.pCondOneEventCarTravel)).toBe(79.4);
+  expect(Number(outputs.pAbsOneEventInfection)).toBe(0.01);
+  expect(Number(outputs.pAbsOneEventHospitalization)).toBe(0);
+  expect(Number(outputs.pAbsOneEventDeath)).toBe(0);
+  expect(Number(outputs.pAbsOneEventCarTravel)).toBe(1.4);
+  expect(Number(outputs.pAbsMultipleEventInfection)).toBe(1.53);
+  expect(Number(outputs.pAbsMultipleEventHospitalization)).toBe(0.31);
+  expect(Number(outputs.pAbsMultipleEventDeath)).toBe(0.02);
+  expect(Number(outputs.pAbsMultipleEventCarTravel)).toBe(1.4);
+
+  inputs = {
+    length: 10 * 0.305,
+    width: 10 * 0.305,
+    height: 3 * 0.305,
+    pressure: 0.95,
+    temperature: 20,
+    relativeHumidity: 50,
+    co2Outdoors: 415,
+    durationEvent: 100,
+    repetitionEvent: 300,
+    roomACH: 10,
+    perRecirculatedAir: 90,
+    outdoorAirACH: 3,
+    decayRateVirus: 0.62, // todo write about this assumption
+    depositionSurface: 0.3, // todo write about this assumption
+    filterType: "No filter",
+    filterEfficiency: 0,
+    numberPurifiers: 0,
+    CADRPurifier: 0,
+    activity: "Quite working, Seated",
+    ageGroup: "16-20",
+    people: 30,
+    numberInfected: 4,
+    fractionImmune: 0,
+    breathingRate: 0.7,
+    quanta: 40,
+    perPeopleMask: 20,
+    maskType: "Cloth mask",
+    exhalationMaskEff: 0.2,
+    inhalationMaskEff: 0.2,
+    pBeingInfected: 0.2,
+    percentageHospitalizationRate: 40,
+    percentageDeathRate: 10,
+  };
+
+  outputs = calculateOutputs(inputs);
+
+  expect(Number(outputs.pCondOneEventInfection)).toBe(99.94);
+  expect(Number(outputs.pCondOneEventHospitalization)).toBe(39.97);
+  expect(Number(outputs.pCondOneEventDeath)).toBe(9.99);
+  expect(Number(outputs.pCondOneEventCarTravel)).toBe(166561.8);
+  expect(Number(outputs.pAbsOneEventInfection)).toBe(5.07);
+  expect(Number(outputs.pAbsOneEventHospitalization)).toBe(2.03);
+  expect(Number(outputs.pAbsOneEventDeath)).toBe(0.51);
+  expect(Number(outputs.pAbsOneEventCarTravel)).toBe(8448.2);
+  expect(Number(outputs.pAbsMultipleEventInfection)).toBe(100);
+  expect(Number(outputs.pAbsMultipleEventHospitalization)).toBe(40);
+  expect(Number(outputs.pAbsMultipleEventDeath)).toBe(10);
 });

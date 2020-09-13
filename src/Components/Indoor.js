@@ -3,23 +3,7 @@ import { Helmet } from "react-helmet";
 import InputField from "./InputField";
 import DropDown from "./DropDown";
 import OutputsIndoor from "./OutputsIndoor";
-import {
-  area,
-  avgQuantaConcentration,
-  controlMeasure,
-  firstOrderLoss,
-  netEmissionRate,
-  outdoorAirACH,
-  probHospitalization,
-  pCondOneEventInfection,
-  quantaInhaledPerson,
-  ventilationRate,
-  volume,
-  probDeath,
-  ratioCarTravelRisk,
-  pAbsOneEventInfection,
-  pAbsMultipleEventInfection,
-} from "../Functions/Utils";
+import { calculateOutputs } from "../Functions/Utils";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
@@ -33,15 +17,17 @@ class Indoor extends React.Component {
       length: 25 * 0.305,
       width: 20 * 0.305,
       height: 10 * 0.305,
-      // info event
-      durationEvent: 50,
-      repetitionEvent: 180,
       roomACH: 10,
       perRecirculatedAir: 70,
       outdoorAirACH: 3,
       filterType: "No filter",
       filterEfficiency: 0,
       controlMeasure: 0,
+      numberPurifiers: 0,
+      CADRPurifier: 0,
+      // info event
+      durationEvent: 50,
+      repetitionEvent: 180,
       // info people
       activity: "Quite working, Seated",
       ageGroup: "16-20",
@@ -73,6 +59,7 @@ class Indoor extends React.Component {
       // OUTPUTS
       area: "",
       volume: "",
+      controlMeasurePurifiers: 0,
       firstOrderLoss: "",
       netEmissionRate: "",
       avgQuantaConcentration: "",
@@ -147,7 +134,6 @@ class Indoor extends React.Component {
     this.handleDroDowAge = this.handleDroDowAge.bind(this);
     this.handleDroDowMask = this.handleDroDowMask.bind(this);
     this.handleDroDowFilter = this.handleDroDowFilter.bind(this);
-    this.calculateOutputs = this.calculateOutputs.bind(this);
   }
 
   handleInputChange(evt) {
@@ -156,107 +142,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.calculateOutputs();
-  }
-
-  calculateOutputs() {
-    let data = this.state;
-    data.volume = volume(data.width, data.length, data.height);
-    data.area = area(data.width, data.length);
-    data.outdoorAirACH = outdoorAirACH(
-      data.roomACH,
-      data.perRecirculatedAir / 100
-    );
-    data.controlMeasure = controlMeasure(
-      data.roomACH,
-      data.perRecirculatedAir / 100,
-      data.filterEfficiency
-    );
-    data.firstOrderLoss = firstOrderLoss(
-      data.outdoorAirACH,
-      data.decayRateVirus,
-      data.controlMeasure,
-      data.depositionSurface
-    );
-    data.ventilationRate = ventilationRate(
-      data.volume,
-      data.outdoorAirACH,
-      data.controlMeasure,
-      data.people
-    );
-    data.susceptiblePeople =
-      (data.people - data.numberInfected) * (1 - data.fractionImmune / 100);
-    data.netEmissionRate = netEmissionRate(
-      data.quanta,
-      data.exhalationMaskEff,
-      data.perPeopleMask / 100,
-      data.numberInfected
-    );
-    data.avgQuantaConcentration = avgQuantaConcentration(
-      data.netEmissionRate,
-      data.firstOrderLoss,
-      data.volume,
-      data.durationEvent
-    );
-    data.quantaInhaledPerson = quantaInhaledPerson(
-      data.avgQuantaConcentration,
-      data.breathingRate,
-      data.durationEvent,
-      data.inhalationMaskEff,
-      data.perPeopleMask / 100
-    );
-    data.pCondOneEventInfection = pCondOneEventInfection(
-      data.quantaInhaledPerson
-    );
-    data.pCondOneEventHospitalization = probHospitalization(
-      data.pCondOneEventInfection,
-      data.percentageHospitalizationRate
-    );
-    data.pCondOneEventDeath = probDeath(
-      data.pCondOneEventInfection,
-      data.percentageDeathRate
-    );
-    data.pCondOneEventCarTravel = ratioCarTravelRisk(
-      data.pCondOneEventDeath,
-      1
-    );
-    data.pAbsOneEventInfection = pAbsOneEventInfection(
-      data.pCondOneEventInfection,
-      data.pBeingInfected,
-      data.susceptiblePeople
-    );
-    data.pAbsOneEventHospitalization = probHospitalization(
-      data.pAbsOneEventInfection,
-      data.percentageHospitalizationRate
-    );
-    data.pAbsOneEventDeath = probDeath(
-      data.pAbsOneEventInfection,
-      data.percentageDeathRate
-    );
-    data.pAbsOneEventCarTravel = ratioCarTravelRisk(data.pAbsOneEventDeath, 1);
-    data.pAbsMultipleEventInfection = pAbsMultipleEventInfection(
-      data.pAbsOneEventInfection,
-      data.repetitionEvent
-    );
-    data.pAbsMultipleEventHospitalization = probHospitalization(
-      data.pAbsMultipleEventInfection,
-      data.percentageHospitalizationRate
-    );
-    data.pAbsMultipleEventDeath = probDeath(
-      data.pAbsMultipleEventInfection,
-      data.percentageDeathRate
-    );
-    data.pAbsMultipleEventCarTravel = ratioCarTravelRisk(
-      data.pAbsMultipleEventDeath,
-      data.repetitionEvent
-    );
-    data.pCondOneEventInfection = data.pCondOneEventInfection.toFixed(2);
-    data.pAbsOneEventInfection = data.pAbsOneEventInfection.toFixed(2);
-    data.pAbsMultipleEventInfection = data.pAbsMultipleEventInfection.toFixed(
-      2
-    );
-
-    this.setState(data);
+    this.setState(calculateOutputs(this.state));
   }
 
   handleDroDowAct(activity) {
@@ -270,7 +156,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.calculateOutputs();
+    this.setState(calculateOutputs(this.state));
   }
 
   handleDroDowAge(ageGroup) {
@@ -283,7 +169,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.calculateOutputs();
+    this.setState(calculateOutputs(this.state));
   }
 
   handleDroDowFilter(filterType) {
@@ -331,7 +217,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.calculateOutputs();
+    this.setState(calculateOutputs(this.state));
   }
 
   handleDroDowMask(maskType) {
@@ -375,7 +261,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.calculateOutputs();
+    this.setState(calculateOutputs(this.state));
   }
 
   render() {
@@ -424,6 +310,18 @@ class Indoor extends React.Component {
                   data={this.state}
                   id={"perRecirculatedAir"}
                   label={"Percentage of air recirculated (%)"}
+                />
+                <InputField
+                  handleChange={this.handleInputChange}
+                  data={this.state}
+                  id={"numberPurifiers"}
+                  label={"Number of air purifiers"}
+                />
+                <InputField
+                  handleChange={this.handleInputChange}
+                  data={this.state}
+                  id={"CADRPurifier"}
+                  label={"CADR air purifiers (%)"}
                 />
               </div>
             </form>

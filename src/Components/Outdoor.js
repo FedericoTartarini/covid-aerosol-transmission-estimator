@@ -36,6 +36,7 @@ class Outdoor extends React.Component {
       decayRateVirus: 9.3, // todo write about this assumption
       depositionSurface: 0.3, // todo write about this assumption
       controlMeasure: 0, // todo write about this assumption
+      controlMeasurePurifiers: 0,
       // info people
       breathingRate: 1.1,
       quanta: 970,
@@ -113,7 +114,8 @@ class Outdoor extends React.Component {
       data.outdoorAirACH,
       data.decayRateVirus,
       data.controlMeasure,
-      data.depositionSurface
+      data.depositionSurface,
+      data.controlMeasurePurifiers
     );
     data.netEmissionRate = netEmissionRate(
       data.quanta,
@@ -142,8 +144,6 @@ class Outdoor extends React.Component {
       data.susceptiblePeople
     ).toFixed(2);
     data.pCondOneEventInfection = data.pCondOneEventInfection.toFixed(4);
-
-    console.log(data);
 
     this.setState(data);
   }
