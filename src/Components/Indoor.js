@@ -122,6 +122,7 @@ class Indoor extends React.Component {
 
     this.listFilters = [
       "No filter",
+      "Unknown",
       "MERV8",
       "MERV9",
       "MERV10",
@@ -249,10 +250,10 @@ class Indoor extends React.Component {
       data.pAbsMultipleEventDeath,
       data.repetitionEvent
     );
-    data.pCondOneEventInfection = data.pCondOneEventInfection.toFixed(4);
-    data.pAbsOneEventInfection = data.pAbsOneEventInfection.toFixed(4);
+    data.pCondOneEventInfection = data.pCondOneEventInfection.toFixed(2);
+    data.pAbsOneEventInfection = data.pAbsOneEventInfection.toFixed(2);
     data.pAbsMultipleEventInfection = data.pAbsMultipleEventInfection.toFixed(
-      4
+      2
     );
 
     this.setState(data);
@@ -291,6 +292,9 @@ class Indoor extends React.Component {
     switch (filterType) {
       case "No filter":
         tmp.filterEfficiency = 0;
+        break;
+      case "Unknown":
+        tmp.filterEfficiency = 0.2;
         break;
       case "MERV8":
         tmp.filterEfficiency = 0.2;
@@ -413,9 +417,7 @@ class Indoor extends React.Component {
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"roomACH"}
-                  label={
-                    "Air supplied to the room, in air changes per hour (h-1)"
-                  }
+                  label={"Air supplied to the room, ACH (h-1)"}
                 />
                 <InputField
                   handleChange={this.handleInputChange}

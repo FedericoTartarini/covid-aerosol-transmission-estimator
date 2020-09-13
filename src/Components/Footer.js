@@ -13,30 +13,30 @@ function Footer() {
         </span>
         <p className="text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
           © 2020
-          <a
-            href="https://www.linkedin.com/in/federico-tartarini"
-            className="ml-1"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Federico Tartarini,
-          </a>
-          <a
-            href="https://www.linkedin.com/in/asitk/"
-            className="ml-1"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Asit Mishra,
-          </a>
-          <a
-            href="https://twitter.com/jljcolorado"
-            className="ml-1"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Jose L. Jimenez
-          </a>
+          {/*  <a*/}
+          {/*    href="https://www.linkedin.com/in/federico-tartarini"*/}
+          {/*    className="ml-1"*/}
+          {/*    rel="noopener noreferrer"*/}
+          {/*    target="_blank"*/}
+          {/*  >*/}
+          {/*    Federico Tartarini,*/}
+          {/*  </a>*/}
+          {/*  <a*/}
+          {/*    href="https://www.linkedin.com/in/asitk/"*/}
+          {/*    className="ml-1"*/}
+          {/*    rel="noopener noreferrer"*/}
+          {/*    target="_blank"*/}
+          {/*  >*/}
+          {/*    Asit Mishra,*/}
+          {/*  </a>*/}
+          {/*  <a*/}
+          {/*    href="https://twitter.com/jljcolorado"*/}
+          {/*    className="ml-1"*/}
+          {/*    rel="noopener noreferrer"*/}
+          {/*    target="_blank"*/}
+          {/*  >*/}
+          {/*    Jose L. Jimenez*/}
+          {/*  </a>*/}
         </p>
         <span className="inline-flex  sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
           <a
@@ -46,7 +46,11 @@ function Footer() {
           >
             <FontAwesomeIcon icon={faLinkedin} size={"2x"} />
           </a>
-          <a className="ml-3" href="https://github.com" aria-label="GitHub">
+          <a
+            className="ml-3"
+            href="https://github.com/FedericoTartarini/covid-aerosol-transmission-estimator"
+            aria-label="GitHub"
+          >
             <FontAwesomeIcon icon={faGithub} size={"2x"} />
           </a>
         </span>

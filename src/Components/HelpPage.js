@@ -478,6 +478,14 @@ function HelpPage({ match }) {
                 </thead>
                 <tbody>
                   <tr className="font-medium">
+                    <td className="px-4 py-1">No filter</td>
+                    <td className="px-4 py-1">0</td>
+                  </tr>
+                  <tr className="font-medium">
+                    <td className="px-4 py-1">Unknown</td>
+                    <td className="px-4 py-1">20</td>
+                  </tr>
+                  <tr className="font-medium">
                     <td className="px-4 py-1">MERV8</td>
                     <td className="px-4 py-1">20</td>
                   </tr>

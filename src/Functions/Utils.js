@@ -102,11 +102,11 @@ export function probHospitalization(
   return (
     (pCondOneEventInfection * percentageHospitalizationRate) /
     100
-  ).toFixed(4);
+  ).toFixed(2);
 }
 
 export function probDeath(probInfection, percentageDeathRate) {
-  return ((probInfection * percentageDeathRate) / 100).toFixed(4);
+  return ((probInfection * percentageDeathRate) / 100).toFixed(2);
 }
 
 export function ratioCarTravelRisk(probDeath, repetitionEvents) {
