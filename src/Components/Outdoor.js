@@ -10,6 +10,9 @@ import { Helmet } from "react-helmet";
 import InputField from "./InputField";
 import DropDown from "./DropDown";
 import OutputField from "./OutputField";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 class Outdoor extends React.Component {
   constructor(props) {
@@ -18,7 +21,6 @@ class Outdoor extends React.Component {
       // INPUTS
       // info environment
       surfaceArea: 167.445,
-      height: 4.832,
       windSpeed: 5,
       // info event
       durationEvent: 150,
@@ -30,6 +32,7 @@ class Outdoor extends React.Component {
       susceptiblePeople: 60,
       // CALCULATED AND ESTIMATED inputs
       // info event
+      height: 4.832, // todo write about this assumption
       decayRateVirus: 9.3, // todo write about this assumption
       depositionSurface: 0.3, // todo write about this assumption
       controlMeasure: 0, // todo write about this assumption
@@ -181,7 +184,9 @@ class Outdoor extends React.Component {
         </Helmet>
         <section className="container mx-auto">
           <div className="lg:mx-12 my-4 lg:my-12">
-            <h1 className="title-font text-2xl mb-4 font-bold">Inputs</h1>
+            <h1 className="title-font text-2xl mb-4 font-bold">
+              Outdoor - Inputs
+            </h1>
             <form className="w-full">
               <h1 className="title-font mb-4 font-bold">
                 Information about the environment
@@ -191,13 +196,7 @@ class Outdoor extends React.Component {
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"surfaceArea"}
-                  label={"Surface Area (m2)"}
-                />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"height"}
-                  label={"Height (m)"}
+                  label={"Area of the activity space (m2)"}
                 />
                 <InputField
                   handleChange={this.handleInputChange}
@@ -205,8 +204,6 @@ class Outdoor extends React.Component {
                   id={"windSpeed"}
                   label={"Wind Speed (km/h)"}
                 />
-              </div>
-              <div className="flex items-end flex-wrap -mx-3 mb-2">
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
@@ -234,10 +231,17 @@ class Outdoor extends React.Component {
               </div>
             </form>
             <h1 className="title-font mb-4 mt-12 font-bold">
-              Information about peoples' activity in the room
+              Information about peoples' activity outdoors
             </h1>
             <div className="flex content-center my-4">
-              <p className="py-2 mr-2">Select an activity: </p>
+              <Link to={`/help/activity`}>
+                <p className="py-2 mr-2 uppercase tracking-wide text-xs font-bold">
+                  Select an activity:{" "}
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </p>
+              </Link>
               <DropDown
                 selected={this.state["activity"]}
                 listItems={this.listActivities}
@@ -246,7 +250,14 @@ class Outdoor extends React.Component {
               />
             </div>
             <div className="flex content-center my-4">
-              <p className="py-2 mr-2">Select age group: </p>
+              <Link to={`/help/ageGroup`}>
+                <p className="py-2 mr-2 uppercase tracking-wide text-xs font-bold">
+                  Select age group:{" "}
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </p>
+              </Link>
               <DropDown
                 selected={this.state["ageGroup"]}
                 listItems={this.ageGroups}

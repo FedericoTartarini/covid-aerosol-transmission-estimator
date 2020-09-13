@@ -14,13 +14,14 @@ import { lightTheme, darkTheme } from "./Functions/theme";
 import { GlobalStyles } from "./Functions/global";
 
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const themeToggler = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      {/* todo save user's theme selection in memory */}
       <GlobalStyles />
       <Router basename="/">
         <div className="relative pb-10 min-h-screen">

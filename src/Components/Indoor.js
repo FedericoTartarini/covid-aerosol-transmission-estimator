@@ -183,6 +183,8 @@ class Indoor extends React.Component {
       data.controlMeasure,
       data.people
     );
+    data.susceptiblePeople =
+      (data.people - data.numberInfected) * (1 - data.fractionImmune / 100);
     data.netEmissionRate = netEmissionRate(
       data.quanta,
       data.exhalationMaskEff,
@@ -376,15 +378,17 @@ class Indoor extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>Indoor space</title>
+          <title>Indoor room</title>
           <meta name="description" content="content" />
         </Helmet>
         <section className="container mx-auto">
           <div className="lg:mx-12 my-4 lg:my-12">
-            <h1 className="title-font text-2xl mb-4 font-bold">Inputs</h1>
+            <h1 className="title-font text-2xl mb-4 font-bold">
+              Indoor - Inputs
+            </h1>
             <form className="w-full">
               <h1 className="title-font mb-4 font-bold">
-                Information about the environment
+                Information about the room
               </h1>{" "}
               <div className="flex items-end flex-wrap -mx-3 mb-2">
                 <InputField
@@ -405,43 +409,26 @@ class Indoor extends React.Component {
                   id={"height"}
                   label={"Height (m)"}
                 />
-              </div>
-            </form>
-            <form className="w-full">
-              <h1 className="title-font mb-4 mt-12 font-bold">
-                Information about the event
-              </h1>
-              <div className="flex items-end flex-wrap -mx-3 mb-2">
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"durationEvent"}
-                  label={"Duration event (minutes)"}
-                />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"repetitionEvent"}
-                  label={"Repetition event (times)"}
-                />
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"roomACH"}
-                  label={"Air changes per hour (h-1)"}
+                  label={
+                    "Air supplied to the room, in air changes per hour (h-1)"
+                  }
                 />
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"perRecirculatedAir"}
-                  label={"Percentage recirculated air (%)"}
+                  label={"Percentage of air recirculated (%)"}
                 />
               </div>
             </form>
             <div className="flex content-center my-4">
               <Link to={`/help/filter`}>
-                <p className="py-2 mr-2">
-                  Select filter:{" "}
+                <p className="py-2 mr-2 uppercase tracking-wide text-xs font-bold">
+                  Select a filter for your air conditioning system:{" "}
                   <sup>
                     <FontAwesomeIcon icon={faQuestionCircle} />
                   </sup>
@@ -454,11 +441,37 @@ class Indoor extends React.Component {
                 width={"w-32"}
               />
             </div>
+            <form className="w-full">
+              <h1 className="title-font mb-4 mt-12 font-bold">
+                Information about the event
+              </h1>
+              <div className="flex items-end flex-wrap -mx-3 mb-2">
+                <InputField
+                  handleChange={this.handleInputChange}
+                  data={this.state}
+                  id={"durationEvent"}
+                  label={"Duration of the event (minutes)"}
+                />
+                <InputField
+                  handleChange={this.handleInputChange}
+                  data={this.state}
+                  id={"repetitionEvent"}
+                  label={"Repetitions of the event (times)"}
+                />
+              </div>
+            </form>
             <h1 className="title-font mb-4 mt-12 font-bold">
               Information about peoples' activity in the room
             </h1>
             <div className="flex content-center my-4">
-              <p className="py-2 mr-2">Select an activity: </p>
+              <Link to={`/help/activity`}>
+                <p className="py-2 mr-2 uppercase tracking-wide text-xs font-bold">
+                  Select an activity:{" "}
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </p>
+              </Link>
               <DropDown
                 selected={this.state["activity"]}
                 listItems={this.listActivities}
@@ -467,7 +480,14 @@ class Indoor extends React.Component {
               />
             </div>
             <div className="flex content-center my-4">
-              <p className="py-2 mr-2">Select age group: </p>
+              <Link to={`/help/ageGroup`}>
+                <p className="py-2 mr-2 uppercase tracking-wide text-xs font-bold">
+                  Select age group:{" "}
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </p>
+              </Link>
               <DropDown
                 selected={this.state["ageGroup"]}
                 listItems={this.ageGroups}
@@ -477,7 +497,7 @@ class Indoor extends React.Component {
             </div>
             <div className="flex content-center my-4">
               <Link to={`/help/mask`}>
-                <p className="py-2 mr-2">
+                <p className="py-2 mr-2 uppercase tracking-wide text-xs font-bold">
                   Select mask type:{" "}
                   <sup>
                     <FontAwesomeIcon icon={faQuestionCircle} />
@@ -504,6 +524,12 @@ class Indoor extends React.Component {
                   data={this.state}
                   id={"numberInfected"}
                   label={"Number people infected"}
+                />
+                <InputField
+                  handleChange={this.handleInputChange}
+                  data={this.state}
+                  id={"fractionImmune"}
+                  label={"Percentage people immune (%)"}
                 />
                 <InputField
                   handleChange={this.handleInputChange}
