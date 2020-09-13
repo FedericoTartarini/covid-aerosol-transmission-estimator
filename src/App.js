@@ -14,14 +14,27 @@ import { lightTheme, darkTheme } from "./Functions/theme";
 import { GlobalStyles } from "./Functions/global";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(getTheme);
   const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    let newTheme;
+    theme === "light" ? (newTheme = "dark") : (newTheme = "light");
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
+
+  function getTheme() {
+    const storedTheme = localStorage.getItem("theme");
+    console.log(storedTheme);
+
+    if (storedTheme) {
+      return storedTheme;
+    } else {
+      return "light";
+    }
+  }
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      {/* todo save user's theme selection in memory */}
       <GlobalStyles />
       <Router basename="/">
         <div className="relative pb-10 min-h-screen">
