@@ -311,6 +311,11 @@ class Indoor extends React.Component {
                   id={"perRecirculatedAir"}
                   label={"Percentage of air recirculated (%)"}
                 />
+              </div>{" "}
+              <h1 className="title-font mb-4 mt-12 font-bold">
+                Additional ventilation measures
+              </h1>{" "}
+              <div className="flex items-end flex-wrap -mx-3 mb-2">
                 <InputField
                   handleChange={this.handleInputChange}
                   data={this.state}
