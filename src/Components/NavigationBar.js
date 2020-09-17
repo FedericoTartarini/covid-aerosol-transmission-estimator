@@ -51,11 +51,6 @@ function NavigationBar({ themeToggler, theme }) {
               Outdoor
             </span>
           </Link>
-          <Link to="/learnMore">
-            <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
-              Learn More
-            </span>
-          </Link>
           <Link to="/about">
             <span className="nav-item block mt-4 lg:inline-block lg:mt-0 ml-4">
               About

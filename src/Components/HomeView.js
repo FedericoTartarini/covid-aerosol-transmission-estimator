@@ -15,8 +15,12 @@ function HomeView() {
             COVID-19 aerosol transmission estimator
           </h1>
           <p className="leading-relaxed">
-            This tool tries to estimate the propagation of COVID-19 by aerosol
-            transmission only.
+            This tool has been developed to provide an estimate of the
+            propagation of COVID-19 by aerosol transmission. This model does NOT
+            include droplet or contact transmission An inherent assumption is
+            that personal hygiene measures and safe-distancing measures are
+            being followed. If that is not the case, it is safe to assume that
+            there will be more infections than predicted by the tool.
           </p>
           <div className="flex my-8 justify-center font-semibold">
             <Link to="/indoor">
@@ -29,32 +33,33 @@ function HomeView() {
                 Outdoor Space
               </button>
             </Link>
-            <Link to="/learnMore">
+            <Link to="/about">
               <button className="ml-4 inline-flex border-0 py-2 px-6 focus:outline-none rounded text-lg">
-                Learn More
+                About
               </button>
             </Link>
           </div>
           <p className="mb-8 leading-relaxed">
-            The model is based on a standard model of aerosol disease
-            transmission, the Wells-Riley model. It is calibrated to COVID-19
-            per recent literature on quanta emission rate.
+            The current tool is based on{" "}
+            <a href="https://docs.google.com/spreadsheets/d/16K1OQkLD4BjgBdO8ePj6ytf-RpPMlJ6aXFg3PrIQBbQ/edit#gid=519189277">
+              the estimator
+            </a>{" "}
+            created by{" "}
+            <a href="https://www.colorado.edu/chemistry/jose-luis-jimenez">
+              Prof. J L Jimenez
+            </a>
+            . The model used in the tool is based on the Wells-Riley model. The
+            Wells-Riley model was calibrated further by Prof. Jimenez to
+            COVID-19, based on results from recent literature regarding
+            infectious quanta emitted by individuals.
           </p>
           <p className="mb-8 leading-relaxed">
-            This is NOT an epidemiological model, rather can take input from
-            such models for the average rate of infection for a given location
-            and time period. Or it could possibly be used as a sub-component of
-            an epi-model, to estimate aerosol transmission as a function of
-            various parameters.
-          </p>
-          <p className="mb-8 leading-relaxed">
-            This model does NOT include droplet or contact transmission, and
-            assumes that 6 ft / 2 m social distancing is respected. Otherwise
-            higher transmission will result.
-          </p>
-          <p className="mb-8 leading-relaxed">
-            This model does NOT include transmission to the people present, when
-            they are in locations other than the one analyzed here.
+            This is NOT an epidemiological model. It does take input from
+            epidemiological models for the estimated number of infected people
+            in a community, during a specific time period. The model also
+            focuses on the specific location being analysed and CANNOT be used
+            to estimate risks of the people before they came to the place or
+            after they leave.
           </p>
         </div>
       </div>

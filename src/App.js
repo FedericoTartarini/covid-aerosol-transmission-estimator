@@ -7,7 +7,6 @@ import NavigationBar from "./Components/NavigationBar";
 import Footer from "./Components/Footer";
 import AboutView from "./Components/AboutView";
 import HomeView from "./Components/HomeView";
-import LearnMoreView from "./Components/LearnMoreView";
 import HelpPage from "./Components/HelpPage";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Functions/theme";
@@ -46,9 +45,6 @@ function App() {
               </Route>
               <Route path="/about">
                 <AboutView />
-              </Route>
-              <Route path="/learnMore">
-                <LearnMoreView />
               </Route>
               <Route path="/indoor">
                 <Indoor />
