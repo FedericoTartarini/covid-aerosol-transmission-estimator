@@ -12,7 +12,7 @@ function HomeView() {
         />
         <div className="text-center lg:w-2/3 w-full">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium">
-            COVID-19 aerosol transmission estimator
+            COVID-19 aerosol infection risk estimator
           </h1>
           <p className="leading-relaxed">
             This tool has been developed to provide an estimate of the

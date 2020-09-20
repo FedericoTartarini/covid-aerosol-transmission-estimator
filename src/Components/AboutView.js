@@ -14,7 +14,7 @@ function AboutView() {
       <div className="container mx-auto flex flex-col px-5 py-8 justify-center items-center">
         <div className="w-full flex flex-col mb-16 items-center text-justify">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium">
-            COVID-19 aerosol transmission estimator
+            COVID-19 aerosol infection risk estimator
           </h1>
           <p className="mb-8 leading-relaxed">
             This estimator is designed to be a simple-to-use tool for experts as

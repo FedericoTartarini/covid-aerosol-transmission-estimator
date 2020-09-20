@@ -12,7 +12,7 @@ function NavigationBar({ themeToggler, theme }) {
       <div className="flex items-center flex-shrink-0 w-3/4 lg:w-1/2">
         <Link to="/">
           <span className="font-semibold text-xl tracking-tight">
-            COVID-19 aerosol transmission estimator
+            COVID-19 aerosol infection risk estimator
           </span>
         </Link>
       </div>
