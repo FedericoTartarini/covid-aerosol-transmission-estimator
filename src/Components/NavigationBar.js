@@ -11,9 +11,16 @@ function NavigationBar({ themeToggler, theme }) {
     <nav className="container mx-auto flex items-center justify-between flex-wrap p-4 border-b-2">
       <div className="flex items-center flex-shrink-0 w-3/4 lg:w-1/2">
         <Link to="/">
-          <span className="font-semibold text-xl tracking-tight">
-            COVID-19 aerosol infection risk estimator
-          </span>
+          <div className="flex items-center flex-shrink-0">
+            <img
+              src={require("../Static/Icons/logo.png")}
+              alt="Dengue Singapore logo"
+              className="w-12"
+            />
+            <span className="ml-2 font-semibold text-xl tracking-tight">
+              COVID-19 aerosol infection risk estimator
+            </span>
+          </div>
         </Link>
       </div>
 
