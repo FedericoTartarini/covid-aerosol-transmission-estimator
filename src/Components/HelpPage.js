@@ -75,7 +75,7 @@ function HelpPage({ match }) {
               infectious quanta. You may not find your exact activity level, in
               that case, try to choose something that closely resembles what
               your occupants would be doing. For example, office work could be
-              close to Quite working, Seated, while a small office meeting could
+              close to Quiet working, Seated, while a small office meeting could
               be Speaking, Seated, and a large, crowded meeting could require
               Speaking loudly, Seated.
             </p>

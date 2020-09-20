@@ -1,6 +1,6 @@
 {
   "6-10": {
-    "Quite working, Seated": {
+    "Quiet working, Seated": {
       "ActivityCode": 1,
       "Respiration.m3_min": 0.0048,
       "QuantaEmission": 0.9
@@ -15,7 +15,7 @@
       "Respiration.m3_min": 0.0048,
       "QuantaEmission": 25.7
     },
-    "Quite working, Standing": {
+    "Quiet working, Standing": {
       "ActivityCode": 4,
       "Respiration.m3_min": 0.011000000000000001,
       "QuantaEmission": 1.0
@@ -30,7 +30,7 @@
       "Respiration.m3_min": 0.011000000000000001,
       "QuantaEmission": 27.7
     },
-    "Quite, moderate activity": {
+    "Quiet, moderate activity": {
       "ActivityCode": 7,
       "Respiration.m3_min": 0.022000000000000002,
       "QuantaEmission": 2.4
@@ -45,7 +45,7 @@
       "Respiration.m3_min": 0.022000000000000002,
       "QuantaEmission": 72.4
     },
-    "Quite, heavy activity": {
+    "Quiet, heavy activity": {
       "ActivityCode": 10,
       "Respiration.m3_min": 0.042,
       "QuantaEmission": 5.7
@@ -82,7 +82,7 @@
     }
   },
   "11-15": {
-    "Quite working, Seated": {
+    "Quiet working, Seated": {
       "ActivityCode": 1,
       "Respiration.m3_min": 0.0054,
       "QuantaEmission": 1.5
@@ -97,7 +97,7 @@
       "Respiration.m3_min": 0.0054,
       "QuantaEmission": 45.3
     },
-    "Quite working, Standing": {
+    "Quiet working, Standing": {
       "ActivityCode": 4,
       "Respiration.m3_min": 0.013000000000000001,
       "QuantaEmission": 1.7
@@ -112,7 +112,7 @@
       "Respiration.m3_min": 0.013000000000000001,
       "QuantaEmission": 48.7
     },
-    "Quite, moderate activity": {
+    "Quiet, moderate activity": {
       "ActivityCode": 7,
       "Respiration.m3_min": 0.025,
       "QuantaEmission": 4.2
@@ -127,7 +127,7 @@
       "Respiration.m3_min": 0.025,
       "QuantaEmission": 127.2
     },
-    "Quite, heavy activity": {
+    "Quiet, heavy activity": {
       "ActivityCode": 10,
       "Respiration.m3_min": 0.049,
       "QuantaEmission": 10.1
@@ -164,7 +164,7 @@
     }
   },
   "16-20": {
-    "Quite working, Seated": {
+    "Quiet working, Seated": {
       "ActivityCode": 1,
       "Respiration.m3_min": 0.0053,
       "QuantaEmission": 2.0
@@ -179,7 +179,7 @@
       "Respiration.m3_min": 0.0053,
       "QuantaEmission": 60.5
     },
-    "Quite working, Standing": {
+    "Quiet working, Standing": {
       "ActivityCode": 4,
       "Respiration.m3_min": 0.012,
       "QuantaEmission": 2.3
@@ -194,7 +194,7 @@
       "Respiration.m3_min": 0.012,
       "QuantaEmission": 65.1
     },
-    "Quite, moderate activity": {
+    "Quiet, moderate activity": {
       "ActivityCode": 7,
       "Respiration.m3_min": 0.026000000000000002,
       "QuantaEmission": 5.6
@@ -209,7 +209,7 @@
       "Respiration.m3_min": 0.026000000000000002,
       "QuantaEmission": 170.0
     },
-    "Quite, heavy activity": {
+    "Quiet, heavy activity": {
       "ActivityCode": 10,
       "Respiration.m3_min": 0.049,
       "QuantaEmission": 13.5
@@ -246,7 +246,7 @@
     }
   },
   "21-30": {
-    "Quite working, Seated": {
+    "Quiet working, Seated": {
       "ActivityCode": 1,
       "Respiration.m3_min": 0.0042,
       "QuantaEmission": 2.0
@@ -261,7 +261,7 @@
       "Respiration.m3_min": 0.0042,
       "QuantaEmission": 60.5
     },
-    "Quite working, Standing": {
+    "Quiet working, Standing": {
       "ActivityCode": 4,
       "Respiration.m3_min": 0.012,
       "QuantaEmission": 2.3
@@ -276,7 +276,7 @@
       "Respiration.m3_min": 0.012,
       "QuantaEmission": 65.1
     },
-    "Quite, moderate activity": {
+    "Quiet, moderate activity": {
       "ActivityCode": 7,
       "Respiration.m3_min": 0.026000000000000002,
       "QuantaEmission": 5.6
@@ -291,7 +291,7 @@
       "Respiration.m3_min": 0.026000000000000002,
       "QuantaEmission": 170.0
     },
-    "Quite, heavy activity": {
+    "Quiet, heavy activity": {
       "ActivityCode": 10,
       "Respiration.m3_min": 0.05,
       "QuantaEmission": 13.5
@@ -328,7 +328,7 @@
     }
   },
   "31-40": {
-    "Quite working, Seated": {
+    "Quiet working, Seated": {
       "ActivityCode": 1,
       "Respiration.m3_min": 0.0043,
       "QuantaEmission": 2.0
@@ -343,7 +343,7 @@
       "Respiration.m3_min": 0.0043,
       "QuantaEmission": 60.5
     },
-    "Quite working, Standing": {
+    "Quiet working, Standing": {
       "ActivityCode": 4,
       "Respiration.m3_min": 0.012,
       "QuantaEmission": 2.3

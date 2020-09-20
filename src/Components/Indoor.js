@@ -29,7 +29,7 @@ class Indoor extends React.Component {
       durationEvent: 50,
       repetitionEvent: 180,
       // info people
-      activity: "Quite working, Seated",
+      activity: "Quiet working, Seated",
       ageGroup: "16-20",
       people: 10,
       numberInfected: 1,
@@ -79,16 +79,16 @@ class Indoor extends React.Component {
     };
 
     this.listActivities = [
-      "Quite working, Seated",
+      "Quiet working, Seated",
       "Speaking, Seated",
       "Speaking loudly, Seated",
-      "Quite working, Standing",
+      "Quiet working, Standing",
       "Speaking, Standing",
       "Speaking loudly, Standing",
-      "Quite, moderate activity",
+      "Quiet, moderate activity",
       "Speaking, moderate activity",
       "Speaking loudly, moderate activity",
-      "Quite, heavy activity",
+      "Quiet, heavy activity",
       "Speaking, heavy activity",
       "Speaking loudly, heavy activity",
       "Teaching, speaking",
