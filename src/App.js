@@ -4,13 +4,14 @@ import Outdoor from "./Components/Outdoor";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loader from "./Components/Loader";
 import NavigationBar from "./Components/NavigationBar";
-import Footer from "./Components/Footer";
-import AboutView from "./Components/AboutView";
-import HomeView from "./Components/HomeView";
-import HelpPage from "./Components/HelpPage";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Functions/theme";
 import { GlobalStyles } from "./Functions/global";
+
+const HomeView = React.lazy(() => import("./Components/HomeView"));
+const HelpPage = React.lazy(() => import("./Components/HelpPage"));
+const AboutView = React.lazy(() => import("./Components/AboutView"));
+const Footer = React.lazy(() => import("./Components/Footer"));
 
 function App() {
   const [theme, setTheme] = useState(getTheme);
@@ -54,10 +55,8 @@ function App() {
               </Route>
               <Route path="/help/:id" component={HelpPage} />
             </Switch>
-          </Suspense>
-          <div>
             <Footer />
-          </div>
+          </Suspense>
         </div>
       </Router>
     </ThemeProvider>
