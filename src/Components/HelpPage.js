@@ -100,6 +100,81 @@ function HelpPage({ match }) {
           </div>
         </div>
       );
+    } else if (id === "surfaceArea") {
+      return (
+        <div>
+          <h1 className="title-font sm:text-4xl text-3xl text-center mb-4 capitalize font-medium">
+            Surface Area
+          </h1>
+          <div className="mt-4">
+            <p className="mb-8 leading-relaxed">
+              When outdoors, we are in contact with earth's atmosphere. However,
+              mixing still has some limitations. We assume that outdoors, air up
+              to a height of about five meters can get mixed with air exhaled by
+              people. Thus, for outdoors calculations, we assume a virtual room
+              of height five meters and area as specified by you to understand
+              infection risks, as we do for indoors.
+            </p>
+          </div>
+        </div>
+      );
+    } else if (id === "effectiveness") {
+      return (
+        <div>
+          <h1 className="title-font sm:text-4xl text-3xl text-center mb-4 capitalize font-medium">
+            Total effective ventilation with outdoor air
+          </h1>
+          <div className="mt-4">
+            <p className="mb-8 leading-relaxed">
+              The calculations assume that outdoor air has no virus laden
+              particles and hence, bringing outdoor air into a room will dilute
+              such particles, reducing risks. In addition to actual outdoor air
+              being brought in, portable air purifiers and a good filter in your
+              air conditioning system also help by filtering out these
+              particles. Taking all three measures together, we present in this
+              output a qualitative rating of the amount of effective outdoor air
+              ventilation your room receives.
+              <div className="flex mx-auto justify-center py-3">
+                <table className="table-auto text-center">
+                  <thead>
+                    <tr>
+                      <th className="border-t border-b px-4 py-1">
+                        Classification
+                      </th>
+                      <th className="border-t border-b px-4 py-1">
+                        Air changes per hour
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="font-medium">
+                      <td className="px-4 py-1 text-red-600">Bad</td>
+                      <td className="px-4 py-1">Less than 3</td>
+                    </tr>
+                    <tr className="font-medium">
+                      <td className="px-4 py-1 text-orange-600">Low</td>
+                      <td className="px-4 py-1">3 - 4</td>
+                    </tr>
+                    <tr className="font-medium">
+                      <td className="px-4 py-1 text-yellow-600">Moderate</td>
+                      <td className="px-4 py-1">4 - 5</td>
+                    </tr>
+                    <tr className="font-medium">
+                      {" "}
+                      <td className="px-4 py-1 text-blue-600">Good</td>
+                      <td className="px-4 py-1">5 - 6</td>
+                    </tr>
+                    <tr className="font-medium">
+                      <td className="px-4 py-1 text-green-600">Ideal</td>
+                      <td className="px-4 py-1">More than 6</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </p>
+          </div>
+        </div>
+      );
     } else if (id === "infoCovid") {
       return (
         <div>
