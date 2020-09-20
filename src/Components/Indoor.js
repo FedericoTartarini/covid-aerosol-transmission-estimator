@@ -129,8 +129,8 @@ class Indoor extends React.Component {
       pressure: 0.95,
       co2Outdoors: 415,
       // info event
-      decayRateVirus: 0.62, // todo write about this assumption
-      depositionSurface: 0.3, // todo write about this assumption
+      decayRateVirus: 0.62,
+      depositionSurface: 0.3,
       // info people
       susceptiblePeople: 9,
       co2EmissionRate: 0.005,

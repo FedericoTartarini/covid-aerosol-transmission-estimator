@@ -80,7 +80,6 @@ test("prob absolute multiple event infection", () => {
   );
 });
 
-// todo check the following tests
 test("prob conditional one event hospitalization", () => {
   expect(Number(probHospitalization(99.93708, 40))).toBe(39.974832);
 });
@@ -108,8 +107,8 @@ test("full scenario", () => {
     roomACH: 10,
     perRecirculatedAir: 70,
     outdoorAirACH: 3,
-    decayRateVirus: 0.62, // todo write about this assumption
-    depositionSurface: 0.3, // todo write about this assumption
+    decayRateVirus: 0.62,
+    depositionSurface: 0.3,
     filterType: "No filter",
     filterEfficiency: 0,
     numberPurifiers: 0,
@@ -168,8 +167,8 @@ test("full scenario", () => {
     roomACH: 10,
     perRecirculatedAir: 90,
     outdoorAirACH: 3,
-    decayRateVirus: 0.62, // todo write about this assumption
-    depositionSurface: 0.3, // todo write about this assumption
+    decayRateVirus: 0.62,
+    depositionSurface: 0.3,
     filterType: "No filter",
     filterEfficiency: 0,
     numberPurifiers: 0,

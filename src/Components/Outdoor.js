@@ -64,6 +64,7 @@ class Outdoor extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleDroDowAct = this.handleDroDowAct.bind(this);
     this.handleDroDowAge = this.handleDroDowAge.bind(this);
+    this.handleDroDowMask = this.handleDroDowMask.bind(this);
   }
 
   calculateOutputsSaveState() {
@@ -96,10 +97,10 @@ class Outdoor extends React.Component {
       perPeopleMask: 0,
       // CALCULATED AND ESTIMATED inputs
       // info event
-      height: 4.832, // todo write about this assumption
-      decayRateVirus: 9.3, // todo write about this assumption
-      depositionSurface: 0.3, // todo write about this assumption
-      controlMeasure: 0, // todo write about this assumption
+      height: 4.832,
+      decayRateVirus: 9.3,
+      depositionSurface: 0.3,
+      controlMeasure: 0,
       controlMeasurePurifiers: 0,
       // info people
       breathingRate: 1.1,
@@ -235,6 +236,50 @@ class Outdoor extends React.Component {
     this.calculateOutputsSaveState();
   }
 
+  handleDroDowMask(maskType) {
+    let tmp = this.state;
+
+    switch (maskType) {
+      case "No mask":
+        tmp.exhalationMaskEff = 0;
+        tmp.inhalationMaskEff = 0;
+        break;
+      case "Mixed (if unsure)":
+        tmp.exhalationMaskEff = 0.5;
+        tmp.inhalationMaskEff = 0.3;
+        break;
+      case "Surgical mask":
+        tmp.exhalationMaskEff = 0.65;
+        tmp.inhalationMaskEff = 0.5;
+        break;
+      case "Cloth mask":
+        tmp.exhalationMaskEff = 0.5;
+        tmp.inhalationMaskEff = 0.3;
+        break;
+      case "N95":
+        tmp.exhalationMaskEff = 0.85;
+        tmp.inhalationMaskEff = 0.85;
+        break;
+      case "N95 - valved":
+        tmp.exhalationMaskEff = 0;
+        tmp.inhalationMaskEff = 0.85;
+        break;
+      case "Face shields":
+        tmp.exhalationMaskEff = 0.23;
+        tmp.inhalationMaskEff = 0.23;
+        break;
+      default:
+        tmp.exhalationMaskEff = 0.5;
+        tmp.inhalationMaskEff = 0.3;
+    }
+
+    tmp.maskType = maskType;
+
+    this.setState(tmp);
+
+    this.calculateOutputsSaveState();
+  }
+
   render() {
     return (
       <div>
@@ -282,12 +327,6 @@ class Outdoor extends React.Component {
                   id={"durationEvent"}
                   label={"Duration event (minutes)"}
                 />
-                <InputField
-                  handleChange={this.handleInputChange}
-                  data={this.state}
-                  id={"perPeopleMask"}
-                  label={"Percentage people with mask (%)"}
-                />
               </div>
             </form>
             <h1 className="title-font mb-4 mt-12 font-bold">
@@ -323,6 +362,30 @@ class Outdoor extends React.Component {
                 listItems={this.ageGroups}
                 setValue={this.handleDroDowAge}
                 width={"w-24"}
+              />
+            </div>
+            <div className="flex content-center my-4">
+              <Link to={`/help/mask`}>
+                <p className="py-2 mr-2 uppercase tracking-wide text-xs font-bold">
+                  Select mask type:{" "}
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </p>
+              </Link>
+              <DropDown
+                selected={this.state["maskType"]}
+                listItems={this.maskTypes}
+                setValue={this.handleDroDowMask}
+                width={"w-34"}
+              />
+            </div>
+            <div className="flex items-end flex-wrap -mx-3 mb-2">
+              <InputField
+                handleChange={this.handleInputChange}
+                data={this.state}
+                id={"perPeopleMask"}
+                label={"Percentage people with mask (%)"}
               />
             </div>
             <h1 className="title-font mb-4 mt-12 font-bold">

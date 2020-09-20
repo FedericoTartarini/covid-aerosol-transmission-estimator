@@ -4,7 +4,6 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function InputField({ handleChange, data, id, label }) {
-  // todo limit input with upper and lower boundary
   return (
     <div className="w-1/3 px-3 my-1">
       <Link to={`/help/${id}`}>
