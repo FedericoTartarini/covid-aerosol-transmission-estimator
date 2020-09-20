@@ -3,8 +3,12 @@ import {
   avgQuantaConcentration,
   firstOrderLoss,
   netEmissionRate,
+  pAbsOneEventInfection,
   pCondOneEventInfection,
+  probDeath,
+  probHospitalization,
   quantaInhaledPerson,
+  ratioCarTravelRisk,
 } from "../Functions/Utils";
 import { Helmet } from "react-helmet";
 import InputField from "./InputField";
@@ -103,6 +107,10 @@ class Outdoor extends React.Component {
       maskType: "No mask",
       exhalationMaskEff: 0,
       inhalationMaskEff: 0,
+      // covid parameters
+      pBeingInfected: 0.2,
+      percentageHospitalizationRate: 20,
+      percentageDeathRate: 1,
       // OUTPUTS
       volume: "",
       firstOrderLoss: "",
@@ -111,6 +119,10 @@ class Outdoor extends React.Component {
       quantaInhaledPerson: "",
       pCondOneEventInfection: "",
       casesArising: "",
+      pAbsOneEventInfection: "",
+      pAbsOneEventHospitalization: "",
+      pAbsOneEventDeath: "",
+      pAbsOneEventCarTravel: "",
     };
 
     if (state) {
@@ -171,7 +183,27 @@ class Outdoor extends React.Component {
       (data.pCondOneEventInfection / 100) *
       data.susceptiblePeople
     ).toFixed(2);
+    data.pAbsOneEventInfection = pAbsOneEventInfection(
+      data.pCondOneEventInfection,
+      data.pBeingInfected,
+      data.susceptiblePeople
+    );
+    data.pAbsOneEventHospitalization = probHospitalization(
+      data.pAbsOneEventInfection,
+      data.percentageHospitalizationRate
+    );
+    data.pAbsOneEventDeath = probDeath(
+      data.pAbsOneEventInfection,
+      data.percentageDeathRate
+    );
+    data.pAbsOneEventCarTravel = ratioCarTravelRisk(data.pAbsOneEventDeath, 1);
+
     data.pCondOneEventInfection = data.pCondOneEventInfection.toFixed(4);
+    data.pAbsOneEventInfection = data.pAbsOneEventInfection.toFixed(2);
+    data.pAbsOneEventHospitalization = data.pAbsOneEventHospitalization.toFixed(
+      2
+    );
+    data.pAbsOneEventDeath = data.pAbsOneEventDeath.toFixed(2);
 
     return data;
   }
@@ -293,23 +325,61 @@ class Outdoor extends React.Component {
                 width={"w-24"}
               />
             </div>
+            <h1 className="title-font mb-4 mt-12 font-bold">
+              Parameters related to COVID-19
+            </h1>
+            <div className="flex items-end flex-wrap -mx-3 mb-2">
+              <InputField
+                handleChange={this.handleInputChange}
+                data={this.state}
+                id={"pBeingInfected"}
+                label={"Probability being infected (%)"}
+              />
+              <InputField
+                handleChange={this.handleInputChange}
+                data={this.state}
+                id={"percentageHospitalizationRate"}
+                label={"Hospitalization rate (%)"}
+              />
+              <InputField
+                handleChange={this.handleInputChange}
+                data={this.state}
+                id={"percentageDeathRate"}
+                label={"Death rate (%)"}
+              />
+            </div>
             <div>
               <h1 className="title-font text-2xl mb-4 mt-12 font-bold">
                 Outputs
               </h1>
-              <h1 className="title-font mb-4 mt-4 font-bold">
-                Conditional results for a person attending one event
-              </h1>
+              <Link to={"/help/absoluteOneEventResults"}>
+                <h1 className="title-font mb-4 mt-4 font-bold">
+                  Absolute results for a person attending one event{" "}
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </h1>
+              </Link>
               <div className="flex items-end flex-wrap -mx-3 mb-2">
                 <OutputField
-                  id="pCondOneEventInfection"
+                  id="pAbsOneEventInfection"
                   label={"Probability of infection (%)"}
-                  value={this.state.pCondOneEventInfection}
+                  value={this.state.pAbsOneEventInfection}
                 />
                 <OutputField
-                  id="casesArising"
-                  label={"Number of COVID cases arising"}
-                  value={this.state.casesArising}
+                  id="pAbsOneEventHospitalization"
+                  label={"Probability of hospitalization (%)"}
+                  value={this.state.pAbsOneEventHospitalization}
+                />
+                <OutputField
+                  id="pAbsOneEventDeath"
+                  label={"Probability of death (%)"}
+                  value={this.state.pAbsOneEventDeath}
+                />
+                <OutputField
+                  id="pAbsOneEventCarTravel"
+                  label={"Ratio to risk of car travel death (times higher)"}
+                  value={this.state.pAbsOneEventCarTravel}
                 />
               </div>
             </div>
