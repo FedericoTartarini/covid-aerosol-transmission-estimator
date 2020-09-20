@@ -12,15 +12,15 @@ function AboutView() {
         />
       </Helmet>
       <div className="container mx-auto flex flex-col px-5 py-8 justify-center items-center">
-        <div className="w-full flex flex-col mb-16 items-center text-justify">
+        <div className="max-w-lg flex flex-col mb-16 items-center text-justify">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium">
             COVID-19 aerosol infection risk estimator
           </h1>
           <p className="mb-8 leading-relaxed">
             This estimator is designed to be a simple-to-use tool for experts as
             well as technical minded persons for understanding the relative risk
-            of contracting Covi-19. As described in the home-page, the focus is
-            kept on aerosolized transmission while assuming safe-distancing and
+            of contracting COVID-19. As described in the home-page, the focus is
+            kept on aerosols transmission while assuming safe-distancing and
             personal hygiene measures are being followed.
           </p>
           <h1 className="title-font text-2xl text-center mb-4 capitalize font-medium">
@@ -87,7 +87,7 @@ function AboutView() {
             risk of taking your car out for a drive and meting a fatal accident.
           </p>
           <p className="mb-8 leading-relaxed">
-            To keep abreast of the latest developments related to aerosolized
+            To keep abreast of the latest developments related to aerosols
             transmission of SARS-CoV-2, we advise you to keep track of this
             excellent{" "}
             <a href="https://docs.google.com/document/d/1fB5pysccOHvxphpTmCG_TGdytavMmc1cUumn8m0pwzo/edit">
