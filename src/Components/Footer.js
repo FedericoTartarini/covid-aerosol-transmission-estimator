@@ -8,7 +8,7 @@ function Footer() {
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <span className="flex title-font font-medium items-center md:justify-start justify-center">
           <div>
-            <p className="text-xs ml-3">v 0.0.3</p>
+            <p className="text-xs ml-3">v 0.0.4</p>
           </div>
         </span>
         <div className="flex flex-col">
