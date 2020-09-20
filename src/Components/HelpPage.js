@@ -100,6 +100,48 @@ function HelpPage({ match }) {
           </div>
         </div>
       );
+    } else if (id === "infoCovid") {
+      return (
+        <div>
+          <h1 className="title-font sm:text-4xl text-3xl text-center mb-4 capitalize font-medium">
+            Virus decay rate and deposition on surfaces
+          </h1>
+          <div className="mt-4">
+            <h1 className="title-font text-2xl text-center mb-4 capitalize font-medium">
+              Decay rate
+            </h1>
+            <p className="mb-8 leading-relaxed">
+              Viruses, when outside their hosts, will gradually get inactivated.
+              Several environmental parameters like temperature, humidity, UV
+              index, determine this rate of inactivation or decay. For
+              SARS-CoV-2, this parameter is not yet clearly known. This tool,
+              based on Prof. Jimenez's work, uses a relatively conservative
+              estimate which results in an additional loss rate of 0.63 per
+              hour. For an estimate based on prevalent temperature, humidity and
+              UV index, you can check the following{" "}
+              <a href="https://www.dhs.gov/science-and-technology/sars-airborne-calculator">
+                tool by DHS
+              </a>
+              .
+            </p>
+            <h1 className="title-font text-2xl text-center mb-4 capitalize font-medium">
+              Deposition on surfaces
+            </h1>
+            <p className="mb-8 leading-relaxed">
+              Cells of SARS-CoV-2 are contained within infective particles,
+              exhaled by an infectious person. However, these particles will,
+              gradually, settle down on floor/ground. This settling of particles
+              thus leads to a further loss rate which we have approximated at
+              0.3 per hour. For an example of settling rate of differently sized
+              particles indoors, you may have a look{" "}
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S1352231002001577">
+                at this work
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      );
     } else if (id === "activity") {
       return (
         <div>

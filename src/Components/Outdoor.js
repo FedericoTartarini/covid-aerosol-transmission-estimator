@@ -388,9 +388,14 @@ class Outdoor extends React.Component {
                 label={"Percentage people with mask (%)"}
               />
             </div>
-            <h1 className="title-font mb-4 mt-12 font-bold">
-              Parameters related to COVID-19
-            </h1>
+            <Link to={"/help/infoCovid"}>
+              <h1 className="title-font mb-4 mt-4 font-bold">
+                Parameters related to COVID-19{" "}
+                <sup>
+                  <FontAwesomeIcon icon={faQuestionCircle} />
+                </sup>
+              </h1>
+            </Link>
             <div className="flex items-end flex-wrap -mx-3 mb-2">
               <InputField
                 handleChange={this.handleInputChange}
