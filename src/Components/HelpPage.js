@@ -60,6 +60,46 @@ function HelpPage({ match }) {
           </div>
         </div>
       );
+    } else if (id === "CADRPurifier") {
+      return (
+        <div>
+          <h1 className="title-font sm:text-4xl text-3xl text-center mb-4 capitalize font-medium">
+            CADR of air purifiers (m<sup>3</sup>/h)
+          </h1>
+          <div className="mt-4">
+            <p className="mb-8 leading-relaxed">
+              CADR stands for clean air delivery rate. This varies with each
+              brand and make of air purifier. What this depends on how good a
+              filter the purifier has and how much air it can push through this
+              filter. Manufacturers provide CADR for their products for
+              different particle ranges. Use the rating given for smoke or dust.
+              If the value is given CFM (cubic feets per minute), you can
+              convert it to CMH by multiplying it by 1.7 (approx).
+            </p>
+          </div>
+        </div>
+      );
+    } else if (id === "numberPurifiers") {
+      return (
+        <div>
+          <h1 className="title-font sm:text-4xl text-3xl text-center mb-4 capitalize font-medium">
+            Number of air purifiers
+          </h1>
+          <div className="mt-4">
+            <p className="mb-8 leading-relaxed">
+              This refers to the number of portable air purifiers you may have
+              located in a room. Portable air purifiers help by locally cleaning
+              the air and good ones - ones with HEPA filters - can filter out
+              virus laden particles from the volume of air they process It is
+              advisable to position the air purifier towards the middle of the
+              occupied portion of a room. And make sure that they are not
+              directly blowing air across the occupants. Avoid air purifiers
+              with extra add-ons like UV light, ionizers, etc. Just one with a
+              good filter is a very sensible choice.
+            </p>
+          </div>
+        </div>
+      );
     } else if (id === "activity") {
       return (
         <div>
