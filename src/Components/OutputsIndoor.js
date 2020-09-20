@@ -8,32 +8,6 @@ function OutputsIndoor({ data }) {
   return (
     <div>
       <h1 className="title-font text-2xl mb-4 mt-12 font-bold">Outputs</h1>
-      <Link to={"/help/conditionalResults"}>
-        <h1 className="title-font mb-4 mt-4 font-bold">
-          Conditional results for a person attending one event{" "}
-          <sup>
-            <FontAwesomeIcon icon={faQuestionCircle} />
-          </sup>
-        </h1>
-      </Link>
-      <div className="flex items-end flex-wrap -mx-3 mb-2">
-        <OutputField
-          label={"Probability of infection (%)"}
-          value={data.pCondOneEventInfection}
-        />
-        <OutputField
-          label={"Probability of hospitalization (%)"}
-          value={data.pCondOneEventHospitalization}
-        />
-        <OutputField
-          label={"Probability of death (%)"}
-          value={data.pCondOneEventDeath}
-        />
-        <OutputField
-          label={"Ratio to risk of car travel death (times higher)"}
-          value={data.pCondOneEventCarTravel}
-        />
-      </div>
       <Link to={"/help/absoluteOneEventResults"}>
         <h1 className="title-font mb-4 mt-4 font-bold">
           Absolute results for a person attending one event{" "}
