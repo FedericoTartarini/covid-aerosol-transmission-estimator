@@ -1,3 +1,38 @@
+import React from "react";
+
+export function RateControlMeasures({ value }) {
+  let color;
+  let label;
+
+  if (value < 3) {
+    color = "bg-red-600";
+    label = "Bad";
+  } else if (value < 4) {
+    color = "bg-orange-600";
+    label = "Low";
+  } else if (value < 5) {
+    color = "bg-yellow-600 text-black";
+    label = "Moderate";
+  } else if (value < 6) {
+    color = "bg-blue-600";
+    label = "Good";
+  } else {
+    color = "bg-green-500";
+    label = "Ideal";
+  }
+
+  return (
+    <p
+      className={
+        "flex-none h-10 w-24 ml-2 rounded text-center py-2 leading-tight font-semibold " +
+        color
+      }
+    >
+      {label}
+    </p>
+  );
+}
+
 export function volume(width, length, height) {
   return width * length * height;
 }

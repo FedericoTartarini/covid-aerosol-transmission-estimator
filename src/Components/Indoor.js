@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import InputField from "./InputField";
 import DropDown from "./DropDown";
 import OutputsIndoor from "./OutputsIndoor";
-import { calculateOutputs } from "../Functions/Utils";
+import { calculateOutputs, RateControlMeasures } from "../Functions/Utils";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
@@ -372,6 +372,17 @@ class Indoor extends React.Component {
                 setValue={this.handleDroDowFilter}
                 width={"w-32"}
               />
+            </div>
+            <div className="flex items-center w-full my-1">
+              <Link to={`/help/effectiveness`}>
+                <p className="flex-1 uppercase tracking-wide text-xs font-bold">
+                  Effectiveness control measures
+                  <sup>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </sup>
+                </p>
+              </Link>
+              <RateControlMeasures value={this.state.controlMeasure} />
             </div>
             <form className="w-full">
               <h1 className="title-font mb-4 mt-12 font-bold">
