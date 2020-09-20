@@ -7,11 +7,94 @@ import { calculateOutputs } from "../Functions/Utils";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import { reactLocalStorage } from "reactjs-localstorage";
 
 class Indoor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.getSavedInputsIndoor();
+
+    this.listActivities = [
+      "Quiet working, Seated",
+      "Speaking, Seated",
+      "Speaking loudly, Seated",
+      "Quiet working, Standing",
+      "Speaking, Standing",
+      "Speaking loudly, Standing",
+      "Quiet, moderate activity",
+      "Speaking, moderate activity",
+      "Speaking loudly, moderate activity",
+      "Quiet, heavy activity",
+      "Speaking, heavy activity",
+      "Speaking loudly, heavy activity",
+      "Teaching, speaking",
+      "Teaching, speaking loudly",
+      "Student, speaking",
+      "Student, speaking loudly",
+    ];
+
+    this.maskTypes = [
+      "No mask",
+      "Mixed (if unsure)",
+      "Surgical mask",
+      "Cloth mask",
+      "N95",
+      "N95 - valved",
+      "Face shields",
+    ];
+
+    this.listFilters = [
+      "No filter",
+      "Unknown",
+      "MERV8",
+      "MERV9",
+      "MERV10",
+      "MERV11",
+      "MERV12",
+      "MERV13",
+      "MERV14",
+      "MERV15",
+      "MERV16",
+    ];
+
+    this.quanta_resp_data = require("../Data/quanta_resp_data.json");
+
+    let arrayAge = [];
+    Object.keys(this.quanta_resp_data).forEach(function (key) {
+      arrayAge.push(key);
+    });
+    this.ageGroups = arrayAge;
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleDroDowAct = this.handleDroDowAct.bind(this);
+    this.handleDroDowAge = this.handleDroDowAge.bind(this);
+    this.handleDroDowMask = this.handleDroDowMask.bind(this);
+    this.handleDroDowFilter = this.handleDroDowFilter.bind(this);
+  }
+
+  handleInputChange(evt) {
+    let tmp = this.state;
+    tmp[evt.target.name] = evt.target.value;
+
+    this.setState(tmp);
+
+    this.calculateOutputsSaveState();
+  }
+
+  calculateOutputsSaveState() {
+    const updatedState = calculateOutputs(this.state);
+
+    reactLocalStorage.setObject("stateIndoor", updatedState);
+
+    this.setState(updatedState);
+  }
+
+  getSavedInputsIndoor() {
+    const state = reactLocalStorage.getObject("stateIndoor");
+
+    console.log("stateIndoor", state);
+
+    const defaultInput = {
       // INPUTS
       // info environment
       length: 25 * 0.305,
@@ -78,71 +161,15 @@ class Indoor extends React.Component {
       pAbsMultipleEventCarTravel: "",
     };
 
-    this.listActivities = [
-      "Quiet working, Seated",
-      "Speaking, Seated",
-      "Speaking loudly, Seated",
-      "Quiet working, Standing",
-      "Speaking, Standing",
-      "Speaking loudly, Standing",
-      "Quiet, moderate activity",
-      "Speaking, moderate activity",
-      "Speaking loudly, moderate activity",
-      "Quiet, heavy activity",
-      "Speaking, heavy activity",
-      "Speaking loudly, heavy activity",
-      "Teaching, speaking",
-      "Teaching, speaking loudly",
-      "Student, speaking",
-      "Student, speaking loudly",
-    ];
-
-    this.maskTypes = [
-      "No mask",
-      "Mixed (if unsure)",
-      "Surgical mask",
-      "Cloth mask",
-      "N95",
-      "N95 - valved",
-      "Face shields",
-    ];
-
-    this.listFilters = [
-      "No filter",
-      "Unknown",
-      "MERV8",
-      "MERV9",
-      "MERV10",
-      "MERV11",
-      "MERV12",
-      "MERV13",
-      "MERV14",
-      "MERV15",
-      "MERV16",
-    ];
-
-    this.quanta_resp_data = require("../Data/quanta_resp_data.json");
-
-    let arrayAge = [];
-    Object.keys(this.quanta_resp_data).forEach(function (key) {
-      arrayAge.push(key);
-    });
-    this.ageGroups = arrayAge;
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleDroDowAct = this.handleDroDowAct.bind(this);
-    this.handleDroDowAge = this.handleDroDowAge.bind(this);
-    this.handleDroDowMask = this.handleDroDowMask.bind(this);
-    this.handleDroDowFilter = this.handleDroDowFilter.bind(this);
-  }
-
-  handleInputChange(evt) {
-    let tmp = this.state;
-    tmp[evt.target.name] = evt.target.value;
-
-    this.setState(tmp);
-
-    this.setState(calculateOutputs(this.state));
+    if (state) {
+      if (Object.keys(state).length !== 0 && state.constructor === Object) {
+        return state;
+      } else {
+        return defaultInput;
+      }
+    } else {
+      return defaultInput;
+    }
   }
 
   handleDroDowAct(activity) {
@@ -156,7 +183,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.setState(calculateOutputs(this.state));
+    this.calculateOutputsSaveState();
   }
 
   handleDroDowAge(ageGroup) {
@@ -169,7 +196,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.setState(calculateOutputs(this.state));
+    this.calculateOutputsSaveState();
   }
 
   handleDroDowFilter(filterType) {
@@ -217,7 +244,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.setState(calculateOutputs(this.state));
+    this.calculateOutputsSaveState();
   }
 
   handleDroDowMask(maskType) {
@@ -261,7 +288,7 @@ class Indoor extends React.Component {
 
     this.setState(tmp);
 
-    this.setState(calculateOutputs(this.state));
+    this.calculateOutputsSaveState();
   }
 
   render() {

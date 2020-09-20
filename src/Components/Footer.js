@@ -28,7 +28,7 @@ function Footer() {
               rel="noopener noreferrer"
               target="_blank"
             >
-              Asit Mishra,
+              Asit Mishra.
             </a>
           </p>
           <span className="flex-1 text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">

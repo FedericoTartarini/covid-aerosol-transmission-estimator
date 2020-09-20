@@ -13,45 +13,12 @@ import OutputField from "./OutputField";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import { reactLocalStorage } from "reactjs-localstorage";
 
 class Outdoor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // INPUTS
-      // info environment
-      surfaceArea: 167.445,
-      windSpeed: 5,
-      // info event
-      durationEvent: 150,
-      // info people
-      activity: "Speaking loudly, moderate activity",
-      ageGroup: "61-70",
-      perPeopleMask: 0,
-      numberInfected: 1,
-      susceptiblePeople: 60,
-      // CALCULATED AND ESTIMATED inputs
-      // info event
-      height: 4.832, // todo write about this assumption
-      decayRateVirus: 9.3, // todo write about this assumption
-      depositionSurface: 0.3, // todo write about this assumption
-      controlMeasure: 0, // todo write about this assumption
-      controlMeasurePurifiers: 0,
-      // info people
-      breathingRate: 1.1,
-      quanta: 970,
-      maskType: "No mask",
-      exhalationMaskEff: 0,
-      inhalationMaskEff: 0,
-      // OUTPUTS
-      volume: "",
-      firstOrderLoss: "",
-      netEmissionRate: "",
-      avgQuantaConcentration: "",
-      quantaInhaledPerson: "",
-      pCondOneEventInfection: "",
-      casesArising: "",
-    };
+    this.state = this.getSavedInputsOutdoor();
 
     this.listActivities = [
       "Quiet working, Seated",
@@ -93,7 +60,68 @@ class Outdoor extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleDroDowAct = this.handleDroDowAct.bind(this);
     this.handleDroDowAge = this.handleDroDowAge.bind(this);
-    this.calculateOutputs = this.calculateOutputs.bind(this);
+  }
+
+  calculateOutputsSaveState() {
+    const updatedState = this.calculateOutputsOutdoor(this.state);
+
+    console.log(updatedState);
+
+    reactLocalStorage.setObject("stateOutdoor", updatedState);
+
+    this.setState(updatedState);
+  }
+
+  getSavedInputsOutdoor() {
+    const state = reactLocalStorage.getObject("stateOutdoor");
+
+    console.log(state);
+
+    const defaultInput = {
+      // INPUTS
+      // info environment
+      surfaceArea: 167.445,
+      windSpeed: 5,
+      // info event
+      durationEvent: 150,
+      // info people
+      activity: "Speaking loudly, moderate activity",
+      numberInfected: 1,
+      susceptiblePeople: 60,
+      ageGroup: "61-70",
+      perPeopleMask: 0,
+      // CALCULATED AND ESTIMATED inputs
+      // info event
+      height: 4.832, // todo write about this assumption
+      decayRateVirus: 9.3, // todo write about this assumption
+      depositionSurface: 0.3, // todo write about this assumption
+      controlMeasure: 0, // todo write about this assumption
+      controlMeasurePurifiers: 0,
+      // info people
+      breathingRate: 1.1,
+      quanta: 970,
+      maskType: "No mask",
+      exhalationMaskEff: 0,
+      inhalationMaskEff: 0,
+      // OUTPUTS
+      volume: "",
+      firstOrderLoss: "",
+      netEmissionRate: "",
+      avgQuantaConcentration: "",
+      quantaInhaledPerson: "",
+      pCondOneEventInfection: "",
+      casesArising: "",
+    };
+
+    if (state) {
+      if (Object.keys(state).length !== 0 && state.constructor === Object) {
+        return state;
+      } else {
+        return defaultInput;
+      }
+    } else {
+      return defaultInput;
+    }
   }
 
   handleInputChange(evt) {
@@ -102,10 +130,10 @@ class Outdoor extends React.Component {
 
     this.setState(tmp);
 
-    this.calculateOutputs();
+    this.calculateOutputsSaveState();
   }
 
-  calculateOutputs() {
+  calculateOutputsOutdoor() {
     let data = this.state;
     data.volume = data.surfaceArea * data.height;
     data.outdoorAirACH =
@@ -145,7 +173,7 @@ class Outdoor extends React.Component {
     ).toFixed(2);
     data.pCondOneEventInfection = data.pCondOneEventInfection.toFixed(4);
 
-    this.setState(data);
+    return data;
   }
 
   handleDroDowAct(activity) {
@@ -159,7 +187,7 @@ class Outdoor extends React.Component {
 
     this.setState(tmp);
 
-    this.calculateOutputs();
+    this.calculateOutputsSaveState();
   }
 
   handleDroDowAge(ageGroup) {
@@ -172,7 +200,7 @@ class Outdoor extends React.Component {
 
     this.setState(tmp);
 
-    this.calculateOutputs();
+    this.calculateOutputsSaveState();
   }
 
   render() {
