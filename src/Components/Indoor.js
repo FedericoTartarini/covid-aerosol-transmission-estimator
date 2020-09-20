@@ -353,7 +353,7 @@ class Indoor extends React.Component {
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"CADRPurifier"}
-                  label={"CADR air purifiers (%)"}
+                  label={"CADR air purifiers (m3/h)"}
                 />
               </div>
             </form>
@@ -382,7 +382,13 @@ class Indoor extends React.Component {
                   </sup>
                 </p>
               </Link>
-              <RateControlMeasures value={this.state.controlMeasure} />
+              <RateControlMeasures
+                value={
+                  this.state.controlMeasure +
+                  this.state.outdoorAirACH +
+                  this.state.controlMeasurePurifiers
+                }
+              />
             </div>
             <form className="w-full">
               <h1 className="title-font mb-4 mt-12 font-bold">
