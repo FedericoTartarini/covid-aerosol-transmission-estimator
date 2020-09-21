@@ -17,7 +17,7 @@ function HomeView() {
           <p className="leading-relaxed">
             This tool has been developed to provide an estimate of the
             propagation of COVID-19 by aerosol transmission. This model does NOT
-            include droplet or contact transmission An inherent assumption is
+            include droplet or contact transmission. An inherent assumption is
             that personal hygiene measures and safe-distancing measures are
             being followed. If that is not the case, it is safe to assume that
             there will be more infections than predicted by the tool.

@@ -353,7 +353,7 @@ class Indoor extends React.Component {
                   handleChange={this.handleInputChange}
                   data={this.state}
                   id={"CADRPurifier"}
-                  label={"CADR air purifiers (m3/h)"}
+                  label={"CADR per each air cleaner (m3/h)"}
                 />
               </div>
             </form>
