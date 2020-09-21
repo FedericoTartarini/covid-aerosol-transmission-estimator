@@ -376,7 +376,7 @@ class Indoor extends React.Component {
             <div className="flex items-center w-full my-1">
               <Link to={`/help/effectiveness`}>
                 <p className="flex-1 uppercase tracking-wide text-xs font-bold">
-                  Effectiveness control measures
+                  Total effective ventilation
                   <sup>
                     <FontAwesomeIcon icon={faQuestionCircle} />
                   </sup>
