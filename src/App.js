@@ -4,12 +4,12 @@ import Loader from "./Components/Loader";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Functions/theme";
 import { GlobalStyles } from "./Functions/global";
+import NavigationBar from "./Components/NavigationBar";
 
 const HomeView = React.lazy(() => import("./Components/HomeView"));
 const HelpPage = React.lazy(() => import("./Components/HelpPage"));
 const AboutView = React.lazy(() => import("./Components/AboutView"));
 const Footer = React.lazy(() => import("./Components/Footer"));
-const NavigationBar = React.lazy(() => import("./Components/NavigationBar"));
 const Indoor = React.lazy(() => import("./Components/Indoor"));
 const Outdoor = React.lazy(() => import("./Components/Outdoor"));
 
@@ -34,16 +34,20 @@ function App() {
   }
 
   return (
-    <Suspense fallback={<Loader />}>
-      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-        <GlobalStyles />
-        <Router basename="/">
-          <div className="relative pb-10 min-h-screen">
-            <NavigationBar themeToggler={themeToggler} theme={theme} />
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <Router basename="/">
+        <div className="relative pb-10 min-h-screen">
+          <NavigationBar themeToggler={themeToggler} theme={theme} />
+          <Suspense fallback={<Loader />}>
             <Switch>
               <Route exact path="/">
                 <HomeView />
               </Route>
+            </Switch>
+          </Suspense>
+          <Suspense fallback={<Loader />}>
+            <Switch>
               <Route path="/about">
                 <AboutView />
               </Route>
@@ -55,11 +59,13 @@ function App() {
               </Route>
               <Route path="/help/:id" component={HelpPage} />
             </Switch>
+          </Suspense>
+          <Suspense fallback={<Loader />}>
             <Footer />
-          </div>
-        </Router>
-      </ThemeProvider>
-    </Suspense>
+          </Suspense>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
