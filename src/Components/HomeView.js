@@ -41,11 +41,17 @@ function HomeView() {
           </div>
           <p className="mb-8 leading-relaxed">
             The current tool is based on{" "}
-            <a href="https://docs.google.com/spreadsheets/d/16K1OQkLD4BjgBdO8ePj6ytf-RpPMlJ6aXFg3PrIQBbQ/edit#gid=519189277">
+            <a
+              className="underline"
+              href="https://docs.google.com/spreadsheets/d/16K1OQkLD4BjgBdO8ePj6ytf-RpPMlJ6aXFg3PrIQBbQ/edit#gid=519189277"
+            >
               the estimator
             </a>{" "}
             created by{" "}
-            <a href="https://www.colorado.edu/chemistry/jose-luis-jimenez">
+            <a
+              className="underline"
+              href="https://www.colorado.edu/chemistry/jose-luis-jimenez"
+            >
               Prof. J L Jimenez
             </a>
             . The model used in the tool is based on the Wells-Riley model. The

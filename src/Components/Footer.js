@@ -16,7 +16,7 @@ function Footer() {
             © 2020
             <a
               href="https://www.linkedin.com/in/federico-tartarini"
-              className="ml-1"
+              className="ml-1 underline"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -24,7 +24,7 @@ function Footer() {
             </a>
             <a
               href="https://www.linkedin.com/in/asitk/"
-              className="ml-1"
+              className="ml-1 underline"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -34,14 +34,14 @@ function Footer() {
           <span className="flex-1 text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
             The current tool is based on
             <a
-              className="mx-1"
+              className="ml-1 underline"
               href="https://docs.google.com/spreadsheets/d/16K1OQkLD4BjgBdO8ePj6ytf-RpPMlJ6aXFg3PrIQBbQ/edit#gid=519189277"
             >
               the estimator
             </a>
             created by
             <a
-              className="mx-1"
+              className="ml-1 underline"
               href="https://www.colorado.edu/chemistry/jose-luis-jimenez"
             >
               Prof. J L Jimenez

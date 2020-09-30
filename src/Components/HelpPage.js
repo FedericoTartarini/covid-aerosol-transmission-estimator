@@ -194,7 +194,10 @@ function HelpPage({ match }) {
               estimate which results in an additional loss rate of 0.63 per
               hour. For an estimate based on prevalent temperature, humidity and
               UV index, you can check the following{" "}
-              <a href="https://www.dhs.gov/science-and-technology/sars-airborne-calculator">
+              <a
+                className="underline"
+                href="https://www.dhs.gov/science-and-technology/sars-airborne-calculator"
+              >
                 tool by DHS
               </a>
               .
@@ -209,7 +212,10 @@ function HelpPage({ match }) {
               thus leads to a further loss rate which we have approximated at
               0.3 per hour. For an example of settling rate of differently sized
               particles indoors, you may have a look{" "}
-              <a href="https://www.sciencedirect.com/science/article/abs/pii/S1352231002001577">
+              <a
+                className="underline"
+                href="https://www.sciencedirect.com/science/article/abs/pii/S1352231002001577"
+              >
                 at this work
               </a>
               .
@@ -396,6 +402,7 @@ function HelpPage({ match }) {
               Data would be specific to your own region. For example, for the
               US, for different counties, you can{" "}
               <a
+                className="underline"
                 href={
                   "https://sites.google.com/compassfortcollins.org/coronavirusrisk/home"
                 }
@@ -639,6 +646,7 @@ function HelpPage({ match }) {
               specifications of filtration efficiency for particles in the range
               of{" "}
               <a
+                className="underline"
                 href={
                   "https://www.nafahq.org/understanding-merv-nafa-users-guide-to-ansi-ashrae-52-2/"
                 }

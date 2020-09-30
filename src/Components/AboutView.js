@@ -33,7 +33,10 @@ function AboutView() {
             your room’s ventilation from the building’s ventilation engineers.
             If you have a CO2 sensor, you can also verify the information about
             the amount of outdoor air supplied to your room using a{" "}
-            <a href="https://medium.com/@jjose_19945/how-to-quantify-the-ventilation-rate-of-an-indoor-space-using-a-cheap-co2-monitor-4d8b6d4dab44">
+            <a
+              className="underline"
+              href="https://medium.com/@jjose_19945/how-to-quantify-the-ventilation-rate-of-an-indoor-space-using-a-cheap-co2-monitor-4d8b6d4dab44"
+            >
               simple process
             </a>
             .
@@ -62,7 +65,10 @@ function AboutView() {
             You need to keep in mind that the tool is based on best scientific
             estimate, looked at by multiple experts but knowledge in the field
             is still evolving. See the{" "}
-            <a href="https://docs.google.com/spreadsheets/d/16K1OQkLD4BjgBdO8ePj6ytf-RpPMlJ6aXFg3PrIQBbQ/edit#gid=1831582877">
+            <a
+              className="underline"
+              href="https://docs.google.com/spreadsheets/d/16K1OQkLD4BjgBdO8ePj6ytf-RpPMlJ6aXFg3PrIQBbQ/edit#gid=1831582877"
+            >
               original development
             </a>{" "}
             by Prof. Jimenez for more details. Also, he regularly updates the
@@ -90,7 +96,10 @@ function AboutView() {
             To keep abreast of the latest developments related to aerosols
             transmission of SARS-CoV-2, we advise you to keep track of this
             excellent{" "}
-            <a href="https://docs.google.com/document/d/1fB5pysccOHvxphpTmCG_TGdytavMmc1cUumn8m0pwzo/edit">
+            <a
+              className="underline"
+              href="https://docs.google.com/document/d/1fB5pysccOHvxphpTmCG_TGdytavMmc1cUumn8m0pwzo/edit"
+            >
               compilation of resources
             </a>{" "}
             prepared by a group of experts, led by Prof. Jimenez.
